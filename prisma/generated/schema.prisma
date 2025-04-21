@@ -1,0 +1,229 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id String @unique @default(uuid())
+
+  username String @unique
+  password String
+
+  email  String? @unique
+  mobile String? @unique
+  // 用户状态
+  status String?
+
+  profile Profile? @relation()
+
+  resume      Resume[]
+  inviter     Invite[]      @relation("Inviter")
+  invitee     Invite[]      @relation("Invitee")
+  aiGenerator AIGenerator[]
+  sign        Sign[]
+
+  createdTime DateTime @default(now()) @map("created_time")
+  updatedTime DateTime @updatedAt @map("updated_time")
+
+  @@map("user")
+}
+
+model Role {
+  id String @unique @default(uuid())
+
+  name  String @unique
+  title String @unique
+
+  createdTime DateTime @default(now()) @map("created_time")
+  updatedTime DateTime @updatedAt @map("updated_time")
+
+  @@map("role")
+}
+
+model Sign {
+  id String @unique @default(uuid())
+
+  // 生成的日期（按日算）
+  date Int
+
+  user   User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @map("user_id")
+
+  createdTime DateTime @default(now()) @map("created_time")
+  updatedTime DateTime @updatedAt @map("updated_time")
+
+  @@map("sign")
+}
+
+model AIGenerator {
+  id String @unique @default(uuid())
+
+  // 描述词
+  desc  String @db.Text
+  // 生成的日期（按日算）
+  date  Int
+  // 生成了多少次
+  times Int
+
+  user   User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @map("user_id")
+
+  aiGenerateContent AIGenerateContent[]
+
+  createdTime DateTime @default(now()) @map("created_time")
+  updatedTime DateTime @updatedAt @map("updated_time")
+
+  @@map("ai_generator")
+}
+
+model AIGenerateContent {
+  id String @unique @default(uuid())
+
+  // 模型生成的id
+  gid              String
+  // 模型类型
+  model            String
+  // 提问消耗的token
+  promptTokens     Int    @map("promp_tokens")
+  // 完成消耗的token
+  completionTokens Int    @map("completion_tokens")
+  // 模型的对象类型
+  object           String
+  // 用户输入的生成文本
+  userMessage      String @map("user_message")
+
+  aiGenerator   AIGenerator? @relation(fields: [aiGeneratorId], references: [id])
+  aiGeneratorId String?
+
+  createdTime DateTime @default(now()) @map("created_time")
+  updatedTime DateTime @updatedAt @map("updated_time")
+
+  @@map("ai_generator_content")
+}
+
+model Profile {
+  id String @unique @default(uuid())
+
+  score Int?
+  grade Int?
+
+  user   User?   @relation(fields: [userID], references: [id], onDelete: Cascade)
+  userID String? @unique @map("user_id")
+
+  createdTime DateTime @default(now()) @map("created_time")
+  updatedTime DateTime @updatedAt @map("updated_time")
+
+  @@map("profile")
+}
+
+model Invite {
+  id String @unique @default(uuid())
+
+  // 邀请者
+  inviter   User?   @relation("Inviter", fields: [inviterId], references: [id], onDelete: Cascade)
+  inviterId String? @map("inviter_id")
+
+  // 被邀请者
+  invitee   User?   @relation("Invitee", fields: [inviteeId], references: [id], onDelete: Cascade)
+  inviteeId String? @map("invitee_id")
+
+  createdTime DateTime @default(now()) @map("created_time")
+  updatedTime DateTime @updatedAt @map("updated_time")
+
+  @@map("invite")
+}
+
+model Resume {
+  id String @unique @default(uuid())
+
+  title String @unique
+
+  realname  String?    @default("")
+  age       Int?
+  education String?    @default("")
+  address   String?    @default("")
+  mobile    String?    @default("")
+  email     String?    @default("")
+  avatar    String?    @default("")
+  // 状态：是否离职
+  status    String?    @default("")
+  // 行业：教师，医生，程序员？
+  industry  String?    @default("")
+  works     Works[]
+  projects  Projects[]
+
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String? @map("user_id")
+
+  template   Template? @relation(fields: [templateId], references: [id])
+  templateId String?   @map("template_id")
+
+  createdTime DateTime @default(now()) @map("created_time")
+  updatedTime DateTime @updatedAt @map("updated_time")
+
+  @@map("resume")
+}
+
+model Works {
+  id String @unique @default(uuid())
+
+  content  String  @db.Text
+  resume   Resume? @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+  resumeId String  @map("resume_id")
+
+  createdTime DateTime @default(now()) @map("created_time")
+  updatedTime DateTime @updatedAt @map("updated_time")
+
+  @@map("works")
+}
+
+model Projects {
+  id String @unique @default(uuid())
+
+  content  String  @db.Text
+  resume   Resume? @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+  resumeId String  @map("resume_id")
+
+  createdTime DateTime @default(now()) @map("created_time")
+  updatedTime DateTime @updatedAt @map("updated_time")
+
+  @@map("projects")
+}
+
+model Template {
+  id String @unique @default(uuid())
+
+  title String  @default("")
+  path  String  @default("")
+  type  String? @default("")
+
+  resume Resume[]
+
+  createdTime DateTime @default(now()) @map("created_time")
+  updatedTime DateTime @updatedAt @map("updated_time")
+
+  @@map("template")
+}
+
+model Download {
+  id String @unique @default(uuid())
+
+  title String
+  url   String
+
+  createdTime DateTime @default(now()) @map("created_time")
+  updatedTime DateTime @updatedAt @map("updated_time")
+
+  @@map("download")
+}

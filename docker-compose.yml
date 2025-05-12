@@ -1,4 +1,18 @@
 services:
+  resume-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    env_file:
+      - .env.production
+    volumes:
+      - ./src:/usr/src/apps/resume/src
+    ports:
+      - ${APPLICATION_PORT}:${APPLICATION_PORT}
+    networks:
+      - resume-backend
   postgres:
     container_name: postgres_db
     image: postgres:15.2
@@ -12,7 +26,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data  # 持久化数据到本地
     networks:
-      - backend
+      - resume-backend
   
   redis:
     container_name: redis_db
@@ -24,12 +38,12 @@ services:
     volumes:
       - redis_data:/data
     networks:
-      - backend
+      - resume-backend
 
 volumes:
   postgres_data:
   redis_data:
 
 networks:
-  backend:
+  resume-backend:
     

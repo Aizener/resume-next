@@ -44,4 +44,10 @@ export class CreateResumeDto {
   @IsString()
   @IsOptional()
   industry: string;
+
+  @IsString()
+  @IsOptional()
+  templateId: string;
+
+  userId: string;
 }

@@ -15,11 +15,12 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const res = http.getResponse<Response>();
     const response = exception.getResponse();
     let errMessage = exception.message;
+    console.log(exception);
     if (
       typeof response === 'object' &&
       response['statusCode'] === HttpStatus.BAD_REQUEST
     ) {
-      errMessage = response['message'];
+      errMessage = response['message']?.[0];
     }
     const statusCode = exception.getStatus();
 

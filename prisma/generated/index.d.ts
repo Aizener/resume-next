@@ -54,25 +54,30 @@ export type Invite = $Result.DefaultSelection<Prisma.$InvitePayload>
  */
 export type Resume = $Result.DefaultSelection<Prisma.$ResumePayload>
 /**
- * Model Works
- * 
- */
-export type Works = $Result.DefaultSelection<Prisma.$WorksPayload>
-/**
- * Model Projects
- * 
- */
-export type Projects = $Result.DefaultSelection<Prisma.$ProjectsPayload>
-/**
  * Model Template
  * 
  */
 export type Template = $Result.DefaultSelection<Prisma.$TemplatePayload>
 /**
+ * Model GenerateRecord
+ * 
+ */
+export type GenerateRecord = $Result.DefaultSelection<Prisma.$GenerateRecordPayload>
+/**
+ * Model GenerateRecordDetail
+ * 
+ */
+export type GenerateRecordDetail = $Result.DefaultSelection<Prisma.$GenerateRecordDetailPayload>
+/**
  * Model Download
  * 
  */
 export type Download = $Result.DefaultSelection<Prisma.$DownloadPayload>
+/**
+ * Model DownloadRecord
+ * 
+ */
+export type DownloadRecord = $Result.DefaultSelection<Prisma.$DownloadRecordPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -280,26 +285,6 @@ export class PrismaClient<
   get resume(): Prisma.ResumeDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.works`: Exposes CRUD operations for the **Works** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Works
-    * const works = await prisma.works.findMany()
-    * ```
-    */
-  get works(): Prisma.WorksDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.projects`: Exposes CRUD operations for the **Projects** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Projects
-    * const projects = await prisma.projects.findMany()
-    * ```
-    */
-  get projects(): Prisma.ProjectsDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.template`: Exposes CRUD operations for the **Template** model.
     * Example usage:
     * ```ts
@@ -310,6 +295,26 @@ export class PrismaClient<
   get template(): Prisma.TemplateDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.generateRecord`: Exposes CRUD operations for the **GenerateRecord** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more GenerateRecords
+    * const generateRecords = await prisma.generateRecord.findMany()
+    * ```
+    */
+  get generateRecord(): Prisma.GenerateRecordDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.generateRecordDetail`: Exposes CRUD operations for the **GenerateRecordDetail** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more GenerateRecordDetails
+    * const generateRecordDetails = await prisma.generateRecordDetail.findMany()
+    * ```
+    */
+  get generateRecordDetail(): Prisma.GenerateRecordDetailDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.download`: Exposes CRUD operations for the **Download** model.
     * Example usage:
     * ```ts
@@ -318,6 +323,16 @@ export class PrismaClient<
     * ```
     */
   get download(): Prisma.DownloadDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.downloadRecord`: Exposes CRUD operations for the **DownloadRecord** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DownloadRecords
+    * const downloadRecords = await prisma.downloadRecord.findMany()
+    * ```
+    */
+  get downloadRecord(): Prisma.DownloadRecordDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -766,10 +781,11 @@ export namespace Prisma {
     Profile: 'Profile',
     Invite: 'Invite',
     Resume: 'Resume',
-    Works: 'Works',
-    Projects: 'Projects',
     Template: 'Template',
-    Download: 'Download'
+    GenerateRecord: 'GenerateRecord',
+    GenerateRecordDetail: 'GenerateRecordDetail',
+    Download: 'Download',
+    DownloadRecord: 'DownloadRecord'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -788,7 +804,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "role" | "sign" | "aIGenerator" | "aIGenerateContent" | "profile" | "invite" | "resume" | "works" | "projects" | "template" | "download"
+      modelProps: "user" | "role" | "sign" | "aIGenerator" | "aIGenerateContent" | "profile" | "invite" | "resume" | "template" | "generateRecord" | "generateRecordDetail" | "download" | "downloadRecord"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1384,154 +1400,6 @@ export namespace Prisma {
           }
         }
       }
-      Works: {
-        payload: Prisma.$WorksPayload<ExtArgs>
-        fields: Prisma.WorksFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.WorksFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WorksPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.WorksFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WorksPayload>
-          }
-          findFirst: {
-            args: Prisma.WorksFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WorksPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.WorksFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WorksPayload>
-          }
-          findMany: {
-            args: Prisma.WorksFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WorksPayload>[]
-          }
-          create: {
-            args: Prisma.WorksCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WorksPayload>
-          }
-          createMany: {
-            args: Prisma.WorksCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.WorksCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WorksPayload>[]
-          }
-          delete: {
-            args: Prisma.WorksDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WorksPayload>
-          }
-          update: {
-            args: Prisma.WorksUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WorksPayload>
-          }
-          deleteMany: {
-            args: Prisma.WorksDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.WorksUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.WorksUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WorksPayload>[]
-          }
-          upsert: {
-            args: Prisma.WorksUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WorksPayload>
-          }
-          aggregate: {
-            args: Prisma.WorksAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateWorks>
-          }
-          groupBy: {
-            args: Prisma.WorksGroupByArgs<ExtArgs>
-            result: $Utils.Optional<WorksGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.WorksCountArgs<ExtArgs>
-            result: $Utils.Optional<WorksCountAggregateOutputType> | number
-          }
-        }
-      }
-      Projects: {
-        payload: Prisma.$ProjectsPayload<ExtArgs>
-        fields: Prisma.ProjectsFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.ProjectsFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectsPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.ProjectsFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectsPayload>
-          }
-          findFirst: {
-            args: Prisma.ProjectsFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectsPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.ProjectsFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectsPayload>
-          }
-          findMany: {
-            args: Prisma.ProjectsFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectsPayload>[]
-          }
-          create: {
-            args: Prisma.ProjectsCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectsPayload>
-          }
-          createMany: {
-            args: Prisma.ProjectsCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.ProjectsCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectsPayload>[]
-          }
-          delete: {
-            args: Prisma.ProjectsDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectsPayload>
-          }
-          update: {
-            args: Prisma.ProjectsUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectsPayload>
-          }
-          deleteMany: {
-            args: Prisma.ProjectsDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.ProjectsUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.ProjectsUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectsPayload>[]
-          }
-          upsert: {
-            args: Prisma.ProjectsUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectsPayload>
-          }
-          aggregate: {
-            args: Prisma.ProjectsAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateProjects>
-          }
-          groupBy: {
-            args: Prisma.ProjectsGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ProjectsGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.ProjectsCountArgs<ExtArgs>
-            result: $Utils.Optional<ProjectsCountAggregateOutputType> | number
-          }
-        }
-      }
       Template: {
         payload: Prisma.$TemplatePayload<ExtArgs>
         fields: Prisma.TemplateFieldRefs
@@ -1606,6 +1474,154 @@ export namespace Prisma {
           }
         }
       }
+      GenerateRecord: {
+        payload: Prisma.$GenerateRecordPayload<ExtArgs>
+        fields: Prisma.GenerateRecordFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GenerateRecordFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GenerateRecordFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordPayload>
+          }
+          findFirst: {
+            args: Prisma.GenerateRecordFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GenerateRecordFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordPayload>
+          }
+          findMany: {
+            args: Prisma.GenerateRecordFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordPayload>[]
+          }
+          create: {
+            args: Prisma.GenerateRecordCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordPayload>
+          }
+          createMany: {
+            args: Prisma.GenerateRecordCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.GenerateRecordCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordPayload>[]
+          }
+          delete: {
+            args: Prisma.GenerateRecordDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordPayload>
+          }
+          update: {
+            args: Prisma.GenerateRecordUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordPayload>
+          }
+          deleteMany: {
+            args: Prisma.GenerateRecordDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GenerateRecordUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.GenerateRecordUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordPayload>[]
+          }
+          upsert: {
+            args: Prisma.GenerateRecordUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordPayload>
+          }
+          aggregate: {
+            args: Prisma.GenerateRecordAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGenerateRecord>
+          }
+          groupBy: {
+            args: Prisma.GenerateRecordGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GenerateRecordGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GenerateRecordCountArgs<ExtArgs>
+            result: $Utils.Optional<GenerateRecordCountAggregateOutputType> | number
+          }
+        }
+      }
+      GenerateRecordDetail: {
+        payload: Prisma.$GenerateRecordDetailPayload<ExtArgs>
+        fields: Prisma.GenerateRecordDetailFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GenerateRecordDetailFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordDetailPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GenerateRecordDetailFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordDetailPayload>
+          }
+          findFirst: {
+            args: Prisma.GenerateRecordDetailFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordDetailPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GenerateRecordDetailFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordDetailPayload>
+          }
+          findMany: {
+            args: Prisma.GenerateRecordDetailFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordDetailPayload>[]
+          }
+          create: {
+            args: Prisma.GenerateRecordDetailCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordDetailPayload>
+          }
+          createMany: {
+            args: Prisma.GenerateRecordDetailCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.GenerateRecordDetailCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordDetailPayload>[]
+          }
+          delete: {
+            args: Prisma.GenerateRecordDetailDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordDetailPayload>
+          }
+          update: {
+            args: Prisma.GenerateRecordDetailUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordDetailPayload>
+          }
+          deleteMany: {
+            args: Prisma.GenerateRecordDetailDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GenerateRecordDetailUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.GenerateRecordDetailUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordDetailPayload>[]
+          }
+          upsert: {
+            args: Prisma.GenerateRecordDetailUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateRecordDetailPayload>
+          }
+          aggregate: {
+            args: Prisma.GenerateRecordDetailAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGenerateRecordDetail>
+          }
+          groupBy: {
+            args: Prisma.GenerateRecordDetailGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GenerateRecordDetailGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GenerateRecordDetailCountArgs<ExtArgs>
+            result: $Utils.Optional<GenerateRecordDetailCountAggregateOutputType> | number
+          }
+        }
+      }
       Download: {
         payload: Prisma.$DownloadPayload<ExtArgs>
         fields: Prisma.DownloadFieldRefs
@@ -1677,6 +1693,80 @@ export namespace Prisma {
           count: {
             args: Prisma.DownloadCountArgs<ExtArgs>
             result: $Utils.Optional<DownloadCountAggregateOutputType> | number
+          }
+        }
+      }
+      DownloadRecord: {
+        payload: Prisma.$DownloadRecordPayload<ExtArgs>
+        fields: Prisma.DownloadRecordFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DownloadRecordFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DownloadRecordPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DownloadRecordFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DownloadRecordPayload>
+          }
+          findFirst: {
+            args: Prisma.DownloadRecordFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DownloadRecordPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DownloadRecordFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DownloadRecordPayload>
+          }
+          findMany: {
+            args: Prisma.DownloadRecordFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DownloadRecordPayload>[]
+          }
+          create: {
+            args: Prisma.DownloadRecordCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DownloadRecordPayload>
+          }
+          createMany: {
+            args: Prisma.DownloadRecordCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DownloadRecordCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DownloadRecordPayload>[]
+          }
+          delete: {
+            args: Prisma.DownloadRecordDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DownloadRecordPayload>
+          }
+          update: {
+            args: Prisma.DownloadRecordUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DownloadRecordPayload>
+          }
+          deleteMany: {
+            args: Prisma.DownloadRecordDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DownloadRecordUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DownloadRecordUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DownloadRecordPayload>[]
+          }
+          upsert: {
+            args: Prisma.DownloadRecordUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DownloadRecordPayload>
+          }
+          aggregate: {
+            args: Prisma.DownloadRecordAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDownloadRecord>
+          }
+          groupBy: {
+            args: Prisma.DownloadRecordGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DownloadRecordGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DownloadRecordCountArgs<ExtArgs>
+            result: $Utils.Optional<DownloadRecordCountAggregateOutputType> | number
           }
         }
       }
@@ -1772,10 +1862,11 @@ export namespace Prisma {
     profile?: ProfileOmit
     invite?: InviteOmit
     resume?: ResumeOmit
-    works?: WorksOmit
-    projects?: ProjectsOmit
     template?: TemplateOmit
+    generateRecord?: GenerateRecordOmit
+    generateRecordDetail?: GenerateRecordDetailOmit
     download?: DownloadOmit
+    downloadRecord?: DownloadRecordOmit
   }
 
   /* Types for Logging */
@@ -1874,7 +1965,9 @@ export namespace Prisma {
     inviter: number
     invitee: number
     aiGenerator: number
+    download: number
     sign: number
+    generateRecord: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1882,7 +1975,9 @@ export namespace Prisma {
     inviter?: boolean | UserCountOutputTypeCountInviterArgs
     invitee?: boolean | UserCountOutputTypeCountInviteeArgs
     aiGenerator?: boolean | UserCountOutputTypeCountAiGeneratorArgs
+    download?: boolean | UserCountOutputTypeCountDownloadArgs
     sign?: boolean | UserCountOutputTypeCountSignArgs
+    generateRecord?: boolean | UserCountOutputTypeCountGenerateRecordArgs
   }
 
   // Custom InputTypes
@@ -1927,8 +2022,22 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
+  export type UserCountOutputTypeCountDownloadArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DownloadWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
   export type UserCountOutputTypeCountSignArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SignWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountGenerateRecordArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GenerateRecordWhereInput
   }
 
 
@@ -1968,13 +2077,11 @@ export namespace Prisma {
    */
 
   export type ResumeCountOutputType = {
-    works: number
-    projects: number
+    generateRecord: number
   }
 
   export type ResumeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    works?: boolean | ResumeCountOutputTypeCountWorksArgs
-    projects?: boolean | ResumeCountOutputTypeCountProjectsArgs
+    generateRecord?: boolean | ResumeCountOutputTypeCountGenerateRecordArgs
   }
 
   // Custom InputTypes
@@ -1991,15 +2098,8 @@ export namespace Prisma {
   /**
    * ResumeCountOutputType without action
    */
-  export type ResumeCountOutputTypeCountWorksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: WorksWhereInput
-  }
-
-  /**
-   * ResumeCountOutputType without action
-   */
-  export type ResumeCountOutputTypeCountProjectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProjectsWhereInput
+  export type ResumeCountOutputTypeCountGenerateRecordArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GenerateRecordWhereInput
   }
 
 
@@ -2031,6 +2131,99 @@ export namespace Prisma {
    */
   export type TemplateCountOutputTypeCountResumeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ResumeWhereInput
+  }
+
+
+  /**
+   * Count Type GenerateRecordCountOutputType
+   */
+
+  export type GenerateRecordCountOutputType = {
+    generateRecordDetail: number
+  }
+
+  export type GenerateRecordCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    generateRecordDetail?: boolean | GenerateRecordCountOutputTypeCountGenerateRecordDetailArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * GenerateRecordCountOutputType without action
+   */
+  export type GenerateRecordCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecordCountOutputType
+     */
+    select?: GenerateRecordCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * GenerateRecordCountOutputType without action
+   */
+  export type GenerateRecordCountOutputTypeCountGenerateRecordDetailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GenerateRecordDetailWhereInput
+  }
+
+
+  /**
+   * Count Type GenerateRecordDetailCountOutputType
+   */
+
+  export type GenerateRecordDetailCountOutputType = {
+    downloadRecord: number
+  }
+
+  export type GenerateRecordDetailCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    downloadRecord?: boolean | GenerateRecordDetailCountOutputTypeCountDownloadRecordArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * GenerateRecordDetailCountOutputType without action
+   */
+  export type GenerateRecordDetailCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecordDetailCountOutputType
+     */
+    select?: GenerateRecordDetailCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * GenerateRecordDetailCountOutputType without action
+   */
+  export type GenerateRecordDetailCountOutputTypeCountDownloadRecordArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DownloadRecordWhereInput
+  }
+
+
+  /**
+   * Count Type DownloadCountOutputType
+   */
+
+  export type DownloadCountOutputType = {
+    downloadRecord: number
+  }
+
+  export type DownloadCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    downloadRecord?: boolean | DownloadCountOutputTypeCountDownloadRecordArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * DownloadCountOutputType without action
+   */
+  export type DownloadCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DownloadCountOutputType
+     */
+    select?: DownloadCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * DownloadCountOutputType without action
+   */
+  export type DownloadCountOutputTypeCountDownloadRecordArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DownloadRecordWhereInput
   }
 
 
@@ -2231,7 +2424,9 @@ export namespace Prisma {
     inviter?: boolean | User$inviterArgs<ExtArgs>
     invitee?: boolean | User$inviteeArgs<ExtArgs>
     aiGenerator?: boolean | User$aiGeneratorArgs<ExtArgs>
+    download?: boolean | User$downloadArgs<ExtArgs>
     sign?: boolean | User$signArgs<ExtArgs>
+    generateRecord?: boolean | User$generateRecordArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2275,7 +2470,9 @@ export namespace Prisma {
     inviter?: boolean | User$inviterArgs<ExtArgs>
     invitee?: boolean | User$inviteeArgs<ExtArgs>
     aiGenerator?: boolean | User$aiGeneratorArgs<ExtArgs>
+    download?: boolean | User$downloadArgs<ExtArgs>
     sign?: boolean | User$signArgs<ExtArgs>
+    generateRecord?: boolean | User$generateRecordArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2289,7 +2486,9 @@ export namespace Prisma {
       inviter: Prisma.$InvitePayload<ExtArgs>[]
       invitee: Prisma.$InvitePayload<ExtArgs>[]
       aiGenerator: Prisma.$AIGeneratorPayload<ExtArgs>[]
+      download: Prisma.$DownloadPayload<ExtArgs>[]
       sign: Prisma.$SignPayload<ExtArgs>[]
+      generateRecord: Prisma.$GenerateRecordPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2699,7 +2898,9 @@ export namespace Prisma {
     inviter<T extends User$inviterArgs<ExtArgs> = {}>(args?: Subset<T, User$inviterArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     invitee<T extends User$inviteeArgs<ExtArgs> = {}>(args?: Subset<T, User$inviteeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     aiGenerator<T extends User$aiGeneratorArgs<ExtArgs> = {}>(args?: Subset<T, User$aiGeneratorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AIGeneratorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    download<T extends User$downloadArgs<ExtArgs> = {}>(args?: Subset<T, User$downloadArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DownloadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     sign<T extends User$signArgs<ExtArgs> = {}>(args?: Subset<T, User$signArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SignPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    generateRecord<T extends User$generateRecordArgs<ExtArgs> = {}>(args?: Subset<T, User$generateRecordArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenerateRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3240,6 +3441,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.download
+   */
+  export type User$downloadArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Download
+     */
+    select?: DownloadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Download
+     */
+    omit?: DownloadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadInclude<ExtArgs> | null
+    where?: DownloadWhereInput
+    orderBy?: DownloadOrderByWithRelationInput | DownloadOrderByWithRelationInput[]
+    cursor?: DownloadWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DownloadScalarFieldEnum | DownloadScalarFieldEnum[]
+  }
+
+  /**
    * User.sign
    */
   export type User$signArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3261,6 +3486,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: SignScalarFieldEnum | SignScalarFieldEnum[]
+  }
+
+  /**
+   * User.generateRecord
+   */
+  export type User$generateRecordArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecord
+     */
+    select?: GenerateRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecord
+     */
+    omit?: GenerateRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordInclude<ExtArgs> | null
+    where?: GenerateRecordWhereInput
+    orderBy?: GenerateRecordOrderByWithRelationInput | GenerateRecordOrderByWithRelationInput[]
+    cursor?: GenerateRecordWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GenerateRecordScalarFieldEnum | GenerateRecordScalarFieldEnum[]
   }
 
   /**
@@ -5412,7 +5661,6 @@ export namespace Prisma {
 
   export type AIGeneratorMinAggregateOutputType = {
     id: string | null
-    desc: string | null
     date: number | null
     times: number | null
     userId: string | null
@@ -5422,7 +5670,6 @@ export namespace Prisma {
 
   export type AIGeneratorMaxAggregateOutputType = {
     id: string | null
-    desc: string | null
     date: number | null
     times: number | null
     userId: string | null
@@ -5432,7 +5679,6 @@ export namespace Prisma {
 
   export type AIGeneratorCountAggregateOutputType = {
     id: number
-    desc: number
     date: number
     times: number
     userId: number
@@ -5454,7 +5700,6 @@ export namespace Prisma {
 
   export type AIGeneratorMinAggregateInputType = {
     id?: true
-    desc?: true
     date?: true
     times?: true
     userId?: true
@@ -5464,7 +5709,6 @@ export namespace Prisma {
 
   export type AIGeneratorMaxAggregateInputType = {
     id?: true
-    desc?: true
     date?: true
     times?: true
     userId?: true
@@ -5474,7 +5718,6 @@ export namespace Prisma {
 
   export type AIGeneratorCountAggregateInputType = {
     id?: true
-    desc?: true
     date?: true
     times?: true
     userId?: true
@@ -5571,9 +5814,8 @@ export namespace Prisma {
 
   export type AIGeneratorGroupByOutputType = {
     id: string
-    desc: string
-    date: number
-    times: number
+    date: number | null
+    times: number | null
     userId: string
     createdTime: Date
     updatedTime: Date
@@ -5600,7 +5842,6 @@ export namespace Prisma {
 
   export type AIGeneratorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    desc?: boolean
     date?: boolean
     times?: boolean
     userId?: boolean
@@ -5613,7 +5854,6 @@ export namespace Prisma {
 
   export type AIGeneratorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    desc?: boolean
     date?: boolean
     times?: boolean
     userId?: boolean
@@ -5624,7 +5864,6 @@ export namespace Prisma {
 
   export type AIGeneratorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    desc?: boolean
     date?: boolean
     times?: boolean
     userId?: boolean
@@ -5635,7 +5874,6 @@ export namespace Prisma {
 
   export type AIGeneratorSelectScalar = {
     id?: boolean
-    desc?: boolean
     date?: boolean
     times?: boolean
     userId?: boolean
@@ -5643,7 +5881,7 @@ export namespace Prisma {
     updatedTime?: boolean
   }
 
-  export type AIGeneratorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "desc" | "date" | "times" | "userId" | "createdTime" | "updatedTime", ExtArgs["result"]["aIGenerator"]>
+  export type AIGeneratorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "date" | "times" | "userId" | "createdTime" | "updatedTime", ExtArgs["result"]["aIGenerator"]>
   export type AIGeneratorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | AIGenerator$userArgs<ExtArgs>
     aiGenerateContent?: boolean | AIGenerator$aiGenerateContentArgs<ExtArgs>
@@ -5664,9 +5902,8 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      desc: string
-      date: number
-      times: number
+      date: number | null
+      times: number | null
       userId: string
       createdTime: Date
       updatedTime: Date
@@ -6096,7 +6333,6 @@ export namespace Prisma {
    */
   interface AIGeneratorFieldRefs {
     readonly id: FieldRef<"AIGenerator", 'String'>
-    readonly desc: FieldRef<"AIGenerator", 'String'>
     readonly date: FieldRef<"AIGenerator", 'Int'>
     readonly times: FieldRef<"AIGenerator", 'Int'>
     readonly userId: FieldRef<"AIGenerator", 'String'>
@@ -6583,6 +6819,7 @@ export namespace Prisma {
 
   export type AIGenerateContentMinAggregateOutputType = {
     id: string | null
+    desc: string | null
     gid: string | null
     model: string | null
     promptTokens: number | null
@@ -6596,6 +6833,7 @@ export namespace Prisma {
 
   export type AIGenerateContentMaxAggregateOutputType = {
     id: string | null
+    desc: string | null
     gid: string | null
     model: string | null
     promptTokens: number | null
@@ -6609,6 +6847,7 @@ export namespace Prisma {
 
   export type AIGenerateContentCountAggregateOutputType = {
     id: number
+    desc: number
     gid: number
     model: number
     promptTokens: number
@@ -6634,6 +6873,7 @@ export namespace Prisma {
 
   export type AIGenerateContentMinAggregateInputType = {
     id?: true
+    desc?: true
     gid?: true
     model?: true
     promptTokens?: true
@@ -6647,6 +6887,7 @@ export namespace Prisma {
 
   export type AIGenerateContentMaxAggregateInputType = {
     id?: true
+    desc?: true
     gid?: true
     model?: true
     promptTokens?: true
@@ -6660,6 +6901,7 @@ export namespace Prisma {
 
   export type AIGenerateContentCountAggregateInputType = {
     id?: true
+    desc?: true
     gid?: true
     model?: true
     promptTokens?: true
@@ -6760,6 +7002,7 @@ export namespace Prisma {
 
   export type AIGenerateContentGroupByOutputType = {
     id: string
+    desc: string
     gid: string
     model: string
     promptTokens: number
@@ -6792,6 +7035,7 @@ export namespace Prisma {
 
   export type AIGenerateContentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    desc?: boolean
     gid?: boolean
     model?: boolean
     promptTokens?: boolean
@@ -6806,6 +7050,7 @@ export namespace Prisma {
 
   export type AIGenerateContentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    desc?: boolean
     gid?: boolean
     model?: boolean
     promptTokens?: boolean
@@ -6820,6 +7065,7 @@ export namespace Prisma {
 
   export type AIGenerateContentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    desc?: boolean
     gid?: boolean
     model?: boolean
     promptTokens?: boolean
@@ -6834,6 +7080,7 @@ export namespace Prisma {
 
   export type AIGenerateContentSelectScalar = {
     id?: boolean
+    desc?: boolean
     gid?: boolean
     model?: boolean
     promptTokens?: boolean
@@ -6845,7 +7092,7 @@ export namespace Prisma {
     updatedTime?: boolean
   }
 
-  export type AIGenerateContentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "gid" | "model" | "promptTokens" | "completionTokens" | "object" | "userMessage" | "aiGeneratorId" | "createdTime" | "updatedTime", ExtArgs["result"]["aIGenerateContent"]>
+  export type AIGenerateContentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "desc" | "gid" | "model" | "promptTokens" | "completionTokens" | "object" | "userMessage" | "aiGeneratorId" | "createdTime" | "updatedTime", ExtArgs["result"]["aIGenerateContent"]>
   export type AIGenerateContentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     aiGenerator?: boolean | AIGenerateContent$aiGeneratorArgs<ExtArgs>
   }
@@ -6863,6 +7110,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      desc: string
       gid: string
       model: string
       promptTokens: number
@@ -7297,6 +7545,7 @@ export namespace Prisma {
    */
   interface AIGenerateContentFieldRefs {
     readonly id: FieldRef<"AIGenerateContent", 'String'>
+    readonly desc: FieldRef<"AIGenerateContent", 'String'>
     readonly gid: FieldRef<"AIGenerateContent", 'String'>
     readonly model: FieldRef<"AIGenerateContent", 'String'>
     readonly promptTokens: FieldRef<"AIGenerateContent", 'Int'>
@@ -10003,6 +10252,11 @@ export namespace Prisma {
     avatar: string | null
     status: string | null
     industry: string | null
+    advantage: string | null
+    advantageHtml: string | null
+    works: string | null
+    projects: string | null
+    other: string | null
     userId: string | null
     templateId: string | null
     createdTime: Date | null
@@ -10021,6 +10275,11 @@ export namespace Prisma {
     avatar: string | null
     status: string | null
     industry: string | null
+    advantage: string | null
+    advantageHtml: string | null
+    works: string | null
+    projects: string | null
+    other: string | null
     userId: string | null
     templateId: string | null
     createdTime: Date | null
@@ -10039,6 +10298,11 @@ export namespace Prisma {
     avatar: number
     status: number
     industry: number
+    advantage: number
+    advantageHtml: number
+    works: number
+    projects: number
+    other: number
     userId: number
     templateId: number
     createdTime: number
@@ -10067,6 +10331,11 @@ export namespace Prisma {
     avatar?: true
     status?: true
     industry?: true
+    advantage?: true
+    advantageHtml?: true
+    works?: true
+    projects?: true
+    other?: true
     userId?: true
     templateId?: true
     createdTime?: true
@@ -10085,6 +10354,11 @@ export namespace Prisma {
     avatar?: true
     status?: true
     industry?: true
+    advantage?: true
+    advantageHtml?: true
+    works?: true
+    projects?: true
+    other?: true
     userId?: true
     templateId?: true
     createdTime?: true
@@ -10103,6 +10377,11 @@ export namespace Prisma {
     avatar?: true
     status?: true
     industry?: true
+    advantage?: true
+    advantageHtml?: true
+    works?: true
+    projects?: true
+    other?: true
     userId?: true
     templateId?: true
     createdTime?: true
@@ -10208,6 +10487,11 @@ export namespace Prisma {
     avatar: string | null
     status: string | null
     industry: string | null
+    advantage: string | null
+    advantageHtml: string | null
+    works: string | null
+    projects: string | null
+    other: string | null
     userId: string | null
     templateId: string | null
     createdTime: Date
@@ -10245,14 +10529,18 @@ export namespace Prisma {
     avatar?: boolean
     status?: boolean
     industry?: boolean
+    advantage?: boolean
+    advantageHtml?: boolean
+    works?: boolean
+    projects?: boolean
+    other?: boolean
     userId?: boolean
     templateId?: boolean
     createdTime?: boolean
     updatedTime?: boolean
-    works?: boolean | Resume$worksArgs<ExtArgs>
-    projects?: boolean | Resume$projectsArgs<ExtArgs>
     user?: boolean | Resume$userArgs<ExtArgs>
     template?: boolean | Resume$templateArgs<ExtArgs>
+    generateRecord?: boolean | Resume$generateRecordArgs<ExtArgs>
     _count?: boolean | ResumeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["resume"]>
 
@@ -10268,6 +10556,11 @@ export namespace Prisma {
     avatar?: boolean
     status?: boolean
     industry?: boolean
+    advantage?: boolean
+    advantageHtml?: boolean
+    works?: boolean
+    projects?: boolean
+    other?: boolean
     userId?: boolean
     templateId?: boolean
     createdTime?: boolean
@@ -10288,6 +10581,11 @@ export namespace Prisma {
     avatar?: boolean
     status?: boolean
     industry?: boolean
+    advantage?: boolean
+    advantageHtml?: boolean
+    works?: boolean
+    projects?: boolean
+    other?: boolean
     userId?: boolean
     templateId?: boolean
     createdTime?: boolean
@@ -10308,18 +10606,22 @@ export namespace Prisma {
     avatar?: boolean
     status?: boolean
     industry?: boolean
+    advantage?: boolean
+    advantageHtml?: boolean
+    works?: boolean
+    projects?: boolean
+    other?: boolean
     userId?: boolean
     templateId?: boolean
     createdTime?: boolean
     updatedTime?: boolean
   }
 
-  export type ResumeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "realname" | "age" | "education" | "address" | "mobile" | "email" | "avatar" | "status" | "industry" | "userId" | "templateId" | "createdTime" | "updatedTime", ExtArgs["result"]["resume"]>
+  export type ResumeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "realname" | "age" | "education" | "address" | "mobile" | "email" | "avatar" | "status" | "industry" | "advantage" | "advantageHtml" | "works" | "projects" | "other" | "userId" | "templateId" | "createdTime" | "updatedTime", ExtArgs["result"]["resume"]>
   export type ResumeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    works?: boolean | Resume$worksArgs<ExtArgs>
-    projects?: boolean | Resume$projectsArgs<ExtArgs>
     user?: boolean | Resume$userArgs<ExtArgs>
     template?: boolean | Resume$templateArgs<ExtArgs>
+    generateRecord?: boolean | Resume$generateRecordArgs<ExtArgs>
     _count?: boolean | ResumeCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ResumeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10334,10 +10636,9 @@ export namespace Prisma {
   export type $ResumePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Resume"
     objects: {
-      works: Prisma.$WorksPayload<ExtArgs>[]
-      projects: Prisma.$ProjectsPayload<ExtArgs>[]
       user: Prisma.$UserPayload<ExtArgs> | null
       template: Prisma.$TemplatePayload<ExtArgs> | null
+      generateRecord: Prisma.$GenerateRecordPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -10351,6 +10652,11 @@ export namespace Prisma {
       avatar: string | null
       status: string | null
       industry: string | null
+      advantage: string | null
+      advantageHtml: string | null
+      works: string | null
+      projects: string | null
+      other: string | null
       userId: string | null
       templateId: string | null
       createdTime: Date
@@ -10749,10 +11055,9 @@ export namespace Prisma {
    */
   export interface Prisma__ResumeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    works<T extends Resume$worksArgs<ExtArgs> = {}>(args?: Subset<T, Resume$worksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorksPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    projects<T extends Resume$projectsArgs<ExtArgs> = {}>(args?: Subset<T, Resume$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     user<T extends Resume$userArgs<ExtArgs> = {}>(args?: Subset<T, Resume$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     template<T extends Resume$templateArgs<ExtArgs> = {}>(args?: Subset<T, Resume$templateArgs<ExtArgs>>): Prisma__TemplateClient<$Result.GetResult<Prisma.$TemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    generateRecord<T extends Resume$generateRecordArgs<ExtArgs> = {}>(args?: Subset<T, Resume$generateRecordArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenerateRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10793,6 +11098,11 @@ export namespace Prisma {
     readonly avatar: FieldRef<"Resume", 'String'>
     readonly status: FieldRef<"Resume", 'String'>
     readonly industry: FieldRef<"Resume", 'String'>
+    readonly advantage: FieldRef<"Resume", 'String'>
+    readonly advantageHtml: FieldRef<"Resume", 'String'>
+    readonly works: FieldRef<"Resume", 'String'>
+    readonly projects: FieldRef<"Resume", 'String'>
+    readonly other: FieldRef<"Resume", 'String'>
     readonly userId: FieldRef<"Resume", 'String'>
     readonly templateId: FieldRef<"Resume", 'String'>
     readonly createdTime: FieldRef<"Resume", 'DateTime'>
@@ -11193,54 +11503,6 @@ export namespace Prisma {
   }
 
   /**
-   * Resume.works
-   */
-  export type Resume$worksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Works
-     */
-    select?: WorksSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Works
-     */
-    omit?: WorksOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WorksInclude<ExtArgs> | null
-    where?: WorksWhereInput
-    orderBy?: WorksOrderByWithRelationInput | WorksOrderByWithRelationInput[]
-    cursor?: WorksWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: WorksScalarFieldEnum | WorksScalarFieldEnum[]
-  }
-
-  /**
-   * Resume.projects
-   */
-  export type Resume$projectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Projects
-     */
-    select?: ProjectsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Projects
-     */
-    omit?: ProjectsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectsInclude<ExtArgs> | null
-    where?: ProjectsWhereInput
-    orderBy?: ProjectsOrderByWithRelationInput | ProjectsOrderByWithRelationInput[]
-    cursor?: ProjectsWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ProjectsScalarFieldEnum | ProjectsScalarFieldEnum[]
-  }
-
-  /**
    * Resume.user
    */
   export type Resume$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11279,6 +11541,30 @@ export namespace Prisma {
   }
 
   /**
+   * Resume.generateRecord
+   */
+  export type Resume$generateRecordArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecord
+     */
+    select?: GenerateRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecord
+     */
+    omit?: GenerateRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordInclude<ExtArgs> | null
+    where?: GenerateRecordWhereInput
+    orderBy?: GenerateRecordOrderByWithRelationInput | GenerateRecordOrderByWithRelationInput[]
+    cursor?: GenerateRecordWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GenerateRecordScalarFieldEnum | GenerateRecordScalarFieldEnum[]
+  }
+
+  /**
    * Resume without action
    */
   export type ResumeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11298,2167 +11584,23 @@ export namespace Prisma {
 
 
   /**
-   * Model Works
-   */
-
-  export type AggregateWorks = {
-    _count: WorksCountAggregateOutputType | null
-    _min: WorksMinAggregateOutputType | null
-    _max: WorksMaxAggregateOutputType | null
-  }
-
-  export type WorksMinAggregateOutputType = {
-    id: string | null
-    content: string | null
-    resumeId: string | null
-    createdTime: Date | null
-    updatedTime: Date | null
-  }
-
-  export type WorksMaxAggregateOutputType = {
-    id: string | null
-    content: string | null
-    resumeId: string | null
-    createdTime: Date | null
-    updatedTime: Date | null
-  }
-
-  export type WorksCountAggregateOutputType = {
-    id: number
-    content: number
-    resumeId: number
-    createdTime: number
-    updatedTime: number
-    _all: number
-  }
-
-
-  export type WorksMinAggregateInputType = {
-    id?: true
-    content?: true
-    resumeId?: true
-    createdTime?: true
-    updatedTime?: true
-  }
-
-  export type WorksMaxAggregateInputType = {
-    id?: true
-    content?: true
-    resumeId?: true
-    createdTime?: true
-    updatedTime?: true
-  }
-
-  export type WorksCountAggregateInputType = {
-    id?: true
-    content?: true
-    resumeId?: true
-    createdTime?: true
-    updatedTime?: true
-    _all?: true
-  }
-
-  export type WorksAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Works to aggregate.
-     */
-    where?: WorksWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Works to fetch.
-     */
-    orderBy?: WorksOrderByWithRelationInput | WorksOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: WorksWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Works from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Works.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Works
-    **/
-    _count?: true | WorksCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: WorksMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: WorksMaxAggregateInputType
-  }
-
-  export type GetWorksAggregateType<T extends WorksAggregateArgs> = {
-        [P in keyof T & keyof AggregateWorks]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateWorks[P]>
-      : GetScalarType<T[P], AggregateWorks[P]>
-  }
-
-
-
-
-  export type WorksGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: WorksWhereInput
-    orderBy?: WorksOrderByWithAggregationInput | WorksOrderByWithAggregationInput[]
-    by: WorksScalarFieldEnum[] | WorksScalarFieldEnum
-    having?: WorksScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: WorksCountAggregateInputType | true
-    _min?: WorksMinAggregateInputType
-    _max?: WorksMaxAggregateInputType
-  }
-
-  export type WorksGroupByOutputType = {
-    id: string
-    content: string
-    resumeId: string
-    createdTime: Date
-    updatedTime: Date
-    _count: WorksCountAggregateOutputType | null
-    _min: WorksMinAggregateOutputType | null
-    _max: WorksMaxAggregateOutputType | null
-  }
-
-  type GetWorksGroupByPayload<T extends WorksGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<WorksGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof WorksGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], WorksGroupByOutputType[P]>
-            : GetScalarType<T[P], WorksGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type WorksSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    content?: boolean
-    resumeId?: boolean
-    createdTime?: boolean
-    updatedTime?: boolean
-    resume?: boolean | Works$resumeArgs<ExtArgs>
-  }, ExtArgs["result"]["works"]>
-
-  export type WorksSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    content?: boolean
-    resumeId?: boolean
-    createdTime?: boolean
-    updatedTime?: boolean
-    resume?: boolean | Works$resumeArgs<ExtArgs>
-  }, ExtArgs["result"]["works"]>
-
-  export type WorksSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    content?: boolean
-    resumeId?: boolean
-    createdTime?: boolean
-    updatedTime?: boolean
-    resume?: boolean | Works$resumeArgs<ExtArgs>
-  }, ExtArgs["result"]["works"]>
-
-  export type WorksSelectScalar = {
-    id?: boolean
-    content?: boolean
-    resumeId?: boolean
-    createdTime?: boolean
-    updatedTime?: boolean
-  }
-
-  export type WorksOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "resumeId" | "createdTime" | "updatedTime", ExtArgs["result"]["works"]>
-  export type WorksInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    resume?: boolean | Works$resumeArgs<ExtArgs>
-  }
-  export type WorksIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    resume?: boolean | Works$resumeArgs<ExtArgs>
-  }
-  export type WorksIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    resume?: boolean | Works$resumeArgs<ExtArgs>
-  }
-
-  export type $WorksPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Works"
-    objects: {
-      resume: Prisma.$ResumePayload<ExtArgs> | null
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      content: string
-      resumeId: string
-      createdTime: Date
-      updatedTime: Date
-    }, ExtArgs["result"]["works"]>
-    composites: {}
-  }
-
-  type WorksGetPayload<S extends boolean | null | undefined | WorksDefaultArgs> = $Result.GetResult<Prisma.$WorksPayload, S>
-
-  type WorksCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<WorksFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: WorksCountAggregateInputType | true
-    }
-
-  export interface WorksDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Works'], meta: { name: 'Works' } }
-    /**
-     * Find zero or one Works that matches the filter.
-     * @param {WorksFindUniqueArgs} args - Arguments to find a Works
-     * @example
-     * // Get one Works
-     * const works = await prisma.works.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends WorksFindUniqueArgs>(args: SelectSubset<T, WorksFindUniqueArgs<ExtArgs>>): Prisma__WorksClient<$Result.GetResult<Prisma.$WorksPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Works that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {WorksFindUniqueOrThrowArgs} args - Arguments to find a Works
-     * @example
-     * // Get one Works
-     * const works = await prisma.works.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends WorksFindUniqueOrThrowArgs>(args: SelectSubset<T, WorksFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WorksClient<$Result.GetResult<Prisma.$WorksPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Works that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {WorksFindFirstArgs} args - Arguments to find a Works
-     * @example
-     * // Get one Works
-     * const works = await prisma.works.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends WorksFindFirstArgs>(args?: SelectSubset<T, WorksFindFirstArgs<ExtArgs>>): Prisma__WorksClient<$Result.GetResult<Prisma.$WorksPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Works that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {WorksFindFirstOrThrowArgs} args - Arguments to find a Works
-     * @example
-     * // Get one Works
-     * const works = await prisma.works.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends WorksFindFirstOrThrowArgs>(args?: SelectSubset<T, WorksFindFirstOrThrowArgs<ExtArgs>>): Prisma__WorksClient<$Result.GetResult<Prisma.$WorksPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Works that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {WorksFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Works
-     * const works = await prisma.works.findMany()
-     * 
-     * // Get first 10 Works
-     * const works = await prisma.works.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const worksWithIdOnly = await prisma.works.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends WorksFindManyArgs>(args?: SelectSubset<T, WorksFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorksPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Works.
-     * @param {WorksCreateArgs} args - Arguments to create a Works.
-     * @example
-     * // Create one Works
-     * const Works = await prisma.works.create({
-     *   data: {
-     *     // ... data to create a Works
-     *   }
-     * })
-     * 
-     */
-    create<T extends WorksCreateArgs>(args: SelectSubset<T, WorksCreateArgs<ExtArgs>>): Prisma__WorksClient<$Result.GetResult<Prisma.$WorksPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Works.
-     * @param {WorksCreateManyArgs} args - Arguments to create many Works.
-     * @example
-     * // Create many Works
-     * const works = await prisma.works.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends WorksCreateManyArgs>(args?: SelectSubset<T, WorksCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Works and returns the data saved in the database.
-     * @param {WorksCreateManyAndReturnArgs} args - Arguments to create many Works.
-     * @example
-     * // Create many Works
-     * const works = await prisma.works.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Works and only return the `id`
-     * const worksWithIdOnly = await prisma.works.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends WorksCreateManyAndReturnArgs>(args?: SelectSubset<T, WorksCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorksPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Works.
-     * @param {WorksDeleteArgs} args - Arguments to delete one Works.
-     * @example
-     * // Delete one Works
-     * const Works = await prisma.works.delete({
-     *   where: {
-     *     // ... filter to delete one Works
-     *   }
-     * })
-     * 
-     */
-    delete<T extends WorksDeleteArgs>(args: SelectSubset<T, WorksDeleteArgs<ExtArgs>>): Prisma__WorksClient<$Result.GetResult<Prisma.$WorksPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Works.
-     * @param {WorksUpdateArgs} args - Arguments to update one Works.
-     * @example
-     * // Update one Works
-     * const works = await prisma.works.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends WorksUpdateArgs>(args: SelectSubset<T, WorksUpdateArgs<ExtArgs>>): Prisma__WorksClient<$Result.GetResult<Prisma.$WorksPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Works.
-     * @param {WorksDeleteManyArgs} args - Arguments to filter Works to delete.
-     * @example
-     * // Delete a few Works
-     * const { count } = await prisma.works.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends WorksDeleteManyArgs>(args?: SelectSubset<T, WorksDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Works.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {WorksUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Works
-     * const works = await prisma.works.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends WorksUpdateManyArgs>(args: SelectSubset<T, WorksUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Works and returns the data updated in the database.
-     * @param {WorksUpdateManyAndReturnArgs} args - Arguments to update many Works.
-     * @example
-     * // Update many Works
-     * const works = await prisma.works.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Works and only return the `id`
-     * const worksWithIdOnly = await prisma.works.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends WorksUpdateManyAndReturnArgs>(args: SelectSubset<T, WorksUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorksPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Works.
-     * @param {WorksUpsertArgs} args - Arguments to update or create a Works.
-     * @example
-     * // Update or create a Works
-     * const works = await prisma.works.upsert({
-     *   create: {
-     *     // ... data to create a Works
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Works we want to update
-     *   }
-     * })
-     */
-    upsert<T extends WorksUpsertArgs>(args: SelectSubset<T, WorksUpsertArgs<ExtArgs>>): Prisma__WorksClient<$Result.GetResult<Prisma.$WorksPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Works.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {WorksCountArgs} args - Arguments to filter Works to count.
-     * @example
-     * // Count the number of Works
-     * const count = await prisma.works.count({
-     *   where: {
-     *     // ... the filter for the Works we want to count
-     *   }
-     * })
-    **/
-    count<T extends WorksCountArgs>(
-      args?: Subset<T, WorksCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], WorksCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Works.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {WorksAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends WorksAggregateArgs>(args: Subset<T, WorksAggregateArgs>): Prisma.PrismaPromise<GetWorksAggregateType<T>>
-
-    /**
-     * Group by Works.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {WorksGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends WorksGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: WorksGroupByArgs['orderBy'] }
-        : { orderBy?: WorksGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, WorksGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWorksGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Works model
-   */
-  readonly fields: WorksFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Works.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__WorksClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    resume<T extends Works$resumeArgs<ExtArgs> = {}>(args?: Subset<T, Works$resumeArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Works model
-   */
-  interface WorksFieldRefs {
-    readonly id: FieldRef<"Works", 'String'>
-    readonly content: FieldRef<"Works", 'String'>
-    readonly resumeId: FieldRef<"Works", 'String'>
-    readonly createdTime: FieldRef<"Works", 'DateTime'>
-    readonly updatedTime: FieldRef<"Works", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Works findUnique
-   */
-  export type WorksFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Works
-     */
-    select?: WorksSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Works
-     */
-    omit?: WorksOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WorksInclude<ExtArgs> | null
-    /**
-     * Filter, which Works to fetch.
-     */
-    where: WorksWhereUniqueInput
-  }
-
-  /**
-   * Works findUniqueOrThrow
-   */
-  export type WorksFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Works
-     */
-    select?: WorksSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Works
-     */
-    omit?: WorksOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WorksInclude<ExtArgs> | null
-    /**
-     * Filter, which Works to fetch.
-     */
-    where: WorksWhereUniqueInput
-  }
-
-  /**
-   * Works findFirst
-   */
-  export type WorksFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Works
-     */
-    select?: WorksSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Works
-     */
-    omit?: WorksOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WorksInclude<ExtArgs> | null
-    /**
-     * Filter, which Works to fetch.
-     */
-    where?: WorksWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Works to fetch.
-     */
-    orderBy?: WorksOrderByWithRelationInput | WorksOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Works.
-     */
-    cursor?: WorksWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Works from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Works.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Works.
-     */
-    distinct?: WorksScalarFieldEnum | WorksScalarFieldEnum[]
-  }
-
-  /**
-   * Works findFirstOrThrow
-   */
-  export type WorksFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Works
-     */
-    select?: WorksSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Works
-     */
-    omit?: WorksOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WorksInclude<ExtArgs> | null
-    /**
-     * Filter, which Works to fetch.
-     */
-    where?: WorksWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Works to fetch.
-     */
-    orderBy?: WorksOrderByWithRelationInput | WorksOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Works.
-     */
-    cursor?: WorksWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Works from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Works.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Works.
-     */
-    distinct?: WorksScalarFieldEnum | WorksScalarFieldEnum[]
-  }
-
-  /**
-   * Works findMany
-   */
-  export type WorksFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Works
-     */
-    select?: WorksSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Works
-     */
-    omit?: WorksOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WorksInclude<ExtArgs> | null
-    /**
-     * Filter, which Works to fetch.
-     */
-    where?: WorksWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Works to fetch.
-     */
-    orderBy?: WorksOrderByWithRelationInput | WorksOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Works.
-     */
-    cursor?: WorksWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Works from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Works.
-     */
-    skip?: number
-    distinct?: WorksScalarFieldEnum | WorksScalarFieldEnum[]
-  }
-
-  /**
-   * Works create
-   */
-  export type WorksCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Works
-     */
-    select?: WorksSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Works
-     */
-    omit?: WorksOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WorksInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Works.
-     */
-    data: XOR<WorksCreateInput, WorksUncheckedCreateInput>
-  }
-
-  /**
-   * Works createMany
-   */
-  export type WorksCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Works.
-     */
-    data: WorksCreateManyInput | WorksCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Works createManyAndReturn
-   */
-  export type WorksCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Works
-     */
-    select?: WorksSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Works
-     */
-    omit?: WorksOmit<ExtArgs> | null
-    /**
-     * The data used to create many Works.
-     */
-    data: WorksCreateManyInput | WorksCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WorksIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Works update
-   */
-  export type WorksUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Works
-     */
-    select?: WorksSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Works
-     */
-    omit?: WorksOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WorksInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Works.
-     */
-    data: XOR<WorksUpdateInput, WorksUncheckedUpdateInput>
-    /**
-     * Choose, which Works to update.
-     */
-    where: WorksWhereUniqueInput
-  }
-
-  /**
-   * Works updateMany
-   */
-  export type WorksUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Works.
-     */
-    data: XOR<WorksUpdateManyMutationInput, WorksUncheckedUpdateManyInput>
-    /**
-     * Filter which Works to update
-     */
-    where?: WorksWhereInput
-    /**
-     * Limit how many Works to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Works updateManyAndReturn
-   */
-  export type WorksUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Works
-     */
-    select?: WorksSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Works
-     */
-    omit?: WorksOmit<ExtArgs> | null
-    /**
-     * The data used to update Works.
-     */
-    data: XOR<WorksUpdateManyMutationInput, WorksUncheckedUpdateManyInput>
-    /**
-     * Filter which Works to update
-     */
-    where?: WorksWhereInput
-    /**
-     * Limit how many Works to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WorksIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Works upsert
-   */
-  export type WorksUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Works
-     */
-    select?: WorksSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Works
-     */
-    omit?: WorksOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WorksInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Works to update in case it exists.
-     */
-    where: WorksWhereUniqueInput
-    /**
-     * In case the Works found by the `where` argument doesn't exist, create a new Works with this data.
-     */
-    create: XOR<WorksCreateInput, WorksUncheckedCreateInput>
-    /**
-     * In case the Works was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<WorksUpdateInput, WorksUncheckedUpdateInput>
-  }
-
-  /**
-   * Works delete
-   */
-  export type WorksDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Works
-     */
-    select?: WorksSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Works
-     */
-    omit?: WorksOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WorksInclude<ExtArgs> | null
-    /**
-     * Filter which Works to delete.
-     */
-    where: WorksWhereUniqueInput
-  }
-
-  /**
-   * Works deleteMany
-   */
-  export type WorksDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Works to delete
-     */
-    where?: WorksWhereInput
-    /**
-     * Limit how many Works to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Works.resume
-   */
-  export type Works$resumeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Resume
-     */
-    select?: ResumeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Resume
-     */
-    omit?: ResumeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ResumeInclude<ExtArgs> | null
-    where?: ResumeWhereInput
-  }
-
-  /**
-   * Works without action
-   */
-  export type WorksDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Works
-     */
-    select?: WorksSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Works
-     */
-    omit?: WorksOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WorksInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Projects
-   */
-
-  export type AggregateProjects = {
-    _count: ProjectsCountAggregateOutputType | null
-    _min: ProjectsMinAggregateOutputType | null
-    _max: ProjectsMaxAggregateOutputType | null
-  }
-
-  export type ProjectsMinAggregateOutputType = {
-    id: string | null
-    content: string | null
-    resumeId: string | null
-    createdTime: Date | null
-    updatedTime: Date | null
-  }
-
-  export type ProjectsMaxAggregateOutputType = {
-    id: string | null
-    content: string | null
-    resumeId: string | null
-    createdTime: Date | null
-    updatedTime: Date | null
-  }
-
-  export type ProjectsCountAggregateOutputType = {
-    id: number
-    content: number
-    resumeId: number
-    createdTime: number
-    updatedTime: number
-    _all: number
-  }
-
-
-  export type ProjectsMinAggregateInputType = {
-    id?: true
-    content?: true
-    resumeId?: true
-    createdTime?: true
-    updatedTime?: true
-  }
-
-  export type ProjectsMaxAggregateInputType = {
-    id?: true
-    content?: true
-    resumeId?: true
-    createdTime?: true
-    updatedTime?: true
-  }
-
-  export type ProjectsCountAggregateInputType = {
-    id?: true
-    content?: true
-    resumeId?: true
-    createdTime?: true
-    updatedTime?: true
-    _all?: true
-  }
-
-  export type ProjectsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Projects to aggregate.
-     */
-    where?: ProjectsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Projects to fetch.
-     */
-    orderBy?: ProjectsOrderByWithRelationInput | ProjectsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: ProjectsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Projects from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Projects.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Projects
-    **/
-    _count?: true | ProjectsCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ProjectsMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ProjectsMaxAggregateInputType
-  }
-
-  export type GetProjectsAggregateType<T extends ProjectsAggregateArgs> = {
-        [P in keyof T & keyof AggregateProjects]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateProjects[P]>
-      : GetScalarType<T[P], AggregateProjects[P]>
-  }
-
-
-
-
-  export type ProjectsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProjectsWhereInput
-    orderBy?: ProjectsOrderByWithAggregationInput | ProjectsOrderByWithAggregationInput[]
-    by: ProjectsScalarFieldEnum[] | ProjectsScalarFieldEnum
-    having?: ProjectsScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ProjectsCountAggregateInputType | true
-    _min?: ProjectsMinAggregateInputType
-    _max?: ProjectsMaxAggregateInputType
-  }
-
-  export type ProjectsGroupByOutputType = {
-    id: string
-    content: string
-    resumeId: string
-    createdTime: Date
-    updatedTime: Date
-    _count: ProjectsCountAggregateOutputType | null
-    _min: ProjectsMinAggregateOutputType | null
-    _max: ProjectsMaxAggregateOutputType | null
-  }
-
-  type GetProjectsGroupByPayload<T extends ProjectsGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ProjectsGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ProjectsGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ProjectsGroupByOutputType[P]>
-            : GetScalarType<T[P], ProjectsGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type ProjectsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    content?: boolean
-    resumeId?: boolean
-    createdTime?: boolean
-    updatedTime?: boolean
-    resume?: boolean | Projects$resumeArgs<ExtArgs>
-  }, ExtArgs["result"]["projects"]>
-
-  export type ProjectsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    content?: boolean
-    resumeId?: boolean
-    createdTime?: boolean
-    updatedTime?: boolean
-    resume?: boolean | Projects$resumeArgs<ExtArgs>
-  }, ExtArgs["result"]["projects"]>
-
-  export type ProjectsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    content?: boolean
-    resumeId?: boolean
-    createdTime?: boolean
-    updatedTime?: boolean
-    resume?: boolean | Projects$resumeArgs<ExtArgs>
-  }, ExtArgs["result"]["projects"]>
-
-  export type ProjectsSelectScalar = {
-    id?: boolean
-    content?: boolean
-    resumeId?: boolean
-    createdTime?: boolean
-    updatedTime?: boolean
-  }
-
-  export type ProjectsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "resumeId" | "createdTime" | "updatedTime", ExtArgs["result"]["projects"]>
-  export type ProjectsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    resume?: boolean | Projects$resumeArgs<ExtArgs>
-  }
-  export type ProjectsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    resume?: boolean | Projects$resumeArgs<ExtArgs>
-  }
-  export type ProjectsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    resume?: boolean | Projects$resumeArgs<ExtArgs>
-  }
-
-  export type $ProjectsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Projects"
-    objects: {
-      resume: Prisma.$ResumePayload<ExtArgs> | null
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      content: string
-      resumeId: string
-      createdTime: Date
-      updatedTime: Date
-    }, ExtArgs["result"]["projects"]>
-    composites: {}
-  }
-
-  type ProjectsGetPayload<S extends boolean | null | undefined | ProjectsDefaultArgs> = $Result.GetResult<Prisma.$ProjectsPayload, S>
-
-  type ProjectsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ProjectsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ProjectsCountAggregateInputType | true
-    }
-
-  export interface ProjectsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Projects'], meta: { name: 'Projects' } }
-    /**
-     * Find zero or one Projects that matches the filter.
-     * @param {ProjectsFindUniqueArgs} args - Arguments to find a Projects
-     * @example
-     * // Get one Projects
-     * const projects = await prisma.projects.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends ProjectsFindUniqueArgs>(args: SelectSubset<T, ProjectsFindUniqueArgs<ExtArgs>>): Prisma__ProjectsClient<$Result.GetResult<Prisma.$ProjectsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Projects that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {ProjectsFindUniqueOrThrowArgs} args - Arguments to find a Projects
-     * @example
-     * // Get one Projects
-     * const projects = await prisma.projects.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends ProjectsFindUniqueOrThrowArgs>(args: SelectSubset<T, ProjectsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProjectsClient<$Result.GetResult<Prisma.$ProjectsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Projects that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectsFindFirstArgs} args - Arguments to find a Projects
-     * @example
-     * // Get one Projects
-     * const projects = await prisma.projects.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends ProjectsFindFirstArgs>(args?: SelectSubset<T, ProjectsFindFirstArgs<ExtArgs>>): Prisma__ProjectsClient<$Result.GetResult<Prisma.$ProjectsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Projects that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectsFindFirstOrThrowArgs} args - Arguments to find a Projects
-     * @example
-     * // Get one Projects
-     * const projects = await prisma.projects.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends ProjectsFindFirstOrThrowArgs>(args?: SelectSubset<T, ProjectsFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProjectsClient<$Result.GetResult<Prisma.$ProjectsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Projects that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectsFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Projects
-     * const projects = await prisma.projects.findMany()
-     * 
-     * // Get first 10 Projects
-     * const projects = await prisma.projects.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const projectsWithIdOnly = await prisma.projects.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends ProjectsFindManyArgs>(args?: SelectSubset<T, ProjectsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Projects.
-     * @param {ProjectsCreateArgs} args - Arguments to create a Projects.
-     * @example
-     * // Create one Projects
-     * const Projects = await prisma.projects.create({
-     *   data: {
-     *     // ... data to create a Projects
-     *   }
-     * })
-     * 
-     */
-    create<T extends ProjectsCreateArgs>(args: SelectSubset<T, ProjectsCreateArgs<ExtArgs>>): Prisma__ProjectsClient<$Result.GetResult<Prisma.$ProjectsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Projects.
-     * @param {ProjectsCreateManyArgs} args - Arguments to create many Projects.
-     * @example
-     * // Create many Projects
-     * const projects = await prisma.projects.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends ProjectsCreateManyArgs>(args?: SelectSubset<T, ProjectsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Projects and returns the data saved in the database.
-     * @param {ProjectsCreateManyAndReturnArgs} args - Arguments to create many Projects.
-     * @example
-     * // Create many Projects
-     * const projects = await prisma.projects.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Projects and only return the `id`
-     * const projectsWithIdOnly = await prisma.projects.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends ProjectsCreateManyAndReturnArgs>(args?: SelectSubset<T, ProjectsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Projects.
-     * @param {ProjectsDeleteArgs} args - Arguments to delete one Projects.
-     * @example
-     * // Delete one Projects
-     * const Projects = await prisma.projects.delete({
-     *   where: {
-     *     // ... filter to delete one Projects
-     *   }
-     * })
-     * 
-     */
-    delete<T extends ProjectsDeleteArgs>(args: SelectSubset<T, ProjectsDeleteArgs<ExtArgs>>): Prisma__ProjectsClient<$Result.GetResult<Prisma.$ProjectsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Projects.
-     * @param {ProjectsUpdateArgs} args - Arguments to update one Projects.
-     * @example
-     * // Update one Projects
-     * const projects = await prisma.projects.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends ProjectsUpdateArgs>(args: SelectSubset<T, ProjectsUpdateArgs<ExtArgs>>): Prisma__ProjectsClient<$Result.GetResult<Prisma.$ProjectsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Projects.
-     * @param {ProjectsDeleteManyArgs} args - Arguments to filter Projects to delete.
-     * @example
-     * // Delete a few Projects
-     * const { count } = await prisma.projects.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends ProjectsDeleteManyArgs>(args?: SelectSubset<T, ProjectsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Projects.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectsUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Projects
-     * const projects = await prisma.projects.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends ProjectsUpdateManyArgs>(args: SelectSubset<T, ProjectsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Projects and returns the data updated in the database.
-     * @param {ProjectsUpdateManyAndReturnArgs} args - Arguments to update many Projects.
-     * @example
-     * // Update many Projects
-     * const projects = await prisma.projects.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Projects and only return the `id`
-     * const projectsWithIdOnly = await prisma.projects.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends ProjectsUpdateManyAndReturnArgs>(args: SelectSubset<T, ProjectsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Projects.
-     * @param {ProjectsUpsertArgs} args - Arguments to update or create a Projects.
-     * @example
-     * // Update or create a Projects
-     * const projects = await prisma.projects.upsert({
-     *   create: {
-     *     // ... data to create a Projects
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Projects we want to update
-     *   }
-     * })
-     */
-    upsert<T extends ProjectsUpsertArgs>(args: SelectSubset<T, ProjectsUpsertArgs<ExtArgs>>): Prisma__ProjectsClient<$Result.GetResult<Prisma.$ProjectsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Projects.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectsCountArgs} args - Arguments to filter Projects to count.
-     * @example
-     * // Count the number of Projects
-     * const count = await prisma.projects.count({
-     *   where: {
-     *     // ... the filter for the Projects we want to count
-     *   }
-     * })
-    **/
-    count<T extends ProjectsCountArgs>(
-      args?: Subset<T, ProjectsCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ProjectsCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Projects.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ProjectsAggregateArgs>(args: Subset<T, ProjectsAggregateArgs>): Prisma.PrismaPromise<GetProjectsAggregateType<T>>
-
-    /**
-     * Group by Projects.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectsGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends ProjectsGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ProjectsGroupByArgs['orderBy'] }
-        : { orderBy?: ProjectsGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, ProjectsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProjectsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Projects model
-   */
-  readonly fields: ProjectsFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Projects.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__ProjectsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    resume<T extends Projects$resumeArgs<ExtArgs> = {}>(args?: Subset<T, Projects$resumeArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Projects model
-   */
-  interface ProjectsFieldRefs {
-    readonly id: FieldRef<"Projects", 'String'>
-    readonly content: FieldRef<"Projects", 'String'>
-    readonly resumeId: FieldRef<"Projects", 'String'>
-    readonly createdTime: FieldRef<"Projects", 'DateTime'>
-    readonly updatedTime: FieldRef<"Projects", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Projects findUnique
-   */
-  export type ProjectsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Projects
-     */
-    select?: ProjectsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Projects
-     */
-    omit?: ProjectsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectsInclude<ExtArgs> | null
-    /**
-     * Filter, which Projects to fetch.
-     */
-    where: ProjectsWhereUniqueInput
-  }
-
-  /**
-   * Projects findUniqueOrThrow
-   */
-  export type ProjectsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Projects
-     */
-    select?: ProjectsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Projects
-     */
-    omit?: ProjectsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectsInclude<ExtArgs> | null
-    /**
-     * Filter, which Projects to fetch.
-     */
-    where: ProjectsWhereUniqueInput
-  }
-
-  /**
-   * Projects findFirst
-   */
-  export type ProjectsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Projects
-     */
-    select?: ProjectsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Projects
-     */
-    omit?: ProjectsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectsInclude<ExtArgs> | null
-    /**
-     * Filter, which Projects to fetch.
-     */
-    where?: ProjectsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Projects to fetch.
-     */
-    orderBy?: ProjectsOrderByWithRelationInput | ProjectsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Projects.
-     */
-    cursor?: ProjectsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Projects from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Projects.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Projects.
-     */
-    distinct?: ProjectsScalarFieldEnum | ProjectsScalarFieldEnum[]
-  }
-
-  /**
-   * Projects findFirstOrThrow
-   */
-  export type ProjectsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Projects
-     */
-    select?: ProjectsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Projects
-     */
-    omit?: ProjectsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectsInclude<ExtArgs> | null
-    /**
-     * Filter, which Projects to fetch.
-     */
-    where?: ProjectsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Projects to fetch.
-     */
-    orderBy?: ProjectsOrderByWithRelationInput | ProjectsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Projects.
-     */
-    cursor?: ProjectsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Projects from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Projects.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Projects.
-     */
-    distinct?: ProjectsScalarFieldEnum | ProjectsScalarFieldEnum[]
-  }
-
-  /**
-   * Projects findMany
-   */
-  export type ProjectsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Projects
-     */
-    select?: ProjectsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Projects
-     */
-    omit?: ProjectsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectsInclude<ExtArgs> | null
-    /**
-     * Filter, which Projects to fetch.
-     */
-    where?: ProjectsWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Projects to fetch.
-     */
-    orderBy?: ProjectsOrderByWithRelationInput | ProjectsOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Projects.
-     */
-    cursor?: ProjectsWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Projects from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Projects.
-     */
-    skip?: number
-    distinct?: ProjectsScalarFieldEnum | ProjectsScalarFieldEnum[]
-  }
-
-  /**
-   * Projects create
-   */
-  export type ProjectsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Projects
-     */
-    select?: ProjectsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Projects
-     */
-    omit?: ProjectsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectsInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Projects.
-     */
-    data: XOR<ProjectsCreateInput, ProjectsUncheckedCreateInput>
-  }
-
-  /**
-   * Projects createMany
-   */
-  export type ProjectsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Projects.
-     */
-    data: ProjectsCreateManyInput | ProjectsCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Projects createManyAndReturn
-   */
-  export type ProjectsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Projects
-     */
-    select?: ProjectsSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Projects
-     */
-    omit?: ProjectsOmit<ExtArgs> | null
-    /**
-     * The data used to create many Projects.
-     */
-    data: ProjectsCreateManyInput | ProjectsCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectsIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Projects update
-   */
-  export type ProjectsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Projects
-     */
-    select?: ProjectsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Projects
-     */
-    omit?: ProjectsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectsInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Projects.
-     */
-    data: XOR<ProjectsUpdateInput, ProjectsUncheckedUpdateInput>
-    /**
-     * Choose, which Projects to update.
-     */
-    where: ProjectsWhereUniqueInput
-  }
-
-  /**
-   * Projects updateMany
-   */
-  export type ProjectsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Projects.
-     */
-    data: XOR<ProjectsUpdateManyMutationInput, ProjectsUncheckedUpdateManyInput>
-    /**
-     * Filter which Projects to update
-     */
-    where?: ProjectsWhereInput
-    /**
-     * Limit how many Projects to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Projects updateManyAndReturn
-   */
-  export type ProjectsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Projects
-     */
-    select?: ProjectsSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Projects
-     */
-    omit?: ProjectsOmit<ExtArgs> | null
-    /**
-     * The data used to update Projects.
-     */
-    data: XOR<ProjectsUpdateManyMutationInput, ProjectsUncheckedUpdateManyInput>
-    /**
-     * Filter which Projects to update
-     */
-    where?: ProjectsWhereInput
-    /**
-     * Limit how many Projects to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectsIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Projects upsert
-   */
-  export type ProjectsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Projects
-     */
-    select?: ProjectsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Projects
-     */
-    omit?: ProjectsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectsInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Projects to update in case it exists.
-     */
-    where: ProjectsWhereUniqueInput
-    /**
-     * In case the Projects found by the `where` argument doesn't exist, create a new Projects with this data.
-     */
-    create: XOR<ProjectsCreateInput, ProjectsUncheckedCreateInput>
-    /**
-     * In case the Projects was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<ProjectsUpdateInput, ProjectsUncheckedUpdateInput>
-  }
-
-  /**
-   * Projects delete
-   */
-  export type ProjectsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Projects
-     */
-    select?: ProjectsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Projects
-     */
-    omit?: ProjectsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectsInclude<ExtArgs> | null
-    /**
-     * Filter which Projects to delete.
-     */
-    where: ProjectsWhereUniqueInput
-  }
-
-  /**
-   * Projects deleteMany
-   */
-  export type ProjectsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Projects to delete
-     */
-    where?: ProjectsWhereInput
-    /**
-     * Limit how many Projects to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Projects.resume
-   */
-  export type Projects$resumeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Resume
-     */
-    select?: ResumeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Resume
-     */
-    omit?: ResumeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ResumeInclude<ExtArgs> | null
-    where?: ResumeWhereInput
-  }
-
-  /**
-   * Projects without action
-   */
-  export type ProjectsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Projects
-     */
-    select?: ProjectsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Projects
-     */
-    omit?: ProjectsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectsInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Model Template
    */
 
   export type AggregateTemplate = {
     _count: TemplateCountAggregateOutputType | null
+    _avg: TemplateAvgAggregateOutputType | null
+    _sum: TemplateSumAggregateOutputType | null
     _min: TemplateMinAggregateOutputType | null
     _max: TemplateMaxAggregateOutputType | null
+  }
+
+  export type TemplateAvgAggregateOutputType = {
+    usedTimes: number | null
+  }
+
+  export type TemplateSumAggregateOutputType = {
+    usedTimes: number | null
   }
 
   export type TemplateMinAggregateOutputType = {
@@ -13466,6 +11608,8 @@ export namespace Prisma {
     title: string | null
     path: string | null
     type: string | null
+    usedTimes: number | null
+    coverUrl: string | null
     createdTime: Date | null
     updatedTime: Date | null
   }
@@ -13475,6 +11619,8 @@ export namespace Prisma {
     title: string | null
     path: string | null
     type: string | null
+    usedTimes: number | null
+    coverUrl: string | null
     createdTime: Date | null
     updatedTime: Date | null
   }
@@ -13484,17 +11630,29 @@ export namespace Prisma {
     title: number
     path: number
     type: number
+    usedTimes: number
+    coverUrl: number
     createdTime: number
     updatedTime: number
     _all: number
   }
 
 
+  export type TemplateAvgAggregateInputType = {
+    usedTimes?: true
+  }
+
+  export type TemplateSumAggregateInputType = {
+    usedTimes?: true
+  }
+
   export type TemplateMinAggregateInputType = {
     id?: true
     title?: true
     path?: true
     type?: true
+    usedTimes?: true
+    coverUrl?: true
     createdTime?: true
     updatedTime?: true
   }
@@ -13504,6 +11662,8 @@ export namespace Prisma {
     title?: true
     path?: true
     type?: true
+    usedTimes?: true
+    coverUrl?: true
     createdTime?: true
     updatedTime?: true
   }
@@ -13513,6 +11673,8 @@ export namespace Prisma {
     title?: true
     path?: true
     type?: true
+    usedTimes?: true
+    coverUrl?: true
     createdTime?: true
     updatedTime?: true
     _all?: true
@@ -13556,6 +11718,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: TemplateAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TemplateSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: TemplateMinAggregateInputType
@@ -13586,6 +11760,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: TemplateCountAggregateInputType | true
+    _avg?: TemplateAvgAggregateInputType
+    _sum?: TemplateSumAggregateInputType
     _min?: TemplateMinAggregateInputType
     _max?: TemplateMaxAggregateInputType
   }
@@ -13595,9 +11771,13 @@ export namespace Prisma {
     title: string
     path: string
     type: string | null
+    usedTimes: number | null
+    coverUrl: string | null
     createdTime: Date
     updatedTime: Date
     _count: TemplateCountAggregateOutputType | null
+    _avg: TemplateAvgAggregateOutputType | null
+    _sum: TemplateSumAggregateOutputType | null
     _min: TemplateMinAggregateOutputType | null
     _max: TemplateMaxAggregateOutputType | null
   }
@@ -13621,6 +11801,8 @@ export namespace Prisma {
     title?: boolean
     path?: boolean
     type?: boolean
+    usedTimes?: boolean
+    coverUrl?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     resume?: boolean | Template$resumeArgs<ExtArgs>
@@ -13632,6 +11814,8 @@ export namespace Prisma {
     title?: boolean
     path?: boolean
     type?: boolean
+    usedTimes?: boolean
+    coverUrl?: boolean
     createdTime?: boolean
     updatedTime?: boolean
   }, ExtArgs["result"]["template"]>
@@ -13641,6 +11825,8 @@ export namespace Prisma {
     title?: boolean
     path?: boolean
     type?: boolean
+    usedTimes?: boolean
+    coverUrl?: boolean
     createdTime?: boolean
     updatedTime?: boolean
   }, ExtArgs["result"]["template"]>
@@ -13650,11 +11836,13 @@ export namespace Prisma {
     title?: boolean
     path?: boolean
     type?: boolean
+    usedTimes?: boolean
+    coverUrl?: boolean
     createdTime?: boolean
     updatedTime?: boolean
   }
 
-  export type TemplateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "path" | "type" | "createdTime" | "updatedTime", ExtArgs["result"]["template"]>
+  export type TemplateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "path" | "type" | "usedTimes" | "coverUrl" | "createdTime" | "updatedTime", ExtArgs["result"]["template"]>
   export type TemplateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     resume?: boolean | Template$resumeArgs<ExtArgs>
     _count?: boolean | TemplateCountOutputTypeDefaultArgs<ExtArgs>
@@ -13672,6 +11860,8 @@ export namespace Prisma {
       title: string
       path: string
       type: string | null
+      usedTimes: number | null
+      coverUrl: string | null
       createdTime: Date
       updatedTime: Date
     }, ExtArgs["result"]["template"]>
@@ -14102,6 +12292,8 @@ export namespace Prisma {
     readonly title: FieldRef<"Template", 'String'>
     readonly path: FieldRef<"Template", 'String'>
     readonly type: FieldRef<"Template", 'String'>
+    readonly usedTimes: FieldRef<"Template", 'Int'>
+    readonly coverUrl: FieldRef<"Template", 'String'>
     readonly createdTime: FieldRef<"Template", 'DateTime'>
     readonly updatedTime: FieldRef<"Template", 'DateTime'>
   }
@@ -14535,61 +12727,2420 @@ export namespace Prisma {
 
 
   /**
-   * Model Download
+   * Model GenerateRecord
    */
 
-  export type AggregateDownload = {
-    _count: DownloadCountAggregateOutputType | null
-    _min: DownloadMinAggregateOutputType | null
-    _max: DownloadMaxAggregateOutputType | null
+  export type AggregateGenerateRecord = {
+    _count: GenerateRecordCountAggregateOutputType | null
+    _avg: GenerateRecordAvgAggregateOutputType | null
+    _sum: GenerateRecordSumAggregateOutputType | null
+    _min: GenerateRecordMinAggregateOutputType | null
+    _max: GenerateRecordMaxAggregateOutputType | null
   }
 
-  export type DownloadMinAggregateOutputType = {
+  export type GenerateRecordAvgAggregateOutputType = {
+    date: number | null
+    times: number | null
+  }
+
+  export type GenerateRecordSumAggregateOutputType = {
+    date: number | null
+    times: number | null
+  }
+
+  export type GenerateRecordMinAggregateOutputType = {
     id: string | null
-    title: string | null
-    url: string | null
+    date: number | null
+    times: number | null
+    resumeId: string | null
+    userId: string | null
     createdTime: Date | null
     updatedTime: Date | null
   }
 
-  export type DownloadMaxAggregateOutputType = {
+  export type GenerateRecordMaxAggregateOutputType = {
     id: string | null
-    title: string | null
-    url: string | null
+    date: number | null
+    times: number | null
+    resumeId: string | null
+    userId: string | null
     createdTime: Date | null
     updatedTime: Date | null
   }
 
-  export type DownloadCountAggregateOutputType = {
+  export type GenerateRecordCountAggregateOutputType = {
     id: number
-    title: number
-    url: number
+    date: number
+    times: number
+    resumeId: number
+    userId: number
     createdTime: number
     updatedTime: number
     _all: number
   }
 
 
-  export type DownloadMinAggregateInputType = {
+  export type GenerateRecordAvgAggregateInputType = {
+    date?: true
+    times?: true
+  }
+
+  export type GenerateRecordSumAggregateInputType = {
+    date?: true
+    times?: true
+  }
+
+  export type GenerateRecordMinAggregateInputType = {
+    id?: true
+    date?: true
+    times?: true
+    resumeId?: true
+    userId?: true
+    createdTime?: true
+    updatedTime?: true
+  }
+
+  export type GenerateRecordMaxAggregateInputType = {
+    id?: true
+    date?: true
+    times?: true
+    resumeId?: true
+    userId?: true
+    createdTime?: true
+    updatedTime?: true
+  }
+
+  export type GenerateRecordCountAggregateInputType = {
+    id?: true
+    date?: true
+    times?: true
+    resumeId?: true
+    userId?: true
+    createdTime?: true
+    updatedTime?: true
+    _all?: true
+  }
+
+  export type GenerateRecordAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GenerateRecord to aggregate.
+     */
+    where?: GenerateRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GenerateRecords to fetch.
+     */
+    orderBy?: GenerateRecordOrderByWithRelationInput | GenerateRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GenerateRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GenerateRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GenerateRecords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned GenerateRecords
+    **/
+    _count?: true | GenerateRecordCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: GenerateRecordAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GenerateRecordSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GenerateRecordMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GenerateRecordMaxAggregateInputType
+  }
+
+  export type GetGenerateRecordAggregateType<T extends GenerateRecordAggregateArgs> = {
+        [P in keyof T & keyof AggregateGenerateRecord]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGenerateRecord[P]>
+      : GetScalarType<T[P], AggregateGenerateRecord[P]>
+  }
+
+
+
+
+  export type GenerateRecordGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GenerateRecordWhereInput
+    orderBy?: GenerateRecordOrderByWithAggregationInput | GenerateRecordOrderByWithAggregationInput[]
+    by: GenerateRecordScalarFieldEnum[] | GenerateRecordScalarFieldEnum
+    having?: GenerateRecordScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GenerateRecordCountAggregateInputType | true
+    _avg?: GenerateRecordAvgAggregateInputType
+    _sum?: GenerateRecordSumAggregateInputType
+    _min?: GenerateRecordMinAggregateInputType
+    _max?: GenerateRecordMaxAggregateInputType
+  }
+
+  export type GenerateRecordGroupByOutputType = {
+    id: string
+    date: number | null
+    times: number | null
+    resumeId: string | null
+    userId: string | null
+    createdTime: Date
+    updatedTime: Date
+    _count: GenerateRecordCountAggregateOutputType | null
+    _avg: GenerateRecordAvgAggregateOutputType | null
+    _sum: GenerateRecordSumAggregateOutputType | null
+    _min: GenerateRecordMinAggregateOutputType | null
+    _max: GenerateRecordMaxAggregateOutputType | null
+  }
+
+  type GetGenerateRecordGroupByPayload<T extends GenerateRecordGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GenerateRecordGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GenerateRecordGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GenerateRecordGroupByOutputType[P]>
+            : GetScalarType<T[P], GenerateRecordGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GenerateRecordSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    date?: boolean
+    times?: boolean
+    resumeId?: boolean
+    userId?: boolean
+    createdTime?: boolean
+    updatedTime?: boolean
+    resume?: boolean | GenerateRecord$resumeArgs<ExtArgs>
+    user?: boolean | GenerateRecord$userArgs<ExtArgs>
+    generateRecordDetail?: boolean | GenerateRecord$generateRecordDetailArgs<ExtArgs>
+    _count?: boolean | GenerateRecordCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["generateRecord"]>
+
+  export type GenerateRecordSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    date?: boolean
+    times?: boolean
+    resumeId?: boolean
+    userId?: boolean
+    createdTime?: boolean
+    updatedTime?: boolean
+    resume?: boolean | GenerateRecord$resumeArgs<ExtArgs>
+    user?: boolean | GenerateRecord$userArgs<ExtArgs>
+  }, ExtArgs["result"]["generateRecord"]>
+
+  export type GenerateRecordSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    date?: boolean
+    times?: boolean
+    resumeId?: boolean
+    userId?: boolean
+    createdTime?: boolean
+    updatedTime?: boolean
+    resume?: boolean | GenerateRecord$resumeArgs<ExtArgs>
+    user?: boolean | GenerateRecord$userArgs<ExtArgs>
+  }, ExtArgs["result"]["generateRecord"]>
+
+  export type GenerateRecordSelectScalar = {
+    id?: boolean
+    date?: boolean
+    times?: boolean
+    resumeId?: boolean
+    userId?: boolean
+    createdTime?: boolean
+    updatedTime?: boolean
+  }
+
+  export type GenerateRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "date" | "times" | "resumeId" | "userId" | "createdTime" | "updatedTime", ExtArgs["result"]["generateRecord"]>
+  export type GenerateRecordInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    resume?: boolean | GenerateRecord$resumeArgs<ExtArgs>
+    user?: boolean | GenerateRecord$userArgs<ExtArgs>
+    generateRecordDetail?: boolean | GenerateRecord$generateRecordDetailArgs<ExtArgs>
+    _count?: boolean | GenerateRecordCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type GenerateRecordIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    resume?: boolean | GenerateRecord$resumeArgs<ExtArgs>
+    user?: boolean | GenerateRecord$userArgs<ExtArgs>
+  }
+  export type GenerateRecordIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    resume?: boolean | GenerateRecord$resumeArgs<ExtArgs>
+    user?: boolean | GenerateRecord$userArgs<ExtArgs>
+  }
+
+  export type $GenerateRecordPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "GenerateRecord"
+    objects: {
+      resume: Prisma.$ResumePayload<ExtArgs> | null
+      user: Prisma.$UserPayload<ExtArgs> | null
+      generateRecordDetail: Prisma.$GenerateRecordDetailPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      date: number | null
+      times: number | null
+      resumeId: string | null
+      userId: string | null
+      createdTime: Date
+      updatedTime: Date
+    }, ExtArgs["result"]["generateRecord"]>
+    composites: {}
+  }
+
+  type GenerateRecordGetPayload<S extends boolean | null | undefined | GenerateRecordDefaultArgs> = $Result.GetResult<Prisma.$GenerateRecordPayload, S>
+
+  type GenerateRecordCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<GenerateRecordFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GenerateRecordCountAggregateInputType | true
+    }
+
+  export interface GenerateRecordDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['GenerateRecord'], meta: { name: 'GenerateRecord' } }
+    /**
+     * Find zero or one GenerateRecord that matches the filter.
+     * @param {GenerateRecordFindUniqueArgs} args - Arguments to find a GenerateRecord
+     * @example
+     * // Get one GenerateRecord
+     * const generateRecord = await prisma.generateRecord.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GenerateRecordFindUniqueArgs>(args: SelectSubset<T, GenerateRecordFindUniqueArgs<ExtArgs>>): Prisma__GenerateRecordClient<$Result.GetResult<Prisma.$GenerateRecordPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one GenerateRecord that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {GenerateRecordFindUniqueOrThrowArgs} args - Arguments to find a GenerateRecord
+     * @example
+     * // Get one GenerateRecord
+     * const generateRecord = await prisma.generateRecord.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GenerateRecordFindUniqueOrThrowArgs>(args: SelectSubset<T, GenerateRecordFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GenerateRecordClient<$Result.GetResult<Prisma.$GenerateRecordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GenerateRecord that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateRecordFindFirstArgs} args - Arguments to find a GenerateRecord
+     * @example
+     * // Get one GenerateRecord
+     * const generateRecord = await prisma.generateRecord.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GenerateRecordFindFirstArgs>(args?: SelectSubset<T, GenerateRecordFindFirstArgs<ExtArgs>>): Prisma__GenerateRecordClient<$Result.GetResult<Prisma.$GenerateRecordPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GenerateRecord that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateRecordFindFirstOrThrowArgs} args - Arguments to find a GenerateRecord
+     * @example
+     * // Get one GenerateRecord
+     * const generateRecord = await prisma.generateRecord.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GenerateRecordFindFirstOrThrowArgs>(args?: SelectSubset<T, GenerateRecordFindFirstOrThrowArgs<ExtArgs>>): Prisma__GenerateRecordClient<$Result.GetResult<Prisma.$GenerateRecordPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more GenerateRecords that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateRecordFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all GenerateRecords
+     * const generateRecords = await prisma.generateRecord.findMany()
+     * 
+     * // Get first 10 GenerateRecords
+     * const generateRecords = await prisma.generateRecord.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const generateRecordWithIdOnly = await prisma.generateRecord.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends GenerateRecordFindManyArgs>(args?: SelectSubset<T, GenerateRecordFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenerateRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a GenerateRecord.
+     * @param {GenerateRecordCreateArgs} args - Arguments to create a GenerateRecord.
+     * @example
+     * // Create one GenerateRecord
+     * const GenerateRecord = await prisma.generateRecord.create({
+     *   data: {
+     *     // ... data to create a GenerateRecord
+     *   }
+     * })
+     * 
+     */
+    create<T extends GenerateRecordCreateArgs>(args: SelectSubset<T, GenerateRecordCreateArgs<ExtArgs>>): Prisma__GenerateRecordClient<$Result.GetResult<Prisma.$GenerateRecordPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many GenerateRecords.
+     * @param {GenerateRecordCreateManyArgs} args - Arguments to create many GenerateRecords.
+     * @example
+     * // Create many GenerateRecords
+     * const generateRecord = await prisma.generateRecord.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GenerateRecordCreateManyArgs>(args?: SelectSubset<T, GenerateRecordCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many GenerateRecords and returns the data saved in the database.
+     * @param {GenerateRecordCreateManyAndReturnArgs} args - Arguments to create many GenerateRecords.
+     * @example
+     * // Create many GenerateRecords
+     * const generateRecord = await prisma.generateRecord.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many GenerateRecords and only return the `id`
+     * const generateRecordWithIdOnly = await prisma.generateRecord.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends GenerateRecordCreateManyAndReturnArgs>(args?: SelectSubset<T, GenerateRecordCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenerateRecordPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a GenerateRecord.
+     * @param {GenerateRecordDeleteArgs} args - Arguments to delete one GenerateRecord.
+     * @example
+     * // Delete one GenerateRecord
+     * const GenerateRecord = await prisma.generateRecord.delete({
+     *   where: {
+     *     // ... filter to delete one GenerateRecord
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GenerateRecordDeleteArgs>(args: SelectSubset<T, GenerateRecordDeleteArgs<ExtArgs>>): Prisma__GenerateRecordClient<$Result.GetResult<Prisma.$GenerateRecordPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one GenerateRecord.
+     * @param {GenerateRecordUpdateArgs} args - Arguments to update one GenerateRecord.
+     * @example
+     * // Update one GenerateRecord
+     * const generateRecord = await prisma.generateRecord.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GenerateRecordUpdateArgs>(args: SelectSubset<T, GenerateRecordUpdateArgs<ExtArgs>>): Prisma__GenerateRecordClient<$Result.GetResult<Prisma.$GenerateRecordPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more GenerateRecords.
+     * @param {GenerateRecordDeleteManyArgs} args - Arguments to filter GenerateRecords to delete.
+     * @example
+     * // Delete a few GenerateRecords
+     * const { count } = await prisma.generateRecord.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GenerateRecordDeleteManyArgs>(args?: SelectSubset<T, GenerateRecordDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GenerateRecords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateRecordUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many GenerateRecords
+     * const generateRecord = await prisma.generateRecord.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GenerateRecordUpdateManyArgs>(args: SelectSubset<T, GenerateRecordUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GenerateRecords and returns the data updated in the database.
+     * @param {GenerateRecordUpdateManyAndReturnArgs} args - Arguments to update many GenerateRecords.
+     * @example
+     * // Update many GenerateRecords
+     * const generateRecord = await prisma.generateRecord.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more GenerateRecords and only return the `id`
+     * const generateRecordWithIdOnly = await prisma.generateRecord.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends GenerateRecordUpdateManyAndReturnArgs>(args: SelectSubset<T, GenerateRecordUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenerateRecordPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one GenerateRecord.
+     * @param {GenerateRecordUpsertArgs} args - Arguments to update or create a GenerateRecord.
+     * @example
+     * // Update or create a GenerateRecord
+     * const generateRecord = await prisma.generateRecord.upsert({
+     *   create: {
+     *     // ... data to create a GenerateRecord
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the GenerateRecord we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GenerateRecordUpsertArgs>(args: SelectSubset<T, GenerateRecordUpsertArgs<ExtArgs>>): Prisma__GenerateRecordClient<$Result.GetResult<Prisma.$GenerateRecordPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of GenerateRecords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateRecordCountArgs} args - Arguments to filter GenerateRecords to count.
+     * @example
+     * // Count the number of GenerateRecords
+     * const count = await prisma.generateRecord.count({
+     *   where: {
+     *     // ... the filter for the GenerateRecords we want to count
+     *   }
+     * })
+    **/
+    count<T extends GenerateRecordCountArgs>(
+      args?: Subset<T, GenerateRecordCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GenerateRecordCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a GenerateRecord.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateRecordAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GenerateRecordAggregateArgs>(args: Subset<T, GenerateRecordAggregateArgs>): Prisma.PrismaPromise<GetGenerateRecordAggregateType<T>>
+
+    /**
+     * Group by GenerateRecord.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateRecordGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GenerateRecordGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GenerateRecordGroupByArgs['orderBy'] }
+        : { orderBy?: GenerateRecordGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GenerateRecordGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGenerateRecordGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the GenerateRecord model
+   */
+  readonly fields: GenerateRecordFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for GenerateRecord.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GenerateRecordClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    resume<T extends GenerateRecord$resumeArgs<ExtArgs> = {}>(args?: Subset<T, GenerateRecord$resumeArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    user<T extends GenerateRecord$userArgs<ExtArgs> = {}>(args?: Subset<T, GenerateRecord$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    generateRecordDetail<T extends GenerateRecord$generateRecordDetailArgs<ExtArgs> = {}>(args?: Subset<T, GenerateRecord$generateRecordDetailArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenerateRecordDetailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the GenerateRecord model
+   */
+  interface GenerateRecordFieldRefs {
+    readonly id: FieldRef<"GenerateRecord", 'String'>
+    readonly date: FieldRef<"GenerateRecord", 'Int'>
+    readonly times: FieldRef<"GenerateRecord", 'Int'>
+    readonly resumeId: FieldRef<"GenerateRecord", 'String'>
+    readonly userId: FieldRef<"GenerateRecord", 'String'>
+    readonly createdTime: FieldRef<"GenerateRecord", 'DateTime'>
+    readonly updatedTime: FieldRef<"GenerateRecord", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * GenerateRecord findUnique
+   */
+  export type GenerateRecordFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecord
+     */
+    select?: GenerateRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecord
+     */
+    omit?: GenerateRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerateRecord to fetch.
+     */
+    where: GenerateRecordWhereUniqueInput
+  }
+
+  /**
+   * GenerateRecord findUniqueOrThrow
+   */
+  export type GenerateRecordFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecord
+     */
+    select?: GenerateRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecord
+     */
+    omit?: GenerateRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerateRecord to fetch.
+     */
+    where: GenerateRecordWhereUniqueInput
+  }
+
+  /**
+   * GenerateRecord findFirst
+   */
+  export type GenerateRecordFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecord
+     */
+    select?: GenerateRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecord
+     */
+    omit?: GenerateRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerateRecord to fetch.
+     */
+    where?: GenerateRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GenerateRecords to fetch.
+     */
+    orderBy?: GenerateRecordOrderByWithRelationInput | GenerateRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GenerateRecords.
+     */
+    cursor?: GenerateRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GenerateRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GenerateRecords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GenerateRecords.
+     */
+    distinct?: GenerateRecordScalarFieldEnum | GenerateRecordScalarFieldEnum[]
+  }
+
+  /**
+   * GenerateRecord findFirstOrThrow
+   */
+  export type GenerateRecordFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecord
+     */
+    select?: GenerateRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecord
+     */
+    omit?: GenerateRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerateRecord to fetch.
+     */
+    where?: GenerateRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GenerateRecords to fetch.
+     */
+    orderBy?: GenerateRecordOrderByWithRelationInput | GenerateRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GenerateRecords.
+     */
+    cursor?: GenerateRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GenerateRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GenerateRecords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GenerateRecords.
+     */
+    distinct?: GenerateRecordScalarFieldEnum | GenerateRecordScalarFieldEnum[]
+  }
+
+  /**
+   * GenerateRecord findMany
+   */
+  export type GenerateRecordFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecord
+     */
+    select?: GenerateRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecord
+     */
+    omit?: GenerateRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerateRecords to fetch.
+     */
+    where?: GenerateRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GenerateRecords to fetch.
+     */
+    orderBy?: GenerateRecordOrderByWithRelationInput | GenerateRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing GenerateRecords.
+     */
+    cursor?: GenerateRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GenerateRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GenerateRecords.
+     */
+    skip?: number
+    distinct?: GenerateRecordScalarFieldEnum | GenerateRecordScalarFieldEnum[]
+  }
+
+  /**
+   * GenerateRecord create
+   */
+  export type GenerateRecordCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecord
+     */
+    select?: GenerateRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecord
+     */
+    omit?: GenerateRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordInclude<ExtArgs> | null
+    /**
+     * The data needed to create a GenerateRecord.
+     */
+    data: XOR<GenerateRecordCreateInput, GenerateRecordUncheckedCreateInput>
+  }
+
+  /**
+   * GenerateRecord createMany
+   */
+  export type GenerateRecordCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many GenerateRecords.
+     */
+    data: GenerateRecordCreateManyInput | GenerateRecordCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * GenerateRecord createManyAndReturn
+   */
+  export type GenerateRecordCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecord
+     */
+    select?: GenerateRecordSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecord
+     */
+    omit?: GenerateRecordOmit<ExtArgs> | null
+    /**
+     * The data used to create many GenerateRecords.
+     */
+    data: GenerateRecordCreateManyInput | GenerateRecordCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * GenerateRecord update
+   */
+  export type GenerateRecordUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecord
+     */
+    select?: GenerateRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecord
+     */
+    omit?: GenerateRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordInclude<ExtArgs> | null
+    /**
+     * The data needed to update a GenerateRecord.
+     */
+    data: XOR<GenerateRecordUpdateInput, GenerateRecordUncheckedUpdateInput>
+    /**
+     * Choose, which GenerateRecord to update.
+     */
+    where: GenerateRecordWhereUniqueInput
+  }
+
+  /**
+   * GenerateRecord updateMany
+   */
+  export type GenerateRecordUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update GenerateRecords.
+     */
+    data: XOR<GenerateRecordUpdateManyMutationInput, GenerateRecordUncheckedUpdateManyInput>
+    /**
+     * Filter which GenerateRecords to update
+     */
+    where?: GenerateRecordWhereInput
+    /**
+     * Limit how many GenerateRecords to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GenerateRecord updateManyAndReturn
+   */
+  export type GenerateRecordUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecord
+     */
+    select?: GenerateRecordSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecord
+     */
+    omit?: GenerateRecordOmit<ExtArgs> | null
+    /**
+     * The data used to update GenerateRecords.
+     */
+    data: XOR<GenerateRecordUpdateManyMutationInput, GenerateRecordUncheckedUpdateManyInput>
+    /**
+     * Filter which GenerateRecords to update
+     */
+    where?: GenerateRecordWhereInput
+    /**
+     * Limit how many GenerateRecords to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * GenerateRecord upsert
+   */
+  export type GenerateRecordUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecord
+     */
+    select?: GenerateRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecord
+     */
+    omit?: GenerateRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordInclude<ExtArgs> | null
+    /**
+     * The filter to search for the GenerateRecord to update in case it exists.
+     */
+    where: GenerateRecordWhereUniqueInput
+    /**
+     * In case the GenerateRecord found by the `where` argument doesn't exist, create a new GenerateRecord with this data.
+     */
+    create: XOR<GenerateRecordCreateInput, GenerateRecordUncheckedCreateInput>
+    /**
+     * In case the GenerateRecord was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GenerateRecordUpdateInput, GenerateRecordUncheckedUpdateInput>
+  }
+
+  /**
+   * GenerateRecord delete
+   */
+  export type GenerateRecordDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecord
+     */
+    select?: GenerateRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecord
+     */
+    omit?: GenerateRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordInclude<ExtArgs> | null
+    /**
+     * Filter which GenerateRecord to delete.
+     */
+    where: GenerateRecordWhereUniqueInput
+  }
+
+  /**
+   * GenerateRecord deleteMany
+   */
+  export type GenerateRecordDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GenerateRecords to delete
+     */
+    where?: GenerateRecordWhereInput
+    /**
+     * Limit how many GenerateRecords to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * GenerateRecord.resume
+   */
+  export type GenerateRecord$resumeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resume
+     */
+    omit?: ResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    where?: ResumeWhereInput
+  }
+
+  /**
+   * GenerateRecord.user
+   */
+  export type GenerateRecord$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * GenerateRecord.generateRecordDetail
+   */
+  export type GenerateRecord$generateRecordDetailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecordDetail
+     */
+    select?: GenerateRecordDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecordDetail
+     */
+    omit?: GenerateRecordDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordDetailInclude<ExtArgs> | null
+    where?: GenerateRecordDetailWhereInput
+    orderBy?: GenerateRecordDetailOrderByWithRelationInput | GenerateRecordDetailOrderByWithRelationInput[]
+    cursor?: GenerateRecordDetailWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GenerateRecordDetailScalarFieldEnum | GenerateRecordDetailScalarFieldEnum[]
+  }
+
+  /**
+   * GenerateRecord without action
+   */
+  export type GenerateRecordDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecord
+     */
+    select?: GenerateRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecord
+     */
+    omit?: GenerateRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model GenerateRecordDetail
+   */
+
+  export type AggregateGenerateRecordDetail = {
+    _count: GenerateRecordDetailCountAggregateOutputType | null
+    _min: GenerateRecordDetailMinAggregateOutputType | null
+    _max: GenerateRecordDetailMaxAggregateOutputType | null
+  }
+
+  export type GenerateRecordDetailMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    url: string | null
+    status: string | null
+    generateRecordId: string | null
+    createdTime: Date | null
+    updatedTime: Date | null
+  }
+
+  export type GenerateRecordDetailMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    url: string | null
+    status: string | null
+    generateRecordId: string | null
+    createdTime: Date | null
+    updatedTime: Date | null
+  }
+
+  export type GenerateRecordDetailCountAggregateOutputType = {
+    id: number
+    title: number
+    url: number
+    status: number
+    generateRecordId: number
+    createdTime: number
+    updatedTime: number
+    _all: number
+  }
+
+
+  export type GenerateRecordDetailMinAggregateInputType = {
     id?: true
     title?: true
     url?: true
+    status?: true
+    generateRecordId?: true
+    createdTime?: true
+    updatedTime?: true
+  }
+
+  export type GenerateRecordDetailMaxAggregateInputType = {
+    id?: true
+    title?: true
+    url?: true
+    status?: true
+    generateRecordId?: true
+    createdTime?: true
+    updatedTime?: true
+  }
+
+  export type GenerateRecordDetailCountAggregateInputType = {
+    id?: true
+    title?: true
+    url?: true
+    status?: true
+    generateRecordId?: true
+    createdTime?: true
+    updatedTime?: true
+    _all?: true
+  }
+
+  export type GenerateRecordDetailAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GenerateRecordDetail to aggregate.
+     */
+    where?: GenerateRecordDetailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GenerateRecordDetails to fetch.
+     */
+    orderBy?: GenerateRecordDetailOrderByWithRelationInput | GenerateRecordDetailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GenerateRecordDetailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GenerateRecordDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GenerateRecordDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned GenerateRecordDetails
+    **/
+    _count?: true | GenerateRecordDetailCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GenerateRecordDetailMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GenerateRecordDetailMaxAggregateInputType
+  }
+
+  export type GetGenerateRecordDetailAggregateType<T extends GenerateRecordDetailAggregateArgs> = {
+        [P in keyof T & keyof AggregateGenerateRecordDetail]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGenerateRecordDetail[P]>
+      : GetScalarType<T[P], AggregateGenerateRecordDetail[P]>
+  }
+
+
+
+
+  export type GenerateRecordDetailGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GenerateRecordDetailWhereInput
+    orderBy?: GenerateRecordDetailOrderByWithAggregationInput | GenerateRecordDetailOrderByWithAggregationInput[]
+    by: GenerateRecordDetailScalarFieldEnum[] | GenerateRecordDetailScalarFieldEnum
+    having?: GenerateRecordDetailScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GenerateRecordDetailCountAggregateInputType | true
+    _min?: GenerateRecordDetailMinAggregateInputType
+    _max?: GenerateRecordDetailMaxAggregateInputType
+  }
+
+  export type GenerateRecordDetailGroupByOutputType = {
+    id: string
+    title: string
+    url: string
+    status: string
+    generateRecordId: string | null
+    createdTime: Date
+    updatedTime: Date
+    _count: GenerateRecordDetailCountAggregateOutputType | null
+    _min: GenerateRecordDetailMinAggregateOutputType | null
+    _max: GenerateRecordDetailMaxAggregateOutputType | null
+  }
+
+  type GetGenerateRecordDetailGroupByPayload<T extends GenerateRecordDetailGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GenerateRecordDetailGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GenerateRecordDetailGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GenerateRecordDetailGroupByOutputType[P]>
+            : GetScalarType<T[P], GenerateRecordDetailGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GenerateRecordDetailSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    url?: boolean
+    status?: boolean
+    generateRecordId?: boolean
+    createdTime?: boolean
+    updatedTime?: boolean
+    generateRecord?: boolean | GenerateRecordDetail$generateRecordArgs<ExtArgs>
+    downloadRecord?: boolean | GenerateRecordDetail$downloadRecordArgs<ExtArgs>
+    _count?: boolean | GenerateRecordDetailCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["generateRecordDetail"]>
+
+  export type GenerateRecordDetailSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    url?: boolean
+    status?: boolean
+    generateRecordId?: boolean
+    createdTime?: boolean
+    updatedTime?: boolean
+    generateRecord?: boolean | GenerateRecordDetail$generateRecordArgs<ExtArgs>
+  }, ExtArgs["result"]["generateRecordDetail"]>
+
+  export type GenerateRecordDetailSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    url?: boolean
+    status?: boolean
+    generateRecordId?: boolean
+    createdTime?: boolean
+    updatedTime?: boolean
+    generateRecord?: boolean | GenerateRecordDetail$generateRecordArgs<ExtArgs>
+  }, ExtArgs["result"]["generateRecordDetail"]>
+
+  export type GenerateRecordDetailSelectScalar = {
+    id?: boolean
+    title?: boolean
+    url?: boolean
+    status?: boolean
+    generateRecordId?: boolean
+    createdTime?: boolean
+    updatedTime?: boolean
+  }
+
+  export type GenerateRecordDetailOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "url" | "status" | "generateRecordId" | "createdTime" | "updatedTime", ExtArgs["result"]["generateRecordDetail"]>
+  export type GenerateRecordDetailInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    generateRecord?: boolean | GenerateRecordDetail$generateRecordArgs<ExtArgs>
+    downloadRecord?: boolean | GenerateRecordDetail$downloadRecordArgs<ExtArgs>
+    _count?: boolean | GenerateRecordDetailCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type GenerateRecordDetailIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    generateRecord?: boolean | GenerateRecordDetail$generateRecordArgs<ExtArgs>
+  }
+  export type GenerateRecordDetailIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    generateRecord?: boolean | GenerateRecordDetail$generateRecordArgs<ExtArgs>
+  }
+
+  export type $GenerateRecordDetailPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "GenerateRecordDetail"
+    objects: {
+      generateRecord: Prisma.$GenerateRecordPayload<ExtArgs> | null
+      downloadRecord: Prisma.$DownloadRecordPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      url: string
+      status: string
+      generateRecordId: string | null
+      createdTime: Date
+      updatedTime: Date
+    }, ExtArgs["result"]["generateRecordDetail"]>
+    composites: {}
+  }
+
+  type GenerateRecordDetailGetPayload<S extends boolean | null | undefined | GenerateRecordDetailDefaultArgs> = $Result.GetResult<Prisma.$GenerateRecordDetailPayload, S>
+
+  type GenerateRecordDetailCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<GenerateRecordDetailFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GenerateRecordDetailCountAggregateInputType | true
+    }
+
+  export interface GenerateRecordDetailDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['GenerateRecordDetail'], meta: { name: 'GenerateRecordDetail' } }
+    /**
+     * Find zero or one GenerateRecordDetail that matches the filter.
+     * @param {GenerateRecordDetailFindUniqueArgs} args - Arguments to find a GenerateRecordDetail
+     * @example
+     * // Get one GenerateRecordDetail
+     * const generateRecordDetail = await prisma.generateRecordDetail.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GenerateRecordDetailFindUniqueArgs>(args: SelectSubset<T, GenerateRecordDetailFindUniqueArgs<ExtArgs>>): Prisma__GenerateRecordDetailClient<$Result.GetResult<Prisma.$GenerateRecordDetailPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one GenerateRecordDetail that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {GenerateRecordDetailFindUniqueOrThrowArgs} args - Arguments to find a GenerateRecordDetail
+     * @example
+     * // Get one GenerateRecordDetail
+     * const generateRecordDetail = await prisma.generateRecordDetail.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GenerateRecordDetailFindUniqueOrThrowArgs>(args: SelectSubset<T, GenerateRecordDetailFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GenerateRecordDetailClient<$Result.GetResult<Prisma.$GenerateRecordDetailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GenerateRecordDetail that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateRecordDetailFindFirstArgs} args - Arguments to find a GenerateRecordDetail
+     * @example
+     * // Get one GenerateRecordDetail
+     * const generateRecordDetail = await prisma.generateRecordDetail.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GenerateRecordDetailFindFirstArgs>(args?: SelectSubset<T, GenerateRecordDetailFindFirstArgs<ExtArgs>>): Prisma__GenerateRecordDetailClient<$Result.GetResult<Prisma.$GenerateRecordDetailPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GenerateRecordDetail that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateRecordDetailFindFirstOrThrowArgs} args - Arguments to find a GenerateRecordDetail
+     * @example
+     * // Get one GenerateRecordDetail
+     * const generateRecordDetail = await prisma.generateRecordDetail.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GenerateRecordDetailFindFirstOrThrowArgs>(args?: SelectSubset<T, GenerateRecordDetailFindFirstOrThrowArgs<ExtArgs>>): Prisma__GenerateRecordDetailClient<$Result.GetResult<Prisma.$GenerateRecordDetailPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more GenerateRecordDetails that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateRecordDetailFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all GenerateRecordDetails
+     * const generateRecordDetails = await prisma.generateRecordDetail.findMany()
+     * 
+     * // Get first 10 GenerateRecordDetails
+     * const generateRecordDetails = await prisma.generateRecordDetail.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const generateRecordDetailWithIdOnly = await prisma.generateRecordDetail.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends GenerateRecordDetailFindManyArgs>(args?: SelectSubset<T, GenerateRecordDetailFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenerateRecordDetailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a GenerateRecordDetail.
+     * @param {GenerateRecordDetailCreateArgs} args - Arguments to create a GenerateRecordDetail.
+     * @example
+     * // Create one GenerateRecordDetail
+     * const GenerateRecordDetail = await prisma.generateRecordDetail.create({
+     *   data: {
+     *     // ... data to create a GenerateRecordDetail
+     *   }
+     * })
+     * 
+     */
+    create<T extends GenerateRecordDetailCreateArgs>(args: SelectSubset<T, GenerateRecordDetailCreateArgs<ExtArgs>>): Prisma__GenerateRecordDetailClient<$Result.GetResult<Prisma.$GenerateRecordDetailPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many GenerateRecordDetails.
+     * @param {GenerateRecordDetailCreateManyArgs} args - Arguments to create many GenerateRecordDetails.
+     * @example
+     * // Create many GenerateRecordDetails
+     * const generateRecordDetail = await prisma.generateRecordDetail.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GenerateRecordDetailCreateManyArgs>(args?: SelectSubset<T, GenerateRecordDetailCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many GenerateRecordDetails and returns the data saved in the database.
+     * @param {GenerateRecordDetailCreateManyAndReturnArgs} args - Arguments to create many GenerateRecordDetails.
+     * @example
+     * // Create many GenerateRecordDetails
+     * const generateRecordDetail = await prisma.generateRecordDetail.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many GenerateRecordDetails and only return the `id`
+     * const generateRecordDetailWithIdOnly = await prisma.generateRecordDetail.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends GenerateRecordDetailCreateManyAndReturnArgs>(args?: SelectSubset<T, GenerateRecordDetailCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenerateRecordDetailPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a GenerateRecordDetail.
+     * @param {GenerateRecordDetailDeleteArgs} args - Arguments to delete one GenerateRecordDetail.
+     * @example
+     * // Delete one GenerateRecordDetail
+     * const GenerateRecordDetail = await prisma.generateRecordDetail.delete({
+     *   where: {
+     *     // ... filter to delete one GenerateRecordDetail
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GenerateRecordDetailDeleteArgs>(args: SelectSubset<T, GenerateRecordDetailDeleteArgs<ExtArgs>>): Prisma__GenerateRecordDetailClient<$Result.GetResult<Prisma.$GenerateRecordDetailPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one GenerateRecordDetail.
+     * @param {GenerateRecordDetailUpdateArgs} args - Arguments to update one GenerateRecordDetail.
+     * @example
+     * // Update one GenerateRecordDetail
+     * const generateRecordDetail = await prisma.generateRecordDetail.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GenerateRecordDetailUpdateArgs>(args: SelectSubset<T, GenerateRecordDetailUpdateArgs<ExtArgs>>): Prisma__GenerateRecordDetailClient<$Result.GetResult<Prisma.$GenerateRecordDetailPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more GenerateRecordDetails.
+     * @param {GenerateRecordDetailDeleteManyArgs} args - Arguments to filter GenerateRecordDetails to delete.
+     * @example
+     * // Delete a few GenerateRecordDetails
+     * const { count } = await prisma.generateRecordDetail.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GenerateRecordDetailDeleteManyArgs>(args?: SelectSubset<T, GenerateRecordDetailDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GenerateRecordDetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateRecordDetailUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many GenerateRecordDetails
+     * const generateRecordDetail = await prisma.generateRecordDetail.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GenerateRecordDetailUpdateManyArgs>(args: SelectSubset<T, GenerateRecordDetailUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GenerateRecordDetails and returns the data updated in the database.
+     * @param {GenerateRecordDetailUpdateManyAndReturnArgs} args - Arguments to update many GenerateRecordDetails.
+     * @example
+     * // Update many GenerateRecordDetails
+     * const generateRecordDetail = await prisma.generateRecordDetail.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more GenerateRecordDetails and only return the `id`
+     * const generateRecordDetailWithIdOnly = await prisma.generateRecordDetail.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends GenerateRecordDetailUpdateManyAndReturnArgs>(args: SelectSubset<T, GenerateRecordDetailUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenerateRecordDetailPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one GenerateRecordDetail.
+     * @param {GenerateRecordDetailUpsertArgs} args - Arguments to update or create a GenerateRecordDetail.
+     * @example
+     * // Update or create a GenerateRecordDetail
+     * const generateRecordDetail = await prisma.generateRecordDetail.upsert({
+     *   create: {
+     *     // ... data to create a GenerateRecordDetail
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the GenerateRecordDetail we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GenerateRecordDetailUpsertArgs>(args: SelectSubset<T, GenerateRecordDetailUpsertArgs<ExtArgs>>): Prisma__GenerateRecordDetailClient<$Result.GetResult<Prisma.$GenerateRecordDetailPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of GenerateRecordDetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateRecordDetailCountArgs} args - Arguments to filter GenerateRecordDetails to count.
+     * @example
+     * // Count the number of GenerateRecordDetails
+     * const count = await prisma.generateRecordDetail.count({
+     *   where: {
+     *     // ... the filter for the GenerateRecordDetails we want to count
+     *   }
+     * })
+    **/
+    count<T extends GenerateRecordDetailCountArgs>(
+      args?: Subset<T, GenerateRecordDetailCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GenerateRecordDetailCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a GenerateRecordDetail.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateRecordDetailAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GenerateRecordDetailAggregateArgs>(args: Subset<T, GenerateRecordDetailAggregateArgs>): Prisma.PrismaPromise<GetGenerateRecordDetailAggregateType<T>>
+
+    /**
+     * Group by GenerateRecordDetail.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateRecordDetailGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GenerateRecordDetailGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GenerateRecordDetailGroupByArgs['orderBy'] }
+        : { orderBy?: GenerateRecordDetailGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GenerateRecordDetailGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGenerateRecordDetailGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the GenerateRecordDetail model
+   */
+  readonly fields: GenerateRecordDetailFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for GenerateRecordDetail.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GenerateRecordDetailClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    generateRecord<T extends GenerateRecordDetail$generateRecordArgs<ExtArgs> = {}>(args?: Subset<T, GenerateRecordDetail$generateRecordArgs<ExtArgs>>): Prisma__GenerateRecordClient<$Result.GetResult<Prisma.$GenerateRecordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    downloadRecord<T extends GenerateRecordDetail$downloadRecordArgs<ExtArgs> = {}>(args?: Subset<T, GenerateRecordDetail$downloadRecordArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DownloadRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the GenerateRecordDetail model
+   */
+  interface GenerateRecordDetailFieldRefs {
+    readonly id: FieldRef<"GenerateRecordDetail", 'String'>
+    readonly title: FieldRef<"GenerateRecordDetail", 'String'>
+    readonly url: FieldRef<"GenerateRecordDetail", 'String'>
+    readonly status: FieldRef<"GenerateRecordDetail", 'String'>
+    readonly generateRecordId: FieldRef<"GenerateRecordDetail", 'String'>
+    readonly createdTime: FieldRef<"GenerateRecordDetail", 'DateTime'>
+    readonly updatedTime: FieldRef<"GenerateRecordDetail", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * GenerateRecordDetail findUnique
+   */
+  export type GenerateRecordDetailFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecordDetail
+     */
+    select?: GenerateRecordDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecordDetail
+     */
+    omit?: GenerateRecordDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerateRecordDetail to fetch.
+     */
+    where: GenerateRecordDetailWhereUniqueInput
+  }
+
+  /**
+   * GenerateRecordDetail findUniqueOrThrow
+   */
+  export type GenerateRecordDetailFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecordDetail
+     */
+    select?: GenerateRecordDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecordDetail
+     */
+    omit?: GenerateRecordDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerateRecordDetail to fetch.
+     */
+    where: GenerateRecordDetailWhereUniqueInput
+  }
+
+  /**
+   * GenerateRecordDetail findFirst
+   */
+  export type GenerateRecordDetailFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecordDetail
+     */
+    select?: GenerateRecordDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecordDetail
+     */
+    omit?: GenerateRecordDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerateRecordDetail to fetch.
+     */
+    where?: GenerateRecordDetailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GenerateRecordDetails to fetch.
+     */
+    orderBy?: GenerateRecordDetailOrderByWithRelationInput | GenerateRecordDetailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GenerateRecordDetails.
+     */
+    cursor?: GenerateRecordDetailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GenerateRecordDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GenerateRecordDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GenerateRecordDetails.
+     */
+    distinct?: GenerateRecordDetailScalarFieldEnum | GenerateRecordDetailScalarFieldEnum[]
+  }
+
+  /**
+   * GenerateRecordDetail findFirstOrThrow
+   */
+  export type GenerateRecordDetailFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecordDetail
+     */
+    select?: GenerateRecordDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecordDetail
+     */
+    omit?: GenerateRecordDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerateRecordDetail to fetch.
+     */
+    where?: GenerateRecordDetailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GenerateRecordDetails to fetch.
+     */
+    orderBy?: GenerateRecordDetailOrderByWithRelationInput | GenerateRecordDetailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GenerateRecordDetails.
+     */
+    cursor?: GenerateRecordDetailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GenerateRecordDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GenerateRecordDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GenerateRecordDetails.
+     */
+    distinct?: GenerateRecordDetailScalarFieldEnum | GenerateRecordDetailScalarFieldEnum[]
+  }
+
+  /**
+   * GenerateRecordDetail findMany
+   */
+  export type GenerateRecordDetailFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecordDetail
+     */
+    select?: GenerateRecordDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecordDetail
+     */
+    omit?: GenerateRecordDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerateRecordDetails to fetch.
+     */
+    where?: GenerateRecordDetailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GenerateRecordDetails to fetch.
+     */
+    orderBy?: GenerateRecordDetailOrderByWithRelationInput | GenerateRecordDetailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing GenerateRecordDetails.
+     */
+    cursor?: GenerateRecordDetailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GenerateRecordDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GenerateRecordDetails.
+     */
+    skip?: number
+    distinct?: GenerateRecordDetailScalarFieldEnum | GenerateRecordDetailScalarFieldEnum[]
+  }
+
+  /**
+   * GenerateRecordDetail create
+   */
+  export type GenerateRecordDetailCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecordDetail
+     */
+    select?: GenerateRecordDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecordDetail
+     */
+    omit?: GenerateRecordDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordDetailInclude<ExtArgs> | null
+    /**
+     * The data needed to create a GenerateRecordDetail.
+     */
+    data: XOR<GenerateRecordDetailCreateInput, GenerateRecordDetailUncheckedCreateInput>
+  }
+
+  /**
+   * GenerateRecordDetail createMany
+   */
+  export type GenerateRecordDetailCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many GenerateRecordDetails.
+     */
+    data: GenerateRecordDetailCreateManyInput | GenerateRecordDetailCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * GenerateRecordDetail createManyAndReturn
+   */
+  export type GenerateRecordDetailCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecordDetail
+     */
+    select?: GenerateRecordDetailSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecordDetail
+     */
+    omit?: GenerateRecordDetailOmit<ExtArgs> | null
+    /**
+     * The data used to create many GenerateRecordDetails.
+     */
+    data: GenerateRecordDetailCreateManyInput | GenerateRecordDetailCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordDetailIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * GenerateRecordDetail update
+   */
+  export type GenerateRecordDetailUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecordDetail
+     */
+    select?: GenerateRecordDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecordDetail
+     */
+    omit?: GenerateRecordDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordDetailInclude<ExtArgs> | null
+    /**
+     * The data needed to update a GenerateRecordDetail.
+     */
+    data: XOR<GenerateRecordDetailUpdateInput, GenerateRecordDetailUncheckedUpdateInput>
+    /**
+     * Choose, which GenerateRecordDetail to update.
+     */
+    where: GenerateRecordDetailWhereUniqueInput
+  }
+
+  /**
+   * GenerateRecordDetail updateMany
+   */
+  export type GenerateRecordDetailUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update GenerateRecordDetails.
+     */
+    data: XOR<GenerateRecordDetailUpdateManyMutationInput, GenerateRecordDetailUncheckedUpdateManyInput>
+    /**
+     * Filter which GenerateRecordDetails to update
+     */
+    where?: GenerateRecordDetailWhereInput
+    /**
+     * Limit how many GenerateRecordDetails to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GenerateRecordDetail updateManyAndReturn
+   */
+  export type GenerateRecordDetailUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecordDetail
+     */
+    select?: GenerateRecordDetailSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecordDetail
+     */
+    omit?: GenerateRecordDetailOmit<ExtArgs> | null
+    /**
+     * The data used to update GenerateRecordDetails.
+     */
+    data: XOR<GenerateRecordDetailUpdateManyMutationInput, GenerateRecordDetailUncheckedUpdateManyInput>
+    /**
+     * Filter which GenerateRecordDetails to update
+     */
+    where?: GenerateRecordDetailWhereInput
+    /**
+     * Limit how many GenerateRecordDetails to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordDetailIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * GenerateRecordDetail upsert
+   */
+  export type GenerateRecordDetailUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecordDetail
+     */
+    select?: GenerateRecordDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecordDetail
+     */
+    omit?: GenerateRecordDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordDetailInclude<ExtArgs> | null
+    /**
+     * The filter to search for the GenerateRecordDetail to update in case it exists.
+     */
+    where: GenerateRecordDetailWhereUniqueInput
+    /**
+     * In case the GenerateRecordDetail found by the `where` argument doesn't exist, create a new GenerateRecordDetail with this data.
+     */
+    create: XOR<GenerateRecordDetailCreateInput, GenerateRecordDetailUncheckedCreateInput>
+    /**
+     * In case the GenerateRecordDetail was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GenerateRecordDetailUpdateInput, GenerateRecordDetailUncheckedUpdateInput>
+  }
+
+  /**
+   * GenerateRecordDetail delete
+   */
+  export type GenerateRecordDetailDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecordDetail
+     */
+    select?: GenerateRecordDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecordDetail
+     */
+    omit?: GenerateRecordDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordDetailInclude<ExtArgs> | null
+    /**
+     * Filter which GenerateRecordDetail to delete.
+     */
+    where: GenerateRecordDetailWhereUniqueInput
+  }
+
+  /**
+   * GenerateRecordDetail deleteMany
+   */
+  export type GenerateRecordDetailDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GenerateRecordDetails to delete
+     */
+    where?: GenerateRecordDetailWhereInput
+    /**
+     * Limit how many GenerateRecordDetails to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * GenerateRecordDetail.generateRecord
+   */
+  export type GenerateRecordDetail$generateRecordArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecord
+     */
+    select?: GenerateRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecord
+     */
+    omit?: GenerateRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordInclude<ExtArgs> | null
+    where?: GenerateRecordWhereInput
+  }
+
+  /**
+   * GenerateRecordDetail.downloadRecord
+   */
+  export type GenerateRecordDetail$downloadRecordArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DownloadRecord
+     */
+    select?: DownloadRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DownloadRecord
+     */
+    omit?: DownloadRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadRecordInclude<ExtArgs> | null
+    where?: DownloadRecordWhereInput
+    orderBy?: DownloadRecordOrderByWithRelationInput | DownloadRecordOrderByWithRelationInput[]
+    cursor?: DownloadRecordWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DownloadRecordScalarFieldEnum | DownloadRecordScalarFieldEnum[]
+  }
+
+  /**
+   * GenerateRecordDetail without action
+   */
+  export type GenerateRecordDetailDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecordDetail
+     */
+    select?: GenerateRecordDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecordDetail
+     */
+    omit?: GenerateRecordDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordDetailInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Download
+   */
+
+  export type AggregateDownload = {
+    _count: DownloadCountAggregateOutputType | null
+    _avg: DownloadAvgAggregateOutputType | null
+    _sum: DownloadSumAggregateOutputType | null
+    _min: DownloadMinAggregateOutputType | null
+    _max: DownloadMaxAggregateOutputType | null
+  }
+
+  export type DownloadAvgAggregateOutputType = {
+    date: number | null
+    times: number | null
+  }
+
+  export type DownloadSumAggregateOutputType = {
+    date: number | null
+    times: number | null
+  }
+
+  export type DownloadMinAggregateOutputType = {
+    id: string | null
+    date: number | null
+    times: number | null
+    userId: string | null
+    createdTime: Date | null
+    updatedTime: Date | null
+  }
+
+  export type DownloadMaxAggregateOutputType = {
+    id: string | null
+    date: number | null
+    times: number | null
+    userId: string | null
+    createdTime: Date | null
+    updatedTime: Date | null
+  }
+
+  export type DownloadCountAggregateOutputType = {
+    id: number
+    date: number
+    times: number
+    userId: number
+    createdTime: number
+    updatedTime: number
+    _all: number
+  }
+
+
+  export type DownloadAvgAggregateInputType = {
+    date?: true
+    times?: true
+  }
+
+  export type DownloadSumAggregateInputType = {
+    date?: true
+    times?: true
+  }
+
+  export type DownloadMinAggregateInputType = {
+    id?: true
+    date?: true
+    times?: true
+    userId?: true
     createdTime?: true
     updatedTime?: true
   }
 
   export type DownloadMaxAggregateInputType = {
     id?: true
-    title?: true
-    url?: true
+    date?: true
+    times?: true
+    userId?: true
     createdTime?: true
     updatedTime?: true
   }
 
   export type DownloadCountAggregateInputType = {
     id?: true
-    title?: true
-    url?: true
+    date?: true
+    times?: true
+    userId?: true
     createdTime?: true
     updatedTime?: true
     _all?: true
@@ -14633,6 +15184,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: DownloadAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DownloadSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: DownloadMinAggregateInputType
@@ -14663,17 +15226,22 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: DownloadCountAggregateInputType | true
+    _avg?: DownloadAvgAggregateInputType
+    _sum?: DownloadSumAggregateInputType
     _min?: DownloadMinAggregateInputType
     _max?: DownloadMaxAggregateInputType
   }
 
   export type DownloadGroupByOutputType = {
     id: string
-    title: string
-    url: string
+    date: number | null
+    times: number | null
+    userId: string
     createdTime: Date
     updatedTime: Date
     _count: DownloadCountAggregateOutputType | null
+    _avg: DownloadAvgAggregateOutputType | null
+    _sum: DownloadSumAggregateOutputType | null
     _min: DownloadMinAggregateOutputType | null
     _max: DownloadMaxAggregateOutputType | null
   }
@@ -14694,45 +15262,69 @@ export namespace Prisma {
 
   export type DownloadSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    url?: boolean
+    date?: boolean
+    times?: boolean
+    userId?: boolean
     createdTime?: boolean
     updatedTime?: boolean
+    user?: boolean | Download$userArgs<ExtArgs>
+    downloadRecord?: boolean | Download$downloadRecordArgs<ExtArgs>
+    _count?: boolean | DownloadCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["download"]>
 
   export type DownloadSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    url?: boolean
+    date?: boolean
+    times?: boolean
+    userId?: boolean
     createdTime?: boolean
     updatedTime?: boolean
+    user?: boolean | Download$userArgs<ExtArgs>
   }, ExtArgs["result"]["download"]>
 
   export type DownloadSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    title?: boolean
-    url?: boolean
+    date?: boolean
+    times?: boolean
+    userId?: boolean
     createdTime?: boolean
     updatedTime?: boolean
+    user?: boolean | Download$userArgs<ExtArgs>
   }, ExtArgs["result"]["download"]>
 
   export type DownloadSelectScalar = {
     id?: boolean
-    title?: boolean
-    url?: boolean
+    date?: boolean
+    times?: boolean
+    userId?: boolean
     createdTime?: boolean
     updatedTime?: boolean
   }
 
-  export type DownloadOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "url" | "createdTime" | "updatedTime", ExtArgs["result"]["download"]>
+  export type DownloadOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "date" | "times" | "userId" | "createdTime" | "updatedTime", ExtArgs["result"]["download"]>
+  export type DownloadInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | Download$userArgs<ExtArgs>
+    downloadRecord?: boolean | Download$downloadRecordArgs<ExtArgs>
+    _count?: boolean | DownloadCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type DownloadIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | Download$userArgs<ExtArgs>
+  }
+  export type DownloadIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | Download$userArgs<ExtArgs>
+  }
 
   export type $DownloadPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Download"
-    objects: {}
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs> | null
+      downloadRecord: Prisma.$DownloadRecordPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      title: string
-      url: string
+      date: number | null
+      times: number | null
+      userId: string
       createdTime: Date
       updatedTime: Date
     }, ExtArgs["result"]["download"]>
@@ -15129,6 +15721,8 @@ export namespace Prisma {
    */
   export interface Prisma__DownloadClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends Download$userArgs<ExtArgs> = {}>(args?: Subset<T, Download$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    downloadRecord<T extends Download$downloadRecordArgs<ExtArgs> = {}>(args?: Subset<T, Download$downloadRecordArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DownloadRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15159,8 +15753,9 @@ export namespace Prisma {
    */
   interface DownloadFieldRefs {
     readonly id: FieldRef<"Download", 'String'>
-    readonly title: FieldRef<"Download", 'String'>
-    readonly url: FieldRef<"Download", 'String'>
+    readonly date: FieldRef<"Download", 'Int'>
+    readonly times: FieldRef<"Download", 'Int'>
+    readonly userId: FieldRef<"Download", 'String'>
     readonly createdTime: FieldRef<"Download", 'DateTime'>
     readonly updatedTime: FieldRef<"Download", 'DateTime'>
   }
@@ -15180,6 +15775,10 @@ export namespace Prisma {
      */
     omit?: DownloadOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadInclude<ExtArgs> | null
+    /**
      * Filter, which Download to fetch.
      */
     where: DownloadWhereUniqueInput
@@ -15198,6 +15797,10 @@ export namespace Prisma {
      */
     omit?: DownloadOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadInclude<ExtArgs> | null
+    /**
      * Filter, which Download to fetch.
      */
     where: DownloadWhereUniqueInput
@@ -15215,6 +15818,10 @@ export namespace Prisma {
      * Omit specific fields from the Download
      */
     omit?: DownloadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadInclude<ExtArgs> | null
     /**
      * Filter, which Download to fetch.
      */
@@ -15264,6 +15871,10 @@ export namespace Prisma {
      */
     omit?: DownloadOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadInclude<ExtArgs> | null
+    /**
      * Filter, which Download to fetch.
      */
     where?: DownloadWhereInput
@@ -15312,6 +15923,10 @@ export namespace Prisma {
      */
     omit?: DownloadOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadInclude<ExtArgs> | null
+    /**
      * Filter, which Downloads to fetch.
      */
     where?: DownloadWhereInput
@@ -15355,6 +15970,10 @@ export namespace Prisma {
      */
     omit?: DownloadOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadInclude<ExtArgs> | null
+    /**
      * The data needed to create a Download.
      */
     data: XOR<DownloadCreateInput, DownloadUncheckedCreateInput>
@@ -15388,6 +16007,10 @@ export namespace Prisma {
      */
     data: DownloadCreateManyInput | DownloadCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -15402,6 +16025,10 @@ export namespace Prisma {
      * Omit specific fields from the Download
      */
     omit?: DownloadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadInclude<ExtArgs> | null
     /**
      * The data needed to update a Download.
      */
@@ -15454,6 +16081,10 @@ export namespace Prisma {
      * Limit how many Downloads to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -15468,6 +16099,10 @@ export namespace Prisma {
      * Omit specific fields from the Download
      */
     omit?: DownloadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadInclude<ExtArgs> | null
     /**
      * The filter to search for the Download to update in case it exists.
      */
@@ -15495,6 +16130,10 @@ export namespace Prisma {
      */
     omit?: DownloadOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadInclude<ExtArgs> | null
+    /**
      * Filter which Download to delete.
      */
     where: DownloadWhereUniqueInput
@@ -15515,6 +16154,49 @@ export namespace Prisma {
   }
 
   /**
+   * Download.user
+   */
+  export type Download$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * Download.downloadRecord
+   */
+  export type Download$downloadRecordArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DownloadRecord
+     */
+    select?: DownloadRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DownloadRecord
+     */
+    omit?: DownloadRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadRecordInclude<ExtArgs> | null
+    where?: DownloadRecordWhereInput
+    orderBy?: DownloadRecordOrderByWithRelationInput | DownloadRecordOrderByWithRelationInput[]
+    cursor?: DownloadRecordWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DownloadRecordScalarFieldEnum | DownloadRecordScalarFieldEnum[]
+  }
+
+  /**
    * Download without action
    */
   export type DownloadDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -15526,6 +16208,1140 @@ export namespace Prisma {
      * Omit specific fields from the Download
      */
     omit?: DownloadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DownloadRecord
+   */
+
+  export type AggregateDownloadRecord = {
+    _count: DownloadRecordCountAggregateOutputType | null
+    _min: DownloadRecordMinAggregateOutputType | null
+    _max: DownloadRecordMaxAggregateOutputType | null
+  }
+
+  export type DownloadRecordMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    url: string | null
+    downloadId: string | null
+    generateRecordDetailId: string | null
+    createdTime: Date | null
+    updatedTime: Date | null
+  }
+
+  export type DownloadRecordMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    url: string | null
+    downloadId: string | null
+    generateRecordDetailId: string | null
+    createdTime: Date | null
+    updatedTime: Date | null
+  }
+
+  export type DownloadRecordCountAggregateOutputType = {
+    id: number
+    title: number
+    url: number
+    downloadId: number
+    generateRecordDetailId: number
+    createdTime: number
+    updatedTime: number
+    _all: number
+  }
+
+
+  export type DownloadRecordMinAggregateInputType = {
+    id?: true
+    title?: true
+    url?: true
+    downloadId?: true
+    generateRecordDetailId?: true
+    createdTime?: true
+    updatedTime?: true
+  }
+
+  export type DownloadRecordMaxAggregateInputType = {
+    id?: true
+    title?: true
+    url?: true
+    downloadId?: true
+    generateRecordDetailId?: true
+    createdTime?: true
+    updatedTime?: true
+  }
+
+  export type DownloadRecordCountAggregateInputType = {
+    id?: true
+    title?: true
+    url?: true
+    downloadId?: true
+    generateRecordDetailId?: true
+    createdTime?: true
+    updatedTime?: true
+    _all?: true
+  }
+
+  export type DownloadRecordAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DownloadRecord to aggregate.
+     */
+    where?: DownloadRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DownloadRecords to fetch.
+     */
+    orderBy?: DownloadRecordOrderByWithRelationInput | DownloadRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DownloadRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DownloadRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DownloadRecords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DownloadRecords
+    **/
+    _count?: true | DownloadRecordCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DownloadRecordMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DownloadRecordMaxAggregateInputType
+  }
+
+  export type GetDownloadRecordAggregateType<T extends DownloadRecordAggregateArgs> = {
+        [P in keyof T & keyof AggregateDownloadRecord]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDownloadRecord[P]>
+      : GetScalarType<T[P], AggregateDownloadRecord[P]>
+  }
+
+
+
+
+  export type DownloadRecordGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DownloadRecordWhereInput
+    orderBy?: DownloadRecordOrderByWithAggregationInput | DownloadRecordOrderByWithAggregationInput[]
+    by: DownloadRecordScalarFieldEnum[] | DownloadRecordScalarFieldEnum
+    having?: DownloadRecordScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DownloadRecordCountAggregateInputType | true
+    _min?: DownloadRecordMinAggregateInputType
+    _max?: DownloadRecordMaxAggregateInputType
+  }
+
+  export type DownloadRecordGroupByOutputType = {
+    id: string
+    title: string
+    url: string
+    downloadId: string | null
+    generateRecordDetailId: string | null
+    createdTime: Date
+    updatedTime: Date
+    _count: DownloadRecordCountAggregateOutputType | null
+    _min: DownloadRecordMinAggregateOutputType | null
+    _max: DownloadRecordMaxAggregateOutputType | null
+  }
+
+  type GetDownloadRecordGroupByPayload<T extends DownloadRecordGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DownloadRecordGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DownloadRecordGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DownloadRecordGroupByOutputType[P]>
+            : GetScalarType<T[P], DownloadRecordGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DownloadRecordSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    url?: boolean
+    downloadId?: boolean
+    generateRecordDetailId?: boolean
+    createdTime?: boolean
+    updatedTime?: boolean
+    download?: boolean | DownloadRecord$downloadArgs<ExtArgs>
+    generateRecordDetail?: boolean | DownloadRecord$generateRecordDetailArgs<ExtArgs>
+  }, ExtArgs["result"]["downloadRecord"]>
+
+  export type DownloadRecordSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    url?: boolean
+    downloadId?: boolean
+    generateRecordDetailId?: boolean
+    createdTime?: boolean
+    updatedTime?: boolean
+    download?: boolean | DownloadRecord$downloadArgs<ExtArgs>
+    generateRecordDetail?: boolean | DownloadRecord$generateRecordDetailArgs<ExtArgs>
+  }, ExtArgs["result"]["downloadRecord"]>
+
+  export type DownloadRecordSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    url?: boolean
+    downloadId?: boolean
+    generateRecordDetailId?: boolean
+    createdTime?: boolean
+    updatedTime?: boolean
+    download?: boolean | DownloadRecord$downloadArgs<ExtArgs>
+    generateRecordDetail?: boolean | DownloadRecord$generateRecordDetailArgs<ExtArgs>
+  }, ExtArgs["result"]["downloadRecord"]>
+
+  export type DownloadRecordSelectScalar = {
+    id?: boolean
+    title?: boolean
+    url?: boolean
+    downloadId?: boolean
+    generateRecordDetailId?: boolean
+    createdTime?: boolean
+    updatedTime?: boolean
+  }
+
+  export type DownloadRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "url" | "downloadId" | "generateRecordDetailId" | "createdTime" | "updatedTime", ExtArgs["result"]["downloadRecord"]>
+  export type DownloadRecordInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    download?: boolean | DownloadRecord$downloadArgs<ExtArgs>
+    generateRecordDetail?: boolean | DownloadRecord$generateRecordDetailArgs<ExtArgs>
+  }
+  export type DownloadRecordIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    download?: boolean | DownloadRecord$downloadArgs<ExtArgs>
+    generateRecordDetail?: boolean | DownloadRecord$generateRecordDetailArgs<ExtArgs>
+  }
+  export type DownloadRecordIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    download?: boolean | DownloadRecord$downloadArgs<ExtArgs>
+    generateRecordDetail?: boolean | DownloadRecord$generateRecordDetailArgs<ExtArgs>
+  }
+
+  export type $DownloadRecordPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DownloadRecord"
+    objects: {
+      download: Prisma.$DownloadPayload<ExtArgs> | null
+      generateRecordDetail: Prisma.$GenerateRecordDetailPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      url: string
+      downloadId: string | null
+      generateRecordDetailId: string | null
+      createdTime: Date
+      updatedTime: Date
+    }, ExtArgs["result"]["downloadRecord"]>
+    composites: {}
+  }
+
+  type DownloadRecordGetPayload<S extends boolean | null | undefined | DownloadRecordDefaultArgs> = $Result.GetResult<Prisma.$DownloadRecordPayload, S>
+
+  type DownloadRecordCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DownloadRecordFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DownloadRecordCountAggregateInputType | true
+    }
+
+  export interface DownloadRecordDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DownloadRecord'], meta: { name: 'DownloadRecord' } }
+    /**
+     * Find zero or one DownloadRecord that matches the filter.
+     * @param {DownloadRecordFindUniqueArgs} args - Arguments to find a DownloadRecord
+     * @example
+     * // Get one DownloadRecord
+     * const downloadRecord = await prisma.downloadRecord.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DownloadRecordFindUniqueArgs>(args: SelectSubset<T, DownloadRecordFindUniqueArgs<ExtArgs>>): Prisma__DownloadRecordClient<$Result.GetResult<Prisma.$DownloadRecordPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DownloadRecord that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DownloadRecordFindUniqueOrThrowArgs} args - Arguments to find a DownloadRecord
+     * @example
+     * // Get one DownloadRecord
+     * const downloadRecord = await prisma.downloadRecord.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DownloadRecordFindUniqueOrThrowArgs>(args: SelectSubset<T, DownloadRecordFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DownloadRecordClient<$Result.GetResult<Prisma.$DownloadRecordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DownloadRecord that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DownloadRecordFindFirstArgs} args - Arguments to find a DownloadRecord
+     * @example
+     * // Get one DownloadRecord
+     * const downloadRecord = await prisma.downloadRecord.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DownloadRecordFindFirstArgs>(args?: SelectSubset<T, DownloadRecordFindFirstArgs<ExtArgs>>): Prisma__DownloadRecordClient<$Result.GetResult<Prisma.$DownloadRecordPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DownloadRecord that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DownloadRecordFindFirstOrThrowArgs} args - Arguments to find a DownloadRecord
+     * @example
+     * // Get one DownloadRecord
+     * const downloadRecord = await prisma.downloadRecord.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DownloadRecordFindFirstOrThrowArgs>(args?: SelectSubset<T, DownloadRecordFindFirstOrThrowArgs<ExtArgs>>): Prisma__DownloadRecordClient<$Result.GetResult<Prisma.$DownloadRecordPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DownloadRecords that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DownloadRecordFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DownloadRecords
+     * const downloadRecords = await prisma.downloadRecord.findMany()
+     * 
+     * // Get first 10 DownloadRecords
+     * const downloadRecords = await prisma.downloadRecord.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const downloadRecordWithIdOnly = await prisma.downloadRecord.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DownloadRecordFindManyArgs>(args?: SelectSubset<T, DownloadRecordFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DownloadRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DownloadRecord.
+     * @param {DownloadRecordCreateArgs} args - Arguments to create a DownloadRecord.
+     * @example
+     * // Create one DownloadRecord
+     * const DownloadRecord = await prisma.downloadRecord.create({
+     *   data: {
+     *     // ... data to create a DownloadRecord
+     *   }
+     * })
+     * 
+     */
+    create<T extends DownloadRecordCreateArgs>(args: SelectSubset<T, DownloadRecordCreateArgs<ExtArgs>>): Prisma__DownloadRecordClient<$Result.GetResult<Prisma.$DownloadRecordPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DownloadRecords.
+     * @param {DownloadRecordCreateManyArgs} args - Arguments to create many DownloadRecords.
+     * @example
+     * // Create many DownloadRecords
+     * const downloadRecord = await prisma.downloadRecord.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DownloadRecordCreateManyArgs>(args?: SelectSubset<T, DownloadRecordCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DownloadRecords and returns the data saved in the database.
+     * @param {DownloadRecordCreateManyAndReturnArgs} args - Arguments to create many DownloadRecords.
+     * @example
+     * // Create many DownloadRecords
+     * const downloadRecord = await prisma.downloadRecord.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DownloadRecords and only return the `id`
+     * const downloadRecordWithIdOnly = await prisma.downloadRecord.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DownloadRecordCreateManyAndReturnArgs>(args?: SelectSubset<T, DownloadRecordCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DownloadRecordPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DownloadRecord.
+     * @param {DownloadRecordDeleteArgs} args - Arguments to delete one DownloadRecord.
+     * @example
+     * // Delete one DownloadRecord
+     * const DownloadRecord = await prisma.downloadRecord.delete({
+     *   where: {
+     *     // ... filter to delete one DownloadRecord
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DownloadRecordDeleteArgs>(args: SelectSubset<T, DownloadRecordDeleteArgs<ExtArgs>>): Prisma__DownloadRecordClient<$Result.GetResult<Prisma.$DownloadRecordPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DownloadRecord.
+     * @param {DownloadRecordUpdateArgs} args - Arguments to update one DownloadRecord.
+     * @example
+     * // Update one DownloadRecord
+     * const downloadRecord = await prisma.downloadRecord.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DownloadRecordUpdateArgs>(args: SelectSubset<T, DownloadRecordUpdateArgs<ExtArgs>>): Prisma__DownloadRecordClient<$Result.GetResult<Prisma.$DownloadRecordPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DownloadRecords.
+     * @param {DownloadRecordDeleteManyArgs} args - Arguments to filter DownloadRecords to delete.
+     * @example
+     * // Delete a few DownloadRecords
+     * const { count } = await prisma.downloadRecord.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DownloadRecordDeleteManyArgs>(args?: SelectSubset<T, DownloadRecordDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DownloadRecords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DownloadRecordUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DownloadRecords
+     * const downloadRecord = await prisma.downloadRecord.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DownloadRecordUpdateManyArgs>(args: SelectSubset<T, DownloadRecordUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DownloadRecords and returns the data updated in the database.
+     * @param {DownloadRecordUpdateManyAndReturnArgs} args - Arguments to update many DownloadRecords.
+     * @example
+     * // Update many DownloadRecords
+     * const downloadRecord = await prisma.downloadRecord.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DownloadRecords and only return the `id`
+     * const downloadRecordWithIdOnly = await prisma.downloadRecord.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DownloadRecordUpdateManyAndReturnArgs>(args: SelectSubset<T, DownloadRecordUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DownloadRecordPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DownloadRecord.
+     * @param {DownloadRecordUpsertArgs} args - Arguments to update or create a DownloadRecord.
+     * @example
+     * // Update or create a DownloadRecord
+     * const downloadRecord = await prisma.downloadRecord.upsert({
+     *   create: {
+     *     // ... data to create a DownloadRecord
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DownloadRecord we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DownloadRecordUpsertArgs>(args: SelectSubset<T, DownloadRecordUpsertArgs<ExtArgs>>): Prisma__DownloadRecordClient<$Result.GetResult<Prisma.$DownloadRecordPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DownloadRecords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DownloadRecordCountArgs} args - Arguments to filter DownloadRecords to count.
+     * @example
+     * // Count the number of DownloadRecords
+     * const count = await prisma.downloadRecord.count({
+     *   where: {
+     *     // ... the filter for the DownloadRecords we want to count
+     *   }
+     * })
+    **/
+    count<T extends DownloadRecordCountArgs>(
+      args?: Subset<T, DownloadRecordCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DownloadRecordCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DownloadRecord.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DownloadRecordAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DownloadRecordAggregateArgs>(args: Subset<T, DownloadRecordAggregateArgs>): Prisma.PrismaPromise<GetDownloadRecordAggregateType<T>>
+
+    /**
+     * Group by DownloadRecord.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DownloadRecordGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DownloadRecordGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DownloadRecordGroupByArgs['orderBy'] }
+        : { orderBy?: DownloadRecordGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DownloadRecordGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDownloadRecordGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DownloadRecord model
+   */
+  readonly fields: DownloadRecordFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DownloadRecord.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DownloadRecordClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    download<T extends DownloadRecord$downloadArgs<ExtArgs> = {}>(args?: Subset<T, DownloadRecord$downloadArgs<ExtArgs>>): Prisma__DownloadClient<$Result.GetResult<Prisma.$DownloadPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    generateRecordDetail<T extends DownloadRecord$generateRecordDetailArgs<ExtArgs> = {}>(args?: Subset<T, DownloadRecord$generateRecordDetailArgs<ExtArgs>>): Prisma__GenerateRecordDetailClient<$Result.GetResult<Prisma.$GenerateRecordDetailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DownloadRecord model
+   */
+  interface DownloadRecordFieldRefs {
+    readonly id: FieldRef<"DownloadRecord", 'String'>
+    readonly title: FieldRef<"DownloadRecord", 'String'>
+    readonly url: FieldRef<"DownloadRecord", 'String'>
+    readonly downloadId: FieldRef<"DownloadRecord", 'String'>
+    readonly generateRecordDetailId: FieldRef<"DownloadRecord", 'String'>
+    readonly createdTime: FieldRef<"DownloadRecord", 'DateTime'>
+    readonly updatedTime: FieldRef<"DownloadRecord", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DownloadRecord findUnique
+   */
+  export type DownloadRecordFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DownloadRecord
+     */
+    select?: DownloadRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DownloadRecord
+     */
+    omit?: DownloadRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which DownloadRecord to fetch.
+     */
+    where: DownloadRecordWhereUniqueInput
+  }
+
+  /**
+   * DownloadRecord findUniqueOrThrow
+   */
+  export type DownloadRecordFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DownloadRecord
+     */
+    select?: DownloadRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DownloadRecord
+     */
+    omit?: DownloadRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which DownloadRecord to fetch.
+     */
+    where: DownloadRecordWhereUniqueInput
+  }
+
+  /**
+   * DownloadRecord findFirst
+   */
+  export type DownloadRecordFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DownloadRecord
+     */
+    select?: DownloadRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DownloadRecord
+     */
+    omit?: DownloadRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which DownloadRecord to fetch.
+     */
+    where?: DownloadRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DownloadRecords to fetch.
+     */
+    orderBy?: DownloadRecordOrderByWithRelationInput | DownloadRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DownloadRecords.
+     */
+    cursor?: DownloadRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DownloadRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DownloadRecords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DownloadRecords.
+     */
+    distinct?: DownloadRecordScalarFieldEnum | DownloadRecordScalarFieldEnum[]
+  }
+
+  /**
+   * DownloadRecord findFirstOrThrow
+   */
+  export type DownloadRecordFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DownloadRecord
+     */
+    select?: DownloadRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DownloadRecord
+     */
+    omit?: DownloadRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which DownloadRecord to fetch.
+     */
+    where?: DownloadRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DownloadRecords to fetch.
+     */
+    orderBy?: DownloadRecordOrderByWithRelationInput | DownloadRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DownloadRecords.
+     */
+    cursor?: DownloadRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DownloadRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DownloadRecords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DownloadRecords.
+     */
+    distinct?: DownloadRecordScalarFieldEnum | DownloadRecordScalarFieldEnum[]
+  }
+
+  /**
+   * DownloadRecord findMany
+   */
+  export type DownloadRecordFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DownloadRecord
+     */
+    select?: DownloadRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DownloadRecord
+     */
+    omit?: DownloadRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which DownloadRecords to fetch.
+     */
+    where?: DownloadRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DownloadRecords to fetch.
+     */
+    orderBy?: DownloadRecordOrderByWithRelationInput | DownloadRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DownloadRecords.
+     */
+    cursor?: DownloadRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DownloadRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DownloadRecords.
+     */
+    skip?: number
+    distinct?: DownloadRecordScalarFieldEnum | DownloadRecordScalarFieldEnum[]
+  }
+
+  /**
+   * DownloadRecord create
+   */
+  export type DownloadRecordCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DownloadRecord
+     */
+    select?: DownloadRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DownloadRecord
+     */
+    omit?: DownloadRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadRecordInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DownloadRecord.
+     */
+    data: XOR<DownloadRecordCreateInput, DownloadRecordUncheckedCreateInput>
+  }
+
+  /**
+   * DownloadRecord createMany
+   */
+  export type DownloadRecordCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DownloadRecords.
+     */
+    data: DownloadRecordCreateManyInput | DownloadRecordCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DownloadRecord createManyAndReturn
+   */
+  export type DownloadRecordCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DownloadRecord
+     */
+    select?: DownloadRecordSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DownloadRecord
+     */
+    omit?: DownloadRecordOmit<ExtArgs> | null
+    /**
+     * The data used to create many DownloadRecords.
+     */
+    data: DownloadRecordCreateManyInput | DownloadRecordCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadRecordIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DownloadRecord update
+   */
+  export type DownloadRecordUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DownloadRecord
+     */
+    select?: DownloadRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DownloadRecord
+     */
+    omit?: DownloadRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadRecordInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DownloadRecord.
+     */
+    data: XOR<DownloadRecordUpdateInput, DownloadRecordUncheckedUpdateInput>
+    /**
+     * Choose, which DownloadRecord to update.
+     */
+    where: DownloadRecordWhereUniqueInput
+  }
+
+  /**
+   * DownloadRecord updateMany
+   */
+  export type DownloadRecordUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DownloadRecords.
+     */
+    data: XOR<DownloadRecordUpdateManyMutationInput, DownloadRecordUncheckedUpdateManyInput>
+    /**
+     * Filter which DownloadRecords to update
+     */
+    where?: DownloadRecordWhereInput
+    /**
+     * Limit how many DownloadRecords to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DownloadRecord updateManyAndReturn
+   */
+  export type DownloadRecordUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DownloadRecord
+     */
+    select?: DownloadRecordSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DownloadRecord
+     */
+    omit?: DownloadRecordOmit<ExtArgs> | null
+    /**
+     * The data used to update DownloadRecords.
+     */
+    data: XOR<DownloadRecordUpdateManyMutationInput, DownloadRecordUncheckedUpdateManyInput>
+    /**
+     * Filter which DownloadRecords to update
+     */
+    where?: DownloadRecordWhereInput
+    /**
+     * Limit how many DownloadRecords to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadRecordIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DownloadRecord upsert
+   */
+  export type DownloadRecordUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DownloadRecord
+     */
+    select?: DownloadRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DownloadRecord
+     */
+    omit?: DownloadRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadRecordInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DownloadRecord to update in case it exists.
+     */
+    where: DownloadRecordWhereUniqueInput
+    /**
+     * In case the DownloadRecord found by the `where` argument doesn't exist, create a new DownloadRecord with this data.
+     */
+    create: XOR<DownloadRecordCreateInput, DownloadRecordUncheckedCreateInput>
+    /**
+     * In case the DownloadRecord was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DownloadRecordUpdateInput, DownloadRecordUncheckedUpdateInput>
+  }
+
+  /**
+   * DownloadRecord delete
+   */
+  export type DownloadRecordDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DownloadRecord
+     */
+    select?: DownloadRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DownloadRecord
+     */
+    omit?: DownloadRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadRecordInclude<ExtArgs> | null
+    /**
+     * Filter which DownloadRecord to delete.
+     */
+    where: DownloadRecordWhereUniqueInput
+  }
+
+  /**
+   * DownloadRecord deleteMany
+   */
+  export type DownloadRecordDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DownloadRecords to delete
+     */
+    where?: DownloadRecordWhereInput
+    /**
+     * Limit how many DownloadRecords to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DownloadRecord.download
+   */
+  export type DownloadRecord$downloadArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Download
+     */
+    select?: DownloadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Download
+     */
+    omit?: DownloadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadInclude<ExtArgs> | null
+    where?: DownloadWhereInput
+  }
+
+  /**
+   * DownloadRecord.generateRecordDetail
+   */
+  export type DownloadRecord$generateRecordDetailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateRecordDetail
+     */
+    select?: GenerateRecordDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateRecordDetail
+     */
+    omit?: GenerateRecordDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateRecordDetailInclude<ExtArgs> | null
+    where?: GenerateRecordDetailWhereInput
+  }
+
+  /**
+   * DownloadRecord without action
+   */
+  export type DownloadRecordDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DownloadRecord
+     */
+    select?: DownloadRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DownloadRecord
+     */
+    omit?: DownloadRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DownloadRecordInclude<ExtArgs> | null
   }
 
 
@@ -15581,7 +17397,6 @@ export namespace Prisma {
 
   export const AIGeneratorScalarFieldEnum: {
     id: 'id',
-    desc: 'desc',
     date: 'date',
     times: 'times',
     userId: 'userId',
@@ -15594,6 +17409,7 @@ export namespace Prisma {
 
   export const AIGenerateContentScalarFieldEnum: {
     id: 'id',
+    desc: 'desc',
     gid: 'gid',
     model: 'model',
     promptTokens: 'promptTokens',
@@ -15643,6 +17459,11 @@ export namespace Prisma {
     avatar: 'avatar',
     status: 'status',
     industry: 'industry',
+    advantage: 'advantage',
+    advantageHtml: 'advantageHtml',
+    works: 'works',
+    projects: 'projects',
+    other: 'other',
     userId: 'userId',
     templateId: 'templateId',
     createdTime: 'createdTime',
@@ -15652,33 +17473,13 @@ export namespace Prisma {
   export type ResumeScalarFieldEnum = (typeof ResumeScalarFieldEnum)[keyof typeof ResumeScalarFieldEnum]
 
 
-  export const WorksScalarFieldEnum: {
-    id: 'id',
-    content: 'content',
-    resumeId: 'resumeId',
-    createdTime: 'createdTime',
-    updatedTime: 'updatedTime'
-  };
-
-  export type WorksScalarFieldEnum = (typeof WorksScalarFieldEnum)[keyof typeof WorksScalarFieldEnum]
-
-
-  export const ProjectsScalarFieldEnum: {
-    id: 'id',
-    content: 'content',
-    resumeId: 'resumeId',
-    createdTime: 'createdTime',
-    updatedTime: 'updatedTime'
-  };
-
-  export type ProjectsScalarFieldEnum = (typeof ProjectsScalarFieldEnum)[keyof typeof ProjectsScalarFieldEnum]
-
-
   export const TemplateScalarFieldEnum: {
     id: 'id',
     title: 'title',
     path: 'path',
     type: 'type',
+    usedTimes: 'usedTimes',
+    coverUrl: 'coverUrl',
     createdTime: 'createdTime',
     updatedTime: 'updatedTime'
   };
@@ -15686,15 +17487,55 @@ export namespace Prisma {
   export type TemplateScalarFieldEnum = (typeof TemplateScalarFieldEnum)[keyof typeof TemplateScalarFieldEnum]
 
 
-  export const DownloadScalarFieldEnum: {
+  export const GenerateRecordScalarFieldEnum: {
+    id: 'id',
+    date: 'date',
+    times: 'times',
+    resumeId: 'resumeId',
+    userId: 'userId',
+    createdTime: 'createdTime',
+    updatedTime: 'updatedTime'
+  };
+
+  export type GenerateRecordScalarFieldEnum = (typeof GenerateRecordScalarFieldEnum)[keyof typeof GenerateRecordScalarFieldEnum]
+
+
+  export const GenerateRecordDetailScalarFieldEnum: {
     id: 'id',
     title: 'title',
     url: 'url',
+    status: 'status',
+    generateRecordId: 'generateRecordId',
+    createdTime: 'createdTime',
+    updatedTime: 'updatedTime'
+  };
+
+  export type GenerateRecordDetailScalarFieldEnum = (typeof GenerateRecordDetailScalarFieldEnum)[keyof typeof GenerateRecordDetailScalarFieldEnum]
+
+
+  export const DownloadScalarFieldEnum: {
+    id: 'id',
+    date: 'date',
+    times: 'times',
+    userId: 'userId',
     createdTime: 'createdTime',
     updatedTime: 'updatedTime'
   };
 
   export type DownloadScalarFieldEnum = (typeof DownloadScalarFieldEnum)[keyof typeof DownloadScalarFieldEnum]
+
+
+  export const DownloadRecordScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    url: 'url',
+    downloadId: 'downloadId',
+    generateRecordDetailId: 'generateRecordDetailId',
+    createdTime: 'createdTime',
+    updatedTime: 'updatedTime'
+  };
+
+  export type DownloadRecordScalarFieldEnum = (typeof DownloadRecordScalarFieldEnum)[keyof typeof DownloadRecordScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -15802,7 +17643,9 @@ export namespace Prisma {
     inviter?: InviteListRelationFilter
     invitee?: InviteListRelationFilter
     aiGenerator?: AIGeneratorListRelationFilter
+    download?: DownloadListRelationFilter
     sign?: SignListRelationFilter
+    generateRecord?: GenerateRecordListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -15819,7 +17662,9 @@ export namespace Prisma {
     inviter?: InviteOrderByRelationAggregateInput
     invitee?: InviteOrderByRelationAggregateInput
     aiGenerator?: AIGeneratorOrderByRelationAggregateInput
+    download?: DownloadOrderByRelationAggregateInput
     sign?: SignOrderByRelationAggregateInput
+    generateRecord?: GenerateRecordOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -15839,7 +17684,9 @@ export namespace Prisma {
     inviter?: InviteListRelationFilter
     invitee?: InviteListRelationFilter
     aiGenerator?: AIGeneratorListRelationFilter
+    download?: DownloadListRelationFilter
     sign?: SignListRelationFilter
+    generateRecord?: GenerateRecordListRelationFilter
   }, "id" | "username" | "email" | "mobile">
 
   export type UserOrderByWithAggregationInput = {
@@ -15984,9 +17831,8 @@ export namespace Prisma {
     OR?: AIGeneratorWhereInput[]
     NOT?: AIGeneratorWhereInput | AIGeneratorWhereInput[]
     id?: StringFilter<"AIGenerator"> | string
-    desc?: StringFilter<"AIGenerator"> | string
-    date?: IntFilter<"AIGenerator"> | number
-    times?: IntFilter<"AIGenerator"> | number
+    date?: IntNullableFilter<"AIGenerator"> | number | null
+    times?: IntNullableFilter<"AIGenerator"> | number | null
     userId?: StringFilter<"AIGenerator"> | string
     createdTime?: DateTimeFilter<"AIGenerator"> | Date | string
     updatedTime?: DateTimeFilter<"AIGenerator"> | Date | string
@@ -15996,9 +17842,8 @@ export namespace Prisma {
 
   export type AIGeneratorOrderByWithRelationInput = {
     id?: SortOrder
-    desc?: SortOrder
-    date?: SortOrder
-    times?: SortOrder
+    date?: SortOrderInput | SortOrder
+    times?: SortOrderInput | SortOrder
     userId?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
@@ -16011,9 +17856,8 @@ export namespace Prisma {
     AND?: AIGeneratorWhereInput | AIGeneratorWhereInput[]
     OR?: AIGeneratorWhereInput[]
     NOT?: AIGeneratorWhereInput | AIGeneratorWhereInput[]
-    desc?: StringFilter<"AIGenerator"> | string
-    date?: IntFilter<"AIGenerator"> | number
-    times?: IntFilter<"AIGenerator"> | number
+    date?: IntNullableFilter<"AIGenerator"> | number | null
+    times?: IntNullableFilter<"AIGenerator"> | number | null
     userId?: StringFilter<"AIGenerator"> | string
     createdTime?: DateTimeFilter<"AIGenerator"> | Date | string
     updatedTime?: DateTimeFilter<"AIGenerator"> | Date | string
@@ -16023,9 +17867,8 @@ export namespace Prisma {
 
   export type AIGeneratorOrderByWithAggregationInput = {
     id?: SortOrder
-    desc?: SortOrder
-    date?: SortOrder
-    times?: SortOrder
+    date?: SortOrderInput | SortOrder
+    times?: SortOrderInput | SortOrder
     userId?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
@@ -16041,9 +17884,8 @@ export namespace Prisma {
     OR?: AIGeneratorScalarWhereWithAggregatesInput[]
     NOT?: AIGeneratorScalarWhereWithAggregatesInput | AIGeneratorScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"AIGenerator"> | string
-    desc?: StringWithAggregatesFilter<"AIGenerator"> | string
-    date?: IntWithAggregatesFilter<"AIGenerator"> | number
-    times?: IntWithAggregatesFilter<"AIGenerator"> | number
+    date?: IntNullableWithAggregatesFilter<"AIGenerator"> | number | null
+    times?: IntNullableWithAggregatesFilter<"AIGenerator"> | number | null
     userId?: StringWithAggregatesFilter<"AIGenerator"> | string
     createdTime?: DateTimeWithAggregatesFilter<"AIGenerator"> | Date | string
     updatedTime?: DateTimeWithAggregatesFilter<"AIGenerator"> | Date | string
@@ -16054,6 +17896,7 @@ export namespace Prisma {
     OR?: AIGenerateContentWhereInput[]
     NOT?: AIGenerateContentWhereInput | AIGenerateContentWhereInput[]
     id?: StringFilter<"AIGenerateContent"> | string
+    desc?: StringFilter<"AIGenerateContent"> | string
     gid?: StringFilter<"AIGenerateContent"> | string
     model?: StringFilter<"AIGenerateContent"> | string
     promptTokens?: IntFilter<"AIGenerateContent"> | number
@@ -16068,6 +17911,7 @@ export namespace Prisma {
 
   export type AIGenerateContentOrderByWithRelationInput = {
     id?: SortOrder
+    desc?: SortOrder
     gid?: SortOrder
     model?: SortOrder
     promptTokens?: SortOrder
@@ -16085,6 +17929,7 @@ export namespace Prisma {
     AND?: AIGenerateContentWhereInput | AIGenerateContentWhereInput[]
     OR?: AIGenerateContentWhereInput[]
     NOT?: AIGenerateContentWhereInput | AIGenerateContentWhereInput[]
+    desc?: StringFilter<"AIGenerateContent"> | string
     gid?: StringFilter<"AIGenerateContent"> | string
     model?: StringFilter<"AIGenerateContent"> | string
     promptTokens?: IntFilter<"AIGenerateContent"> | number
@@ -16099,6 +17944,7 @@ export namespace Prisma {
 
   export type AIGenerateContentOrderByWithAggregationInput = {
     id?: SortOrder
+    desc?: SortOrder
     gid?: SortOrder
     model?: SortOrder
     promptTokens?: SortOrder
@@ -16120,6 +17966,7 @@ export namespace Prisma {
     OR?: AIGenerateContentScalarWhereWithAggregatesInput[]
     NOT?: AIGenerateContentScalarWhereWithAggregatesInput | AIGenerateContentScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"AIGenerateContent"> | string
+    desc?: StringWithAggregatesFilter<"AIGenerateContent"> | string
     gid?: StringWithAggregatesFilter<"AIGenerateContent"> | string
     model?: StringWithAggregatesFilter<"AIGenerateContent"> | string
     promptTokens?: IntWithAggregatesFilter<"AIGenerateContent"> | number
@@ -16266,14 +18113,18 @@ export namespace Prisma {
     avatar?: StringNullableFilter<"Resume"> | string | null
     status?: StringNullableFilter<"Resume"> | string | null
     industry?: StringNullableFilter<"Resume"> | string | null
+    advantage?: StringNullableFilter<"Resume"> | string | null
+    advantageHtml?: StringNullableFilter<"Resume"> | string | null
+    works?: StringNullableFilter<"Resume"> | string | null
+    projects?: StringNullableFilter<"Resume"> | string | null
+    other?: StringNullableFilter<"Resume"> | string | null
     userId?: StringNullableFilter<"Resume"> | string | null
     templateId?: StringNullableFilter<"Resume"> | string | null
     createdTime?: DateTimeFilter<"Resume"> | Date | string
     updatedTime?: DateTimeFilter<"Resume"> | Date | string
-    works?: WorksListRelationFilter
-    projects?: ProjectsListRelationFilter
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     template?: XOR<TemplateNullableScalarRelationFilter, TemplateWhereInput> | null
+    generateRecord?: GenerateRecordListRelationFilter
   }
 
   export type ResumeOrderByWithRelationInput = {
@@ -16288,22 +18139,26 @@ export namespace Prisma {
     avatar?: SortOrderInput | SortOrder
     status?: SortOrderInput | SortOrder
     industry?: SortOrderInput | SortOrder
+    advantage?: SortOrderInput | SortOrder
+    advantageHtml?: SortOrderInput | SortOrder
+    works?: SortOrderInput | SortOrder
+    projects?: SortOrderInput | SortOrder
+    other?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
     templateId?: SortOrderInput | SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
-    works?: WorksOrderByRelationAggregateInput
-    projects?: ProjectsOrderByRelationAggregateInput
     user?: UserOrderByWithRelationInput
     template?: TemplateOrderByWithRelationInput
+    generateRecord?: GenerateRecordOrderByRelationAggregateInput
   }
 
   export type ResumeWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    title?: string
     AND?: ResumeWhereInput | ResumeWhereInput[]
     OR?: ResumeWhereInput[]
     NOT?: ResumeWhereInput | ResumeWhereInput[]
+    title?: StringFilter<"Resume"> | string
     realname?: StringNullableFilter<"Resume"> | string | null
     age?: IntNullableFilter<"Resume"> | number | null
     education?: StringNullableFilter<"Resume"> | string | null
@@ -16313,15 +18168,19 @@ export namespace Prisma {
     avatar?: StringNullableFilter<"Resume"> | string | null
     status?: StringNullableFilter<"Resume"> | string | null
     industry?: StringNullableFilter<"Resume"> | string | null
+    advantage?: StringNullableFilter<"Resume"> | string | null
+    advantageHtml?: StringNullableFilter<"Resume"> | string | null
+    works?: StringNullableFilter<"Resume"> | string | null
+    projects?: StringNullableFilter<"Resume"> | string | null
+    other?: StringNullableFilter<"Resume"> | string | null
     userId?: StringNullableFilter<"Resume"> | string | null
     templateId?: StringNullableFilter<"Resume"> | string | null
     createdTime?: DateTimeFilter<"Resume"> | Date | string
     updatedTime?: DateTimeFilter<"Resume"> | Date | string
-    works?: WorksListRelationFilter
-    projects?: ProjectsListRelationFilter
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     template?: XOR<TemplateNullableScalarRelationFilter, TemplateWhereInput> | null
-  }, "id" | "title">
+    generateRecord?: GenerateRecordListRelationFilter
+  }, "id">
 
   export type ResumeOrderByWithAggregationInput = {
     id?: SortOrder
@@ -16335,6 +18194,11 @@ export namespace Prisma {
     avatar?: SortOrderInput | SortOrder
     status?: SortOrderInput | SortOrder
     industry?: SortOrderInput | SortOrder
+    advantage?: SortOrderInput | SortOrder
+    advantageHtml?: SortOrderInput | SortOrder
+    works?: SortOrderInput | SortOrder
+    projects?: SortOrderInput | SortOrder
+    other?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
     templateId?: SortOrderInput | SortOrder
     createdTime?: SortOrder
@@ -16361,120 +18225,15 @@ export namespace Prisma {
     avatar?: StringNullableWithAggregatesFilter<"Resume"> | string | null
     status?: StringNullableWithAggregatesFilter<"Resume"> | string | null
     industry?: StringNullableWithAggregatesFilter<"Resume"> | string | null
+    advantage?: StringNullableWithAggregatesFilter<"Resume"> | string | null
+    advantageHtml?: StringNullableWithAggregatesFilter<"Resume"> | string | null
+    works?: StringNullableWithAggregatesFilter<"Resume"> | string | null
+    projects?: StringNullableWithAggregatesFilter<"Resume"> | string | null
+    other?: StringNullableWithAggregatesFilter<"Resume"> | string | null
     userId?: StringNullableWithAggregatesFilter<"Resume"> | string | null
     templateId?: StringNullableWithAggregatesFilter<"Resume"> | string | null
     createdTime?: DateTimeWithAggregatesFilter<"Resume"> | Date | string
     updatedTime?: DateTimeWithAggregatesFilter<"Resume"> | Date | string
-  }
-
-  export type WorksWhereInput = {
-    AND?: WorksWhereInput | WorksWhereInput[]
-    OR?: WorksWhereInput[]
-    NOT?: WorksWhereInput | WorksWhereInput[]
-    id?: StringFilter<"Works"> | string
-    content?: StringFilter<"Works"> | string
-    resumeId?: StringFilter<"Works"> | string
-    createdTime?: DateTimeFilter<"Works"> | Date | string
-    updatedTime?: DateTimeFilter<"Works"> | Date | string
-    resume?: XOR<ResumeNullableScalarRelationFilter, ResumeWhereInput> | null
-  }
-
-  export type WorksOrderByWithRelationInput = {
-    id?: SortOrder
-    content?: SortOrder
-    resumeId?: SortOrder
-    createdTime?: SortOrder
-    updatedTime?: SortOrder
-    resume?: ResumeOrderByWithRelationInput
-  }
-
-  export type WorksWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: WorksWhereInput | WorksWhereInput[]
-    OR?: WorksWhereInput[]
-    NOT?: WorksWhereInput | WorksWhereInput[]
-    content?: StringFilter<"Works"> | string
-    resumeId?: StringFilter<"Works"> | string
-    createdTime?: DateTimeFilter<"Works"> | Date | string
-    updatedTime?: DateTimeFilter<"Works"> | Date | string
-    resume?: XOR<ResumeNullableScalarRelationFilter, ResumeWhereInput> | null
-  }, "id">
-
-  export type WorksOrderByWithAggregationInput = {
-    id?: SortOrder
-    content?: SortOrder
-    resumeId?: SortOrder
-    createdTime?: SortOrder
-    updatedTime?: SortOrder
-    _count?: WorksCountOrderByAggregateInput
-    _max?: WorksMaxOrderByAggregateInput
-    _min?: WorksMinOrderByAggregateInput
-  }
-
-  export type WorksScalarWhereWithAggregatesInput = {
-    AND?: WorksScalarWhereWithAggregatesInput | WorksScalarWhereWithAggregatesInput[]
-    OR?: WorksScalarWhereWithAggregatesInput[]
-    NOT?: WorksScalarWhereWithAggregatesInput | WorksScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Works"> | string
-    content?: StringWithAggregatesFilter<"Works"> | string
-    resumeId?: StringWithAggregatesFilter<"Works"> | string
-    createdTime?: DateTimeWithAggregatesFilter<"Works"> | Date | string
-    updatedTime?: DateTimeWithAggregatesFilter<"Works"> | Date | string
-  }
-
-  export type ProjectsWhereInput = {
-    AND?: ProjectsWhereInput | ProjectsWhereInput[]
-    OR?: ProjectsWhereInput[]
-    NOT?: ProjectsWhereInput | ProjectsWhereInput[]
-    id?: StringFilter<"Projects"> | string
-    content?: StringFilter<"Projects"> | string
-    resumeId?: StringFilter<"Projects"> | string
-    createdTime?: DateTimeFilter<"Projects"> | Date | string
-    updatedTime?: DateTimeFilter<"Projects"> | Date | string
-    resume?: XOR<ResumeNullableScalarRelationFilter, ResumeWhereInput> | null
-  }
-
-  export type ProjectsOrderByWithRelationInput = {
-    id?: SortOrder
-    content?: SortOrder
-    resumeId?: SortOrder
-    createdTime?: SortOrder
-    updatedTime?: SortOrder
-    resume?: ResumeOrderByWithRelationInput
-  }
-
-  export type ProjectsWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: ProjectsWhereInput | ProjectsWhereInput[]
-    OR?: ProjectsWhereInput[]
-    NOT?: ProjectsWhereInput | ProjectsWhereInput[]
-    content?: StringFilter<"Projects"> | string
-    resumeId?: StringFilter<"Projects"> | string
-    createdTime?: DateTimeFilter<"Projects"> | Date | string
-    updatedTime?: DateTimeFilter<"Projects"> | Date | string
-    resume?: XOR<ResumeNullableScalarRelationFilter, ResumeWhereInput> | null
-  }, "id">
-
-  export type ProjectsOrderByWithAggregationInput = {
-    id?: SortOrder
-    content?: SortOrder
-    resumeId?: SortOrder
-    createdTime?: SortOrder
-    updatedTime?: SortOrder
-    _count?: ProjectsCountOrderByAggregateInput
-    _max?: ProjectsMaxOrderByAggregateInput
-    _min?: ProjectsMinOrderByAggregateInput
-  }
-
-  export type ProjectsScalarWhereWithAggregatesInput = {
-    AND?: ProjectsScalarWhereWithAggregatesInput | ProjectsScalarWhereWithAggregatesInput[]
-    OR?: ProjectsScalarWhereWithAggregatesInput[]
-    NOT?: ProjectsScalarWhereWithAggregatesInput | ProjectsScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Projects"> | string
-    content?: StringWithAggregatesFilter<"Projects"> | string
-    resumeId?: StringWithAggregatesFilter<"Projects"> | string
-    createdTime?: DateTimeWithAggregatesFilter<"Projects"> | Date | string
-    updatedTime?: DateTimeWithAggregatesFilter<"Projects"> | Date | string
   }
 
   export type TemplateWhereInput = {
@@ -16485,6 +18244,8 @@ export namespace Prisma {
     title?: StringFilter<"Template"> | string
     path?: StringFilter<"Template"> | string
     type?: StringNullableFilter<"Template"> | string | null
+    usedTimes?: IntNullableFilter<"Template"> | number | null
+    coverUrl?: StringNullableFilter<"Template"> | string | null
     createdTime?: DateTimeFilter<"Template"> | Date | string
     updatedTime?: DateTimeFilter<"Template"> | Date | string
     resume?: ResumeListRelationFilter
@@ -16495,6 +18256,8 @@ export namespace Prisma {
     title?: SortOrder
     path?: SortOrder
     type?: SortOrderInput | SortOrder
+    usedTimes?: SortOrderInput | SortOrder
+    coverUrl?: SortOrderInput | SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     resume?: ResumeOrderByRelationAggregateInput
@@ -16502,27 +18265,33 @@ export namespace Prisma {
 
   export type TemplateWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    path?: string
     AND?: TemplateWhereInput | TemplateWhereInput[]
     OR?: TemplateWhereInput[]
     NOT?: TemplateWhereInput | TemplateWhereInput[]
     title?: StringFilter<"Template"> | string
-    path?: StringFilter<"Template"> | string
     type?: StringNullableFilter<"Template"> | string | null
+    usedTimes?: IntNullableFilter<"Template"> | number | null
+    coverUrl?: StringNullableFilter<"Template"> | string | null
     createdTime?: DateTimeFilter<"Template"> | Date | string
     updatedTime?: DateTimeFilter<"Template"> | Date | string
     resume?: ResumeListRelationFilter
-  }, "id">
+  }, "id" | "path">
 
   export type TemplateOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
     path?: SortOrder
     type?: SortOrderInput | SortOrder
+    usedTimes?: SortOrderInput | SortOrder
+    coverUrl?: SortOrderInput | SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     _count?: TemplateCountOrderByAggregateInput
+    _avg?: TemplateAvgOrderByAggregateInput
     _max?: TemplateMaxOrderByAggregateInput
     _min?: TemplateMinOrderByAggregateInput
+    _sum?: TemplateSumOrderByAggregateInput
   }
 
   export type TemplateScalarWhereWithAggregatesInput = {
@@ -16533,8 +18302,151 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Template"> | string
     path?: StringWithAggregatesFilter<"Template"> | string
     type?: StringNullableWithAggregatesFilter<"Template"> | string | null
+    usedTimes?: IntNullableWithAggregatesFilter<"Template"> | number | null
+    coverUrl?: StringNullableWithAggregatesFilter<"Template"> | string | null
     createdTime?: DateTimeWithAggregatesFilter<"Template"> | Date | string
     updatedTime?: DateTimeWithAggregatesFilter<"Template"> | Date | string
+  }
+
+  export type GenerateRecordWhereInput = {
+    AND?: GenerateRecordWhereInput | GenerateRecordWhereInput[]
+    OR?: GenerateRecordWhereInput[]
+    NOT?: GenerateRecordWhereInput | GenerateRecordWhereInput[]
+    id?: StringFilter<"GenerateRecord"> | string
+    date?: IntNullableFilter<"GenerateRecord"> | number | null
+    times?: IntNullableFilter<"GenerateRecord"> | number | null
+    resumeId?: StringNullableFilter<"GenerateRecord"> | string | null
+    userId?: StringNullableFilter<"GenerateRecord"> | string | null
+    createdTime?: DateTimeFilter<"GenerateRecord"> | Date | string
+    updatedTime?: DateTimeFilter<"GenerateRecord"> | Date | string
+    resume?: XOR<ResumeNullableScalarRelationFilter, ResumeWhereInput> | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    generateRecordDetail?: GenerateRecordDetailListRelationFilter
+  }
+
+  export type GenerateRecordOrderByWithRelationInput = {
+    id?: SortOrder
+    date?: SortOrderInput | SortOrder
+    times?: SortOrderInput | SortOrder
+    resumeId?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
+    createdTime?: SortOrder
+    updatedTime?: SortOrder
+    resume?: ResumeOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+    generateRecordDetail?: GenerateRecordDetailOrderByRelationAggregateInput
+  }
+
+  export type GenerateRecordWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: GenerateRecordWhereInput | GenerateRecordWhereInput[]
+    OR?: GenerateRecordWhereInput[]
+    NOT?: GenerateRecordWhereInput | GenerateRecordWhereInput[]
+    date?: IntNullableFilter<"GenerateRecord"> | number | null
+    times?: IntNullableFilter<"GenerateRecord"> | number | null
+    resumeId?: StringNullableFilter<"GenerateRecord"> | string | null
+    userId?: StringNullableFilter<"GenerateRecord"> | string | null
+    createdTime?: DateTimeFilter<"GenerateRecord"> | Date | string
+    updatedTime?: DateTimeFilter<"GenerateRecord"> | Date | string
+    resume?: XOR<ResumeNullableScalarRelationFilter, ResumeWhereInput> | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    generateRecordDetail?: GenerateRecordDetailListRelationFilter
+  }, "id">
+
+  export type GenerateRecordOrderByWithAggregationInput = {
+    id?: SortOrder
+    date?: SortOrderInput | SortOrder
+    times?: SortOrderInput | SortOrder
+    resumeId?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
+    createdTime?: SortOrder
+    updatedTime?: SortOrder
+    _count?: GenerateRecordCountOrderByAggregateInput
+    _avg?: GenerateRecordAvgOrderByAggregateInput
+    _max?: GenerateRecordMaxOrderByAggregateInput
+    _min?: GenerateRecordMinOrderByAggregateInput
+    _sum?: GenerateRecordSumOrderByAggregateInput
+  }
+
+  export type GenerateRecordScalarWhereWithAggregatesInput = {
+    AND?: GenerateRecordScalarWhereWithAggregatesInput | GenerateRecordScalarWhereWithAggregatesInput[]
+    OR?: GenerateRecordScalarWhereWithAggregatesInput[]
+    NOT?: GenerateRecordScalarWhereWithAggregatesInput | GenerateRecordScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"GenerateRecord"> | string
+    date?: IntNullableWithAggregatesFilter<"GenerateRecord"> | number | null
+    times?: IntNullableWithAggregatesFilter<"GenerateRecord"> | number | null
+    resumeId?: StringNullableWithAggregatesFilter<"GenerateRecord"> | string | null
+    userId?: StringNullableWithAggregatesFilter<"GenerateRecord"> | string | null
+    createdTime?: DateTimeWithAggregatesFilter<"GenerateRecord"> | Date | string
+    updatedTime?: DateTimeWithAggregatesFilter<"GenerateRecord"> | Date | string
+  }
+
+  export type GenerateRecordDetailWhereInput = {
+    AND?: GenerateRecordDetailWhereInput | GenerateRecordDetailWhereInput[]
+    OR?: GenerateRecordDetailWhereInput[]
+    NOT?: GenerateRecordDetailWhereInput | GenerateRecordDetailWhereInput[]
+    id?: StringFilter<"GenerateRecordDetail"> | string
+    title?: StringFilter<"GenerateRecordDetail"> | string
+    url?: StringFilter<"GenerateRecordDetail"> | string
+    status?: StringFilter<"GenerateRecordDetail"> | string
+    generateRecordId?: StringNullableFilter<"GenerateRecordDetail"> | string | null
+    createdTime?: DateTimeFilter<"GenerateRecordDetail"> | Date | string
+    updatedTime?: DateTimeFilter<"GenerateRecordDetail"> | Date | string
+    generateRecord?: XOR<GenerateRecordNullableScalarRelationFilter, GenerateRecordWhereInput> | null
+    downloadRecord?: DownloadRecordListRelationFilter
+  }
+
+  export type GenerateRecordDetailOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    status?: SortOrder
+    generateRecordId?: SortOrderInput | SortOrder
+    createdTime?: SortOrder
+    updatedTime?: SortOrder
+    generateRecord?: GenerateRecordOrderByWithRelationInput
+    downloadRecord?: DownloadRecordOrderByRelationAggregateInput
+  }
+
+  export type GenerateRecordDetailWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: GenerateRecordDetailWhereInput | GenerateRecordDetailWhereInput[]
+    OR?: GenerateRecordDetailWhereInput[]
+    NOT?: GenerateRecordDetailWhereInput | GenerateRecordDetailWhereInput[]
+    title?: StringFilter<"GenerateRecordDetail"> | string
+    url?: StringFilter<"GenerateRecordDetail"> | string
+    status?: StringFilter<"GenerateRecordDetail"> | string
+    generateRecordId?: StringNullableFilter<"GenerateRecordDetail"> | string | null
+    createdTime?: DateTimeFilter<"GenerateRecordDetail"> | Date | string
+    updatedTime?: DateTimeFilter<"GenerateRecordDetail"> | Date | string
+    generateRecord?: XOR<GenerateRecordNullableScalarRelationFilter, GenerateRecordWhereInput> | null
+    downloadRecord?: DownloadRecordListRelationFilter
+  }, "id">
+
+  export type GenerateRecordDetailOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    status?: SortOrder
+    generateRecordId?: SortOrderInput | SortOrder
+    createdTime?: SortOrder
+    updatedTime?: SortOrder
+    _count?: GenerateRecordDetailCountOrderByAggregateInput
+    _max?: GenerateRecordDetailMaxOrderByAggregateInput
+    _min?: GenerateRecordDetailMinOrderByAggregateInput
+  }
+
+  export type GenerateRecordDetailScalarWhereWithAggregatesInput = {
+    AND?: GenerateRecordDetailScalarWhereWithAggregatesInput | GenerateRecordDetailScalarWhereWithAggregatesInput[]
+    OR?: GenerateRecordDetailScalarWhereWithAggregatesInput[]
+    NOT?: GenerateRecordDetailScalarWhereWithAggregatesInput | GenerateRecordDetailScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"GenerateRecordDetail"> | string
+    title?: StringWithAggregatesFilter<"GenerateRecordDetail"> | string
+    url?: StringWithAggregatesFilter<"GenerateRecordDetail"> | string
+    status?: StringWithAggregatesFilter<"GenerateRecordDetail"> | string
+    generateRecordId?: StringNullableWithAggregatesFilter<"GenerateRecordDetail"> | string | null
+    createdTime?: DateTimeWithAggregatesFilter<"GenerateRecordDetail"> | Date | string
+    updatedTime?: DateTimeWithAggregatesFilter<"GenerateRecordDetail"> | Date | string
   }
 
   export type DownloadWhereInput = {
@@ -16542,18 +18454,24 @@ export namespace Prisma {
     OR?: DownloadWhereInput[]
     NOT?: DownloadWhereInput | DownloadWhereInput[]
     id?: StringFilter<"Download"> | string
-    title?: StringFilter<"Download"> | string
-    url?: StringFilter<"Download"> | string
+    date?: IntNullableFilter<"Download"> | number | null
+    times?: IntNullableFilter<"Download"> | number | null
+    userId?: StringFilter<"Download"> | string
     createdTime?: DateTimeFilter<"Download"> | Date | string
     updatedTime?: DateTimeFilter<"Download"> | Date | string
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    downloadRecord?: DownloadRecordListRelationFilter
   }
 
   export type DownloadOrderByWithRelationInput = {
     id?: SortOrder
-    title?: SortOrder
-    url?: SortOrder
+    date?: SortOrderInput | SortOrder
+    times?: SortOrderInput | SortOrder
+    userId?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
+    user?: UserOrderByWithRelationInput
+    downloadRecord?: DownloadRecordOrderByRelationAggregateInput
   }
 
   export type DownloadWhereUniqueInput = Prisma.AtLeast<{
@@ -16561,21 +18479,27 @@ export namespace Prisma {
     AND?: DownloadWhereInput | DownloadWhereInput[]
     OR?: DownloadWhereInput[]
     NOT?: DownloadWhereInput | DownloadWhereInput[]
-    title?: StringFilter<"Download"> | string
-    url?: StringFilter<"Download"> | string
+    date?: IntNullableFilter<"Download"> | number | null
+    times?: IntNullableFilter<"Download"> | number | null
+    userId?: StringFilter<"Download"> | string
     createdTime?: DateTimeFilter<"Download"> | Date | string
     updatedTime?: DateTimeFilter<"Download"> | Date | string
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    downloadRecord?: DownloadRecordListRelationFilter
   }, "id">
 
   export type DownloadOrderByWithAggregationInput = {
     id?: SortOrder
-    title?: SortOrder
-    url?: SortOrder
+    date?: SortOrderInput | SortOrder
+    times?: SortOrderInput | SortOrder
+    userId?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     _count?: DownloadCountOrderByAggregateInput
+    _avg?: DownloadAvgOrderByAggregateInput
     _max?: DownloadMaxOrderByAggregateInput
     _min?: DownloadMinOrderByAggregateInput
+    _sum?: DownloadSumOrderByAggregateInput
   }
 
   export type DownloadScalarWhereWithAggregatesInput = {
@@ -16583,10 +18507,79 @@ export namespace Prisma {
     OR?: DownloadScalarWhereWithAggregatesInput[]
     NOT?: DownloadScalarWhereWithAggregatesInput | DownloadScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Download"> | string
-    title?: StringWithAggregatesFilter<"Download"> | string
-    url?: StringWithAggregatesFilter<"Download"> | string
+    date?: IntNullableWithAggregatesFilter<"Download"> | number | null
+    times?: IntNullableWithAggregatesFilter<"Download"> | number | null
+    userId?: StringWithAggregatesFilter<"Download"> | string
     createdTime?: DateTimeWithAggregatesFilter<"Download"> | Date | string
     updatedTime?: DateTimeWithAggregatesFilter<"Download"> | Date | string
+  }
+
+  export type DownloadRecordWhereInput = {
+    AND?: DownloadRecordWhereInput | DownloadRecordWhereInput[]
+    OR?: DownloadRecordWhereInput[]
+    NOT?: DownloadRecordWhereInput | DownloadRecordWhereInput[]
+    id?: StringFilter<"DownloadRecord"> | string
+    title?: StringFilter<"DownloadRecord"> | string
+    url?: StringFilter<"DownloadRecord"> | string
+    downloadId?: StringNullableFilter<"DownloadRecord"> | string | null
+    generateRecordDetailId?: StringNullableFilter<"DownloadRecord"> | string | null
+    createdTime?: DateTimeFilter<"DownloadRecord"> | Date | string
+    updatedTime?: DateTimeFilter<"DownloadRecord"> | Date | string
+    download?: XOR<DownloadNullableScalarRelationFilter, DownloadWhereInput> | null
+    generateRecordDetail?: XOR<GenerateRecordDetailNullableScalarRelationFilter, GenerateRecordDetailWhereInput> | null
+  }
+
+  export type DownloadRecordOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    downloadId?: SortOrderInput | SortOrder
+    generateRecordDetailId?: SortOrderInput | SortOrder
+    createdTime?: SortOrder
+    updatedTime?: SortOrder
+    download?: DownloadOrderByWithRelationInput
+    generateRecordDetail?: GenerateRecordDetailOrderByWithRelationInput
+  }
+
+  export type DownloadRecordWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DownloadRecordWhereInput | DownloadRecordWhereInput[]
+    OR?: DownloadRecordWhereInput[]
+    NOT?: DownloadRecordWhereInput | DownloadRecordWhereInput[]
+    title?: StringFilter<"DownloadRecord"> | string
+    url?: StringFilter<"DownloadRecord"> | string
+    downloadId?: StringNullableFilter<"DownloadRecord"> | string | null
+    generateRecordDetailId?: StringNullableFilter<"DownloadRecord"> | string | null
+    createdTime?: DateTimeFilter<"DownloadRecord"> | Date | string
+    updatedTime?: DateTimeFilter<"DownloadRecord"> | Date | string
+    download?: XOR<DownloadNullableScalarRelationFilter, DownloadWhereInput> | null
+    generateRecordDetail?: XOR<GenerateRecordDetailNullableScalarRelationFilter, GenerateRecordDetailWhereInput> | null
+  }, "id">
+
+  export type DownloadRecordOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    downloadId?: SortOrderInput | SortOrder
+    generateRecordDetailId?: SortOrderInput | SortOrder
+    createdTime?: SortOrder
+    updatedTime?: SortOrder
+    _count?: DownloadRecordCountOrderByAggregateInput
+    _max?: DownloadRecordMaxOrderByAggregateInput
+    _min?: DownloadRecordMinOrderByAggregateInput
+  }
+
+  export type DownloadRecordScalarWhereWithAggregatesInput = {
+    AND?: DownloadRecordScalarWhereWithAggregatesInput | DownloadRecordScalarWhereWithAggregatesInput[]
+    OR?: DownloadRecordScalarWhereWithAggregatesInput[]
+    NOT?: DownloadRecordScalarWhereWithAggregatesInput | DownloadRecordScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DownloadRecord"> | string
+    title?: StringWithAggregatesFilter<"DownloadRecord"> | string
+    url?: StringWithAggregatesFilter<"DownloadRecord"> | string
+    downloadId?: StringNullableWithAggregatesFilter<"DownloadRecord"> | string | null
+    generateRecordDetailId?: StringNullableWithAggregatesFilter<"DownloadRecord"> | string | null
+    createdTime?: DateTimeWithAggregatesFilter<"DownloadRecord"> | Date | string
+    updatedTime?: DateTimeWithAggregatesFilter<"DownloadRecord"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -16603,7 +18596,9 @@ export namespace Prisma {
     inviter?: InviteCreateNestedManyWithoutInviterInput
     invitee?: InviteCreateNestedManyWithoutInviteeInput
     aiGenerator?: AIGeneratorCreateNestedManyWithoutUserInput
+    download?: DownloadCreateNestedManyWithoutUserInput
     sign?: SignCreateNestedManyWithoutUserInput
+    generateRecord?: GenerateRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -16620,7 +18615,9 @@ export namespace Prisma {
     inviter?: InviteUncheckedCreateNestedManyWithoutInviterInput
     invitee?: InviteUncheckedCreateNestedManyWithoutInviteeInput
     aiGenerator?: AIGeneratorUncheckedCreateNestedManyWithoutUserInput
+    download?: DownloadUncheckedCreateNestedManyWithoutUserInput
     sign?: SignUncheckedCreateNestedManyWithoutUserInput
+    generateRecord?: GenerateRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -16637,7 +18634,9 @@ export namespace Prisma {
     inviter?: InviteUpdateManyWithoutInviterNestedInput
     invitee?: InviteUpdateManyWithoutInviteeNestedInput
     aiGenerator?: AIGeneratorUpdateManyWithoutUserNestedInput
+    download?: DownloadUpdateManyWithoutUserNestedInput
     sign?: SignUpdateManyWithoutUserNestedInput
+    generateRecord?: GenerateRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -16654,7 +18653,9 @@ export namespace Prisma {
     inviter?: InviteUncheckedUpdateManyWithoutInviterNestedInput
     invitee?: InviteUncheckedUpdateManyWithoutInviteeNestedInput
     aiGenerator?: AIGeneratorUncheckedUpdateManyWithoutUserNestedInput
+    download?: DownloadUncheckedUpdateManyWithoutUserNestedInput
     sign?: SignUncheckedUpdateManyWithoutUserNestedInput
+    generateRecord?: GenerateRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -16803,9 +18804,8 @@ export namespace Prisma {
 
   export type AIGeneratorCreateInput = {
     id?: string
-    desc: string
-    date: number
-    times: number
+    date?: number | null
+    times?: number | null
     createdTime?: Date | string
     updatedTime?: Date | string
     user?: UserCreateNestedOneWithoutAiGeneratorInput
@@ -16814,9 +18814,8 @@ export namespace Prisma {
 
   export type AIGeneratorUncheckedCreateInput = {
     id?: string
-    desc: string
-    date: number
-    times: number
+    date?: number | null
+    times?: number | null
     userId: string
     createdTime?: Date | string
     updatedTime?: Date | string
@@ -16825,9 +18824,8 @@ export namespace Prisma {
 
   export type AIGeneratorUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    desc?: StringFieldUpdateOperationsInput | string
-    date?: IntFieldUpdateOperationsInput | number
-    times?: IntFieldUpdateOperationsInput | number
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutAiGeneratorNestedInput
@@ -16836,9 +18834,8 @@ export namespace Prisma {
 
   export type AIGeneratorUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    desc?: StringFieldUpdateOperationsInput | string
-    date?: IntFieldUpdateOperationsInput | number
-    times?: IntFieldUpdateOperationsInput | number
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: StringFieldUpdateOperationsInput | string
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16847,9 +18844,8 @@ export namespace Prisma {
 
   export type AIGeneratorCreateManyInput = {
     id?: string
-    desc: string
-    date: number
-    times: number
+    date?: number | null
+    times?: number | null
     userId: string
     createdTime?: Date | string
     updatedTime?: Date | string
@@ -16857,18 +18853,16 @@ export namespace Prisma {
 
   export type AIGeneratorUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    desc?: StringFieldUpdateOperationsInput | string
-    date?: IntFieldUpdateOperationsInput | number
-    times?: IntFieldUpdateOperationsInput | number
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AIGeneratorUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    desc?: StringFieldUpdateOperationsInput | string
-    date?: IntFieldUpdateOperationsInput | number
-    times?: IntFieldUpdateOperationsInput | number
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: StringFieldUpdateOperationsInput | string
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16876,6 +18870,7 @@ export namespace Prisma {
 
   export type AIGenerateContentCreateInput = {
     id?: string
+    desc: string
     gid: string
     model: string
     promptTokens: number
@@ -16889,6 +18884,7 @@ export namespace Prisma {
 
   export type AIGenerateContentUncheckedCreateInput = {
     id?: string
+    desc: string
     gid: string
     model: string
     promptTokens: number
@@ -16902,6 +18898,7 @@ export namespace Prisma {
 
   export type AIGenerateContentUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
     gid?: StringFieldUpdateOperationsInput | string
     model?: StringFieldUpdateOperationsInput | string
     promptTokens?: IntFieldUpdateOperationsInput | number
@@ -16915,6 +18912,7 @@ export namespace Prisma {
 
   export type AIGenerateContentUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
     gid?: StringFieldUpdateOperationsInput | string
     model?: StringFieldUpdateOperationsInput | string
     promptTokens?: IntFieldUpdateOperationsInput | number
@@ -16928,6 +18926,7 @@ export namespace Prisma {
 
   export type AIGenerateContentCreateManyInput = {
     id?: string
+    desc: string
     gid: string
     model: string
     promptTokens: number
@@ -16941,6 +18940,7 @@ export namespace Prisma {
 
   export type AIGenerateContentUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
     gid?: StringFieldUpdateOperationsInput | string
     model?: StringFieldUpdateOperationsInput | string
     promptTokens?: IntFieldUpdateOperationsInput | number
@@ -16953,6 +18953,7 @@ export namespace Prisma {
 
   export type AIGenerateContentUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
     gid?: StringFieldUpdateOperationsInput | string
     model?: StringFieldUpdateOperationsInput | string
     promptTokens?: IntFieldUpdateOperationsInput | number
@@ -17092,12 +19093,16 @@ export namespace Prisma {
     avatar?: string | null
     status?: string | null
     industry?: string | null
+    advantage?: string | null
+    advantageHtml?: string | null
+    works?: string | null
+    projects?: string | null
+    other?: string | null
     createdTime?: Date | string
     updatedTime?: Date | string
-    works?: WorksCreateNestedManyWithoutResumeInput
-    projects?: ProjectsCreateNestedManyWithoutResumeInput
     user?: UserCreateNestedOneWithoutResumeInput
     template?: TemplateCreateNestedOneWithoutResumeInput
+    generateRecord?: GenerateRecordCreateNestedManyWithoutResumeInput
   }
 
   export type ResumeUncheckedCreateInput = {
@@ -17112,12 +19117,16 @@ export namespace Prisma {
     avatar?: string | null
     status?: string | null
     industry?: string | null
+    advantage?: string | null
+    advantageHtml?: string | null
+    works?: string | null
+    projects?: string | null
+    other?: string | null
     userId?: string | null
     templateId?: string | null
     createdTime?: Date | string
     updatedTime?: Date | string
-    works?: WorksUncheckedCreateNestedManyWithoutResumeInput
-    projects?: ProjectsUncheckedCreateNestedManyWithoutResumeInput
+    generateRecord?: GenerateRecordUncheckedCreateNestedManyWithoutResumeInput
   }
 
   export type ResumeUpdateInput = {
@@ -17132,12 +19141,16 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     industry?: NullableStringFieldUpdateOperationsInput | string | null
+    advantage?: NullableStringFieldUpdateOperationsInput | string | null
+    advantageHtml?: NullableStringFieldUpdateOperationsInput | string | null
+    works?: NullableStringFieldUpdateOperationsInput | string | null
+    projects?: NullableStringFieldUpdateOperationsInput | string | null
+    other?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    works?: WorksUpdateManyWithoutResumeNestedInput
-    projects?: ProjectsUpdateManyWithoutResumeNestedInput
     user?: UserUpdateOneWithoutResumeNestedInput
     template?: TemplateUpdateOneWithoutResumeNestedInput
+    generateRecord?: GenerateRecordUpdateManyWithoutResumeNestedInput
   }
 
   export type ResumeUncheckedUpdateInput = {
@@ -17152,12 +19165,16 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     industry?: NullableStringFieldUpdateOperationsInput | string | null
+    advantage?: NullableStringFieldUpdateOperationsInput | string | null
+    advantageHtml?: NullableStringFieldUpdateOperationsInput | string | null
+    works?: NullableStringFieldUpdateOperationsInput | string | null
+    projects?: NullableStringFieldUpdateOperationsInput | string | null
+    other?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     templateId?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    works?: WorksUncheckedUpdateManyWithoutResumeNestedInput
-    projects?: ProjectsUncheckedUpdateManyWithoutResumeNestedInput
+    generateRecord?: GenerateRecordUncheckedUpdateManyWithoutResumeNestedInput
   }
 
   export type ResumeCreateManyInput = {
@@ -17172,6 +19189,11 @@ export namespace Prisma {
     avatar?: string | null
     status?: string | null
     industry?: string | null
+    advantage?: string | null
+    advantageHtml?: string | null
+    works?: string | null
+    projects?: string | null
+    other?: string | null
     userId?: string | null
     templateId?: string | null
     createdTime?: Date | string
@@ -17190,6 +19212,11 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     industry?: NullableStringFieldUpdateOperationsInput | string | null
+    advantage?: NullableStringFieldUpdateOperationsInput | string | null
+    advantageHtml?: NullableStringFieldUpdateOperationsInput | string | null
+    works?: NullableStringFieldUpdateOperationsInput | string | null
+    projects?: NullableStringFieldUpdateOperationsInput | string | null
+    other?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17206,118 +19233,13 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     industry?: NullableStringFieldUpdateOperationsInput | string | null
+    advantage?: NullableStringFieldUpdateOperationsInput | string | null
+    advantageHtml?: NullableStringFieldUpdateOperationsInput | string | null
+    works?: NullableStringFieldUpdateOperationsInput | string | null
+    projects?: NullableStringFieldUpdateOperationsInput | string | null
+    other?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     templateId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type WorksCreateInput = {
-    id?: string
-    content: string
-    createdTime?: Date | string
-    updatedTime?: Date | string
-    resume?: ResumeCreateNestedOneWithoutWorksInput
-  }
-
-  export type WorksUncheckedCreateInput = {
-    id?: string
-    content: string
-    resumeId: string
-    createdTime?: Date | string
-    updatedTime?: Date | string
-  }
-
-  export type WorksUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    resume?: ResumeUpdateOneWithoutWorksNestedInput
-  }
-
-  export type WorksUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    resumeId?: StringFieldUpdateOperationsInput | string
-    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type WorksCreateManyInput = {
-    id?: string
-    content: string
-    resumeId: string
-    createdTime?: Date | string
-    updatedTime?: Date | string
-  }
-
-  export type WorksUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type WorksUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    resumeId?: StringFieldUpdateOperationsInput | string
-    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ProjectsCreateInput = {
-    id?: string
-    content: string
-    createdTime?: Date | string
-    updatedTime?: Date | string
-    resume?: ResumeCreateNestedOneWithoutProjectsInput
-  }
-
-  export type ProjectsUncheckedCreateInput = {
-    id?: string
-    content: string
-    resumeId: string
-    createdTime?: Date | string
-    updatedTime?: Date | string
-  }
-
-  export type ProjectsUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    resume?: ResumeUpdateOneWithoutProjectsNestedInput
-  }
-
-  export type ProjectsUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    resumeId?: StringFieldUpdateOperationsInput | string
-    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ProjectsCreateManyInput = {
-    id?: string
-    content: string
-    resumeId: string
-    createdTime?: Date | string
-    updatedTime?: Date | string
-  }
-
-  export type ProjectsUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ProjectsUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    resumeId?: StringFieldUpdateOperationsInput | string
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17327,6 +19249,8 @@ export namespace Prisma {
     title?: string
     path?: string
     type?: string | null
+    usedTimes?: number | null
+    coverUrl?: string | null
     createdTime?: Date | string
     updatedTime?: Date | string
     resume?: ResumeCreateNestedManyWithoutTemplateInput
@@ -17337,6 +19261,8 @@ export namespace Prisma {
     title?: string
     path?: string
     type?: string | null
+    usedTimes?: number | null
+    coverUrl?: string | null
     createdTime?: Date | string
     updatedTime?: Date | string
     resume?: ResumeUncheckedCreateNestedManyWithoutTemplateInput
@@ -17347,6 +19273,8 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    usedTimes?: NullableIntFieldUpdateOperationsInput | number | null
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
     resume?: ResumeUpdateManyWithoutTemplateNestedInput
@@ -17357,6 +19285,8 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    usedTimes?: NullableIntFieldUpdateOperationsInput | number | null
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
     resume?: ResumeUncheckedUpdateManyWithoutTemplateNestedInput
@@ -17367,6 +19297,8 @@ export namespace Prisma {
     title?: string
     path?: string
     type?: string | null
+    usedTimes?: number | null
+    coverUrl?: string | null
     createdTime?: Date | string
     updatedTime?: Date | string
   }
@@ -17376,6 +19308,8 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    usedTimes?: NullableIntFieldUpdateOperationsInput | number | null
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17385,62 +19319,287 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    usedTimes?: NullableIntFieldUpdateOperationsInput | number | null
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GenerateRecordCreateInput = {
+    id?: string
+    date?: number | null
+    times?: number | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    resume?: ResumeCreateNestedOneWithoutGenerateRecordInput
+    user?: UserCreateNestedOneWithoutGenerateRecordInput
+    generateRecordDetail?: GenerateRecordDetailCreateNestedManyWithoutGenerateRecordInput
+  }
+
+  export type GenerateRecordUncheckedCreateInput = {
+    id?: string
+    date?: number | null
+    times?: number | null
+    resumeId?: string | null
+    userId?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    generateRecordDetail?: GenerateRecordDetailUncheckedCreateNestedManyWithoutGenerateRecordInput
+  }
+
+  export type GenerateRecordUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    resume?: ResumeUpdateOneWithoutGenerateRecordNestedInput
+    user?: UserUpdateOneWithoutGenerateRecordNestedInput
+    generateRecordDetail?: GenerateRecordDetailUpdateManyWithoutGenerateRecordNestedInput
+  }
+
+  export type GenerateRecordUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    resumeId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    generateRecordDetail?: GenerateRecordDetailUncheckedUpdateManyWithoutGenerateRecordNestedInput
+  }
+
+  export type GenerateRecordCreateManyInput = {
+    id?: string
+    date?: number | null
+    times?: number | null
+    resumeId?: string | null
+    userId?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+  }
+
+  export type GenerateRecordUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GenerateRecordUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    resumeId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GenerateRecordDetailCreateInput = {
+    id?: string
+    title: string
+    url: string
+    status: string
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    generateRecord?: GenerateRecordCreateNestedOneWithoutGenerateRecordDetailInput
+    downloadRecord?: DownloadRecordCreateNestedManyWithoutGenerateRecordDetailInput
+  }
+
+  export type GenerateRecordDetailUncheckedCreateInput = {
+    id?: string
+    title: string
+    url: string
+    status: string
+    generateRecordId?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    downloadRecord?: DownloadRecordUncheckedCreateNestedManyWithoutGenerateRecordDetailInput
+  }
+
+  export type GenerateRecordDetailUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    generateRecord?: GenerateRecordUpdateOneWithoutGenerateRecordDetailNestedInput
+    downloadRecord?: DownloadRecordUpdateManyWithoutGenerateRecordDetailNestedInput
+  }
+
+  export type GenerateRecordDetailUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    generateRecordId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    downloadRecord?: DownloadRecordUncheckedUpdateManyWithoutGenerateRecordDetailNestedInput
+  }
+
+  export type GenerateRecordDetailCreateManyInput = {
+    id?: string
+    title: string
+    url: string
+    status: string
+    generateRecordId?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+  }
+
+  export type GenerateRecordDetailUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GenerateRecordDetailUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    generateRecordId?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DownloadCreateInput = {
     id?: string
-    title: string
-    url: string
+    date?: number | null
+    times?: number | null
     createdTime?: Date | string
     updatedTime?: Date | string
+    user?: UserCreateNestedOneWithoutDownloadInput
+    downloadRecord?: DownloadRecordCreateNestedManyWithoutDownloadInput
   }
 
   export type DownloadUncheckedCreateInput = {
     id?: string
-    title: string
-    url: string
+    date?: number | null
+    times?: number | null
+    userId: string
     createdTime?: Date | string
     updatedTime?: Date | string
+    downloadRecord?: DownloadRecordUncheckedCreateNestedManyWithoutDownloadInput
   }
 
   export type DownloadUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutDownloadNestedInput
+    downloadRecord?: DownloadRecordUpdateManyWithoutDownloadNestedInput
   }
 
   export type DownloadUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: StringFieldUpdateOperationsInput | string
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    downloadRecord?: DownloadRecordUncheckedUpdateManyWithoutDownloadNestedInput
   }
 
   export type DownloadCreateManyInput = {
     id?: string
-    title: string
-    url: string
+    date?: number | null
+    times?: number | null
+    userId: string
     createdTime?: Date | string
     updatedTime?: Date | string
   }
 
   export type DownloadUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DownloadUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DownloadRecordCreateInput = {
+    id?: string
+    title: string
+    url: string
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    download?: DownloadCreateNestedOneWithoutDownloadRecordInput
+    generateRecordDetail?: GenerateRecordDetailCreateNestedOneWithoutDownloadRecordInput
+  }
+
+  export type DownloadRecordUncheckedCreateInput = {
+    id?: string
+    title: string
+    url: string
+    downloadId?: string | null
+    generateRecordDetailId?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+  }
+
+  export type DownloadRecordUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    download?: DownloadUpdateOneWithoutDownloadRecordNestedInput
+    generateRecordDetail?: GenerateRecordDetailUpdateOneWithoutDownloadRecordNestedInput
+  }
+
+  export type DownloadRecordUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    downloadId?: NullableStringFieldUpdateOperationsInput | string | null
+    generateRecordDetailId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DownloadRecordCreateManyInput = {
+    id?: string
+    title: string
+    url: string
+    downloadId?: string | null
+    generateRecordDetailId?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+  }
+
+  export type DownloadRecordUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DownloadRecordUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    downloadId?: NullableStringFieldUpdateOperationsInput | string | null
+    generateRecordDetailId?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17509,10 +19668,22 @@ export namespace Prisma {
     none?: AIGeneratorWhereInput
   }
 
+  export type DownloadListRelationFilter = {
+    every?: DownloadWhereInput
+    some?: DownloadWhereInput
+    none?: DownloadWhereInput
+  }
+
   export type SignListRelationFilter = {
     every?: SignWhereInput
     some?: SignWhereInput
     none?: SignWhereInput
+  }
+
+  export type GenerateRecordListRelationFilter = {
+    every?: GenerateRecordWhereInput
+    some?: GenerateRecordWhereInput
+    none?: GenerateRecordWhereInput
   }
 
   export type SortOrderInput = {
@@ -17532,7 +19703,15 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type DownloadOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type SignOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type GenerateRecordOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -17707,6 +19886,17 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type AIGenerateContentListRelationFilter = {
     every?: AIGenerateContentWhereInput
     some?: AIGenerateContentWhereInput
@@ -17719,7 +19909,6 @@ export namespace Prisma {
 
   export type AIGeneratorCountOrderByAggregateInput = {
     id?: SortOrder
-    desc?: SortOrder
     date?: SortOrder
     times?: SortOrder
     userId?: SortOrder
@@ -17734,7 +19923,6 @@ export namespace Prisma {
 
   export type AIGeneratorMaxOrderByAggregateInput = {
     id?: SortOrder
-    desc?: SortOrder
     date?: SortOrder
     times?: SortOrder
     userId?: SortOrder
@@ -17744,7 +19932,6 @@ export namespace Prisma {
 
   export type AIGeneratorMinOrderByAggregateInput = {
     id?: SortOrder
-    desc?: SortOrder
     date?: SortOrder
     times?: SortOrder
     userId?: SortOrder
@@ -17757,6 +19944,22 @@ export namespace Prisma {
     times?: SortOrder
   }
 
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
   export type AIGeneratorNullableScalarRelationFilter = {
     is?: AIGeneratorWhereInput | null
     isNot?: AIGeneratorWhereInput | null
@@ -17764,6 +19967,7 @@ export namespace Prisma {
 
   export type AIGenerateContentCountOrderByAggregateInput = {
     id?: SortOrder
+    desc?: SortOrder
     gid?: SortOrder
     model?: SortOrder
     promptTokens?: SortOrder
@@ -17782,6 +19986,7 @@ export namespace Prisma {
 
   export type AIGenerateContentMaxOrderByAggregateInput = {
     id?: SortOrder
+    desc?: SortOrder
     gid?: SortOrder
     model?: SortOrder
     promptTokens?: SortOrder
@@ -17795,6 +20000,7 @@ export namespace Prisma {
 
   export type AIGenerateContentMinOrderByAggregateInput = {
     id?: SortOrder
+    desc?: SortOrder
     gid?: SortOrder
     model?: SortOrder
     promptTokens?: SortOrder
@@ -17809,17 +20015,6 @@ export namespace Prisma {
   export type AIGenerateContentSumOrderByAggregateInput = {
     promptTokens?: SortOrder
     completionTokens?: SortOrder
-  }
-
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type ProfileCountOrderByAggregateInput = {
@@ -17859,22 +20054,6 @@ export namespace Prisma {
     grade?: SortOrder
   }
 
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
   export type InviteCountOrderByAggregateInput = {
     id?: SortOrder
     inviterId?: SortOrder
@@ -17899,29 +20078,9 @@ export namespace Prisma {
     updatedTime?: SortOrder
   }
 
-  export type WorksListRelationFilter = {
-    every?: WorksWhereInput
-    some?: WorksWhereInput
-    none?: WorksWhereInput
-  }
-
-  export type ProjectsListRelationFilter = {
-    every?: ProjectsWhereInput
-    some?: ProjectsWhereInput
-    none?: ProjectsWhereInput
-  }
-
   export type TemplateNullableScalarRelationFilter = {
     is?: TemplateWhereInput | null
     isNot?: TemplateWhereInput | null
-  }
-
-  export type WorksOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type ProjectsOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type ResumeCountOrderByAggregateInput = {
@@ -17936,6 +20095,11 @@ export namespace Prisma {
     avatar?: SortOrder
     status?: SortOrder
     industry?: SortOrder
+    advantage?: SortOrder
+    advantageHtml?: SortOrder
+    works?: SortOrder
+    projects?: SortOrder
+    other?: SortOrder
     userId?: SortOrder
     templateId?: SortOrder
     createdTime?: SortOrder
@@ -17958,6 +20122,11 @@ export namespace Prisma {
     avatar?: SortOrder
     status?: SortOrder
     industry?: SortOrder
+    advantage?: SortOrder
+    advantageHtml?: SortOrder
+    works?: SortOrder
+    projects?: SortOrder
+    other?: SortOrder
     userId?: SortOrder
     templateId?: SortOrder
     createdTime?: SortOrder
@@ -17976,6 +20145,11 @@ export namespace Prisma {
     avatar?: SortOrder
     status?: SortOrder
     industry?: SortOrder
+    advantage?: SortOrder
+    advantageHtml?: SortOrder
+    works?: SortOrder
+    projects?: SortOrder
+    other?: SortOrder
     userId?: SortOrder
     templateId?: SortOrder
     createdTime?: SortOrder
@@ -17986,66 +20160,19 @@ export namespace Prisma {
     age?: SortOrder
   }
 
-  export type ResumeNullableScalarRelationFilter = {
-    is?: ResumeWhereInput | null
-    isNot?: ResumeWhereInput | null
-  }
-
-  export type WorksCountOrderByAggregateInput = {
-    id?: SortOrder
-    content?: SortOrder
-    resumeId?: SortOrder
-    createdTime?: SortOrder
-    updatedTime?: SortOrder
-  }
-
-  export type WorksMaxOrderByAggregateInput = {
-    id?: SortOrder
-    content?: SortOrder
-    resumeId?: SortOrder
-    createdTime?: SortOrder
-    updatedTime?: SortOrder
-  }
-
-  export type WorksMinOrderByAggregateInput = {
-    id?: SortOrder
-    content?: SortOrder
-    resumeId?: SortOrder
-    createdTime?: SortOrder
-    updatedTime?: SortOrder
-  }
-
-  export type ProjectsCountOrderByAggregateInput = {
-    id?: SortOrder
-    content?: SortOrder
-    resumeId?: SortOrder
-    createdTime?: SortOrder
-    updatedTime?: SortOrder
-  }
-
-  export type ProjectsMaxOrderByAggregateInput = {
-    id?: SortOrder
-    content?: SortOrder
-    resumeId?: SortOrder
-    createdTime?: SortOrder
-    updatedTime?: SortOrder
-  }
-
-  export type ProjectsMinOrderByAggregateInput = {
-    id?: SortOrder
-    content?: SortOrder
-    resumeId?: SortOrder
-    createdTime?: SortOrder
-    updatedTime?: SortOrder
-  }
-
   export type TemplateCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     path?: SortOrder
     type?: SortOrder
+    usedTimes?: SortOrder
+    coverUrl?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
+  }
+
+  export type TemplateAvgOrderByAggregateInput = {
+    usedTimes?: SortOrder
   }
 
   export type TemplateMaxOrderByAggregateInput = {
@@ -18053,6 +20180,8 @@ export namespace Prisma {
     title?: SortOrder
     path?: SortOrder
     type?: SortOrder
+    usedTimes?: SortOrder
+    coverUrl?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
   }
@@ -18062,30 +20191,189 @@ export namespace Prisma {
     title?: SortOrder
     path?: SortOrder
     type?: SortOrder
+    usedTimes?: SortOrder
+    coverUrl?: SortOrder
+    createdTime?: SortOrder
+    updatedTime?: SortOrder
+  }
+
+  export type TemplateSumOrderByAggregateInput = {
+    usedTimes?: SortOrder
+  }
+
+  export type ResumeNullableScalarRelationFilter = {
+    is?: ResumeWhereInput | null
+    isNot?: ResumeWhereInput | null
+  }
+
+  export type GenerateRecordDetailListRelationFilter = {
+    every?: GenerateRecordDetailWhereInput
+    some?: GenerateRecordDetailWhereInput
+    none?: GenerateRecordDetailWhereInput
+  }
+
+  export type GenerateRecordDetailOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type GenerateRecordCountOrderByAggregateInput = {
+    id?: SortOrder
+    date?: SortOrder
+    times?: SortOrder
+    resumeId?: SortOrder
+    userId?: SortOrder
+    createdTime?: SortOrder
+    updatedTime?: SortOrder
+  }
+
+  export type GenerateRecordAvgOrderByAggregateInput = {
+    date?: SortOrder
+    times?: SortOrder
+  }
+
+  export type GenerateRecordMaxOrderByAggregateInput = {
+    id?: SortOrder
+    date?: SortOrder
+    times?: SortOrder
+    resumeId?: SortOrder
+    userId?: SortOrder
+    createdTime?: SortOrder
+    updatedTime?: SortOrder
+  }
+
+  export type GenerateRecordMinOrderByAggregateInput = {
+    id?: SortOrder
+    date?: SortOrder
+    times?: SortOrder
+    resumeId?: SortOrder
+    userId?: SortOrder
+    createdTime?: SortOrder
+    updatedTime?: SortOrder
+  }
+
+  export type GenerateRecordSumOrderByAggregateInput = {
+    date?: SortOrder
+    times?: SortOrder
+  }
+
+  export type GenerateRecordNullableScalarRelationFilter = {
+    is?: GenerateRecordWhereInput | null
+    isNot?: GenerateRecordWhereInput | null
+  }
+
+  export type DownloadRecordListRelationFilter = {
+    every?: DownloadRecordWhereInput
+    some?: DownloadRecordWhereInput
+    none?: DownloadRecordWhereInput
+  }
+
+  export type DownloadRecordOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type GenerateRecordDetailCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    status?: SortOrder
+    generateRecordId?: SortOrder
+    createdTime?: SortOrder
+    updatedTime?: SortOrder
+  }
+
+  export type GenerateRecordDetailMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    status?: SortOrder
+    generateRecordId?: SortOrder
+    createdTime?: SortOrder
+    updatedTime?: SortOrder
+  }
+
+  export type GenerateRecordDetailMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    status?: SortOrder
+    generateRecordId?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
   }
 
   export type DownloadCountOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
-    url?: SortOrder
+    date?: SortOrder
+    times?: SortOrder
+    userId?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
   }
 
+  export type DownloadAvgOrderByAggregateInput = {
+    date?: SortOrder
+    times?: SortOrder
+  }
+
   export type DownloadMaxOrderByAggregateInput = {
     id?: SortOrder
-    title?: SortOrder
-    url?: SortOrder
+    date?: SortOrder
+    times?: SortOrder
+    userId?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
   }
 
   export type DownloadMinOrderByAggregateInput = {
     id?: SortOrder
+    date?: SortOrder
+    times?: SortOrder
+    userId?: SortOrder
+    createdTime?: SortOrder
+    updatedTime?: SortOrder
+  }
+
+  export type DownloadSumOrderByAggregateInput = {
+    date?: SortOrder
+    times?: SortOrder
+  }
+
+  export type DownloadNullableScalarRelationFilter = {
+    is?: DownloadWhereInput | null
+    isNot?: DownloadWhereInput | null
+  }
+
+  export type GenerateRecordDetailNullableScalarRelationFilter = {
+    is?: GenerateRecordDetailWhereInput | null
+    isNot?: GenerateRecordDetailWhereInput | null
+  }
+
+  export type DownloadRecordCountOrderByAggregateInput = {
+    id?: SortOrder
     title?: SortOrder
     url?: SortOrder
+    downloadId?: SortOrder
+    generateRecordDetailId?: SortOrder
+    createdTime?: SortOrder
+    updatedTime?: SortOrder
+  }
+
+  export type DownloadRecordMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    downloadId?: SortOrder
+    generateRecordDetailId?: SortOrder
+    createdTime?: SortOrder
+    updatedTime?: SortOrder
+  }
+
+  export type DownloadRecordMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    url?: SortOrder
+    downloadId?: SortOrder
+    generateRecordDetailId?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
   }
@@ -18124,11 +20412,25 @@ export namespace Prisma {
     connect?: AIGeneratorWhereUniqueInput | AIGeneratorWhereUniqueInput[]
   }
 
+  export type DownloadCreateNestedManyWithoutUserInput = {
+    create?: XOR<DownloadCreateWithoutUserInput, DownloadUncheckedCreateWithoutUserInput> | DownloadCreateWithoutUserInput[] | DownloadUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DownloadCreateOrConnectWithoutUserInput | DownloadCreateOrConnectWithoutUserInput[]
+    createMany?: DownloadCreateManyUserInputEnvelope
+    connect?: DownloadWhereUniqueInput | DownloadWhereUniqueInput[]
+  }
+
   export type SignCreateNestedManyWithoutUserInput = {
     create?: XOR<SignCreateWithoutUserInput, SignUncheckedCreateWithoutUserInput> | SignCreateWithoutUserInput[] | SignUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SignCreateOrConnectWithoutUserInput | SignCreateOrConnectWithoutUserInput[]
     createMany?: SignCreateManyUserInputEnvelope
     connect?: SignWhereUniqueInput | SignWhereUniqueInput[]
+  }
+
+  export type GenerateRecordCreateNestedManyWithoutUserInput = {
+    create?: XOR<GenerateRecordCreateWithoutUserInput, GenerateRecordUncheckedCreateWithoutUserInput> | GenerateRecordCreateWithoutUserInput[] | GenerateRecordUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GenerateRecordCreateOrConnectWithoutUserInput | GenerateRecordCreateOrConnectWithoutUserInput[]
+    createMany?: GenerateRecordCreateManyUserInputEnvelope
+    connect?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
   }
 
   export type ProfileUncheckedCreateNestedOneWithoutUserInput = {
@@ -18165,11 +20467,25 @@ export namespace Prisma {
     connect?: AIGeneratorWhereUniqueInput | AIGeneratorWhereUniqueInput[]
   }
 
+  export type DownloadUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<DownloadCreateWithoutUserInput, DownloadUncheckedCreateWithoutUserInput> | DownloadCreateWithoutUserInput[] | DownloadUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DownloadCreateOrConnectWithoutUserInput | DownloadCreateOrConnectWithoutUserInput[]
+    createMany?: DownloadCreateManyUserInputEnvelope
+    connect?: DownloadWhereUniqueInput | DownloadWhereUniqueInput[]
+  }
+
   export type SignUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<SignCreateWithoutUserInput, SignUncheckedCreateWithoutUserInput> | SignCreateWithoutUserInput[] | SignUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SignCreateOrConnectWithoutUserInput | SignCreateOrConnectWithoutUserInput[]
     createMany?: SignCreateManyUserInputEnvelope
     connect?: SignWhereUniqueInput | SignWhereUniqueInput[]
+  }
+
+  export type GenerateRecordUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<GenerateRecordCreateWithoutUserInput, GenerateRecordUncheckedCreateWithoutUserInput> | GenerateRecordCreateWithoutUserInput[] | GenerateRecordUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GenerateRecordCreateOrConnectWithoutUserInput | GenerateRecordCreateOrConnectWithoutUserInput[]
+    createMany?: GenerateRecordCreateManyUserInputEnvelope
+    connect?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -18250,6 +20566,20 @@ export namespace Prisma {
     deleteMany?: AIGeneratorScalarWhereInput | AIGeneratorScalarWhereInput[]
   }
 
+  export type DownloadUpdateManyWithoutUserNestedInput = {
+    create?: XOR<DownloadCreateWithoutUserInput, DownloadUncheckedCreateWithoutUserInput> | DownloadCreateWithoutUserInput[] | DownloadUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DownloadCreateOrConnectWithoutUserInput | DownloadCreateOrConnectWithoutUserInput[]
+    upsert?: DownloadUpsertWithWhereUniqueWithoutUserInput | DownloadUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: DownloadCreateManyUserInputEnvelope
+    set?: DownloadWhereUniqueInput | DownloadWhereUniqueInput[]
+    disconnect?: DownloadWhereUniqueInput | DownloadWhereUniqueInput[]
+    delete?: DownloadWhereUniqueInput | DownloadWhereUniqueInput[]
+    connect?: DownloadWhereUniqueInput | DownloadWhereUniqueInput[]
+    update?: DownloadUpdateWithWhereUniqueWithoutUserInput | DownloadUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: DownloadUpdateManyWithWhereWithoutUserInput | DownloadUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: DownloadScalarWhereInput | DownloadScalarWhereInput[]
+  }
+
   export type SignUpdateManyWithoutUserNestedInput = {
     create?: XOR<SignCreateWithoutUserInput, SignUncheckedCreateWithoutUserInput> | SignCreateWithoutUserInput[] | SignUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SignCreateOrConnectWithoutUserInput | SignCreateOrConnectWithoutUserInput[]
@@ -18262,6 +20592,20 @@ export namespace Prisma {
     update?: SignUpdateWithWhereUniqueWithoutUserInput | SignUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: SignUpdateManyWithWhereWithoutUserInput | SignUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: SignScalarWhereInput | SignScalarWhereInput[]
+  }
+
+  export type GenerateRecordUpdateManyWithoutUserNestedInput = {
+    create?: XOR<GenerateRecordCreateWithoutUserInput, GenerateRecordUncheckedCreateWithoutUserInput> | GenerateRecordCreateWithoutUserInput[] | GenerateRecordUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GenerateRecordCreateOrConnectWithoutUserInput | GenerateRecordCreateOrConnectWithoutUserInput[]
+    upsert?: GenerateRecordUpsertWithWhereUniqueWithoutUserInput | GenerateRecordUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: GenerateRecordCreateManyUserInputEnvelope
+    set?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
+    disconnect?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
+    delete?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
+    connect?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
+    update?: GenerateRecordUpdateWithWhereUniqueWithoutUserInput | GenerateRecordUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: GenerateRecordUpdateManyWithWhereWithoutUserInput | GenerateRecordUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: GenerateRecordScalarWhereInput | GenerateRecordScalarWhereInput[]
   }
 
   export type ProfileUncheckedUpdateOneWithoutUserNestedInput = {
@@ -18330,6 +20674,20 @@ export namespace Prisma {
     deleteMany?: AIGeneratorScalarWhereInput | AIGeneratorScalarWhereInput[]
   }
 
+  export type DownloadUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<DownloadCreateWithoutUserInput, DownloadUncheckedCreateWithoutUserInput> | DownloadCreateWithoutUserInput[] | DownloadUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DownloadCreateOrConnectWithoutUserInput | DownloadCreateOrConnectWithoutUserInput[]
+    upsert?: DownloadUpsertWithWhereUniqueWithoutUserInput | DownloadUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: DownloadCreateManyUserInputEnvelope
+    set?: DownloadWhereUniqueInput | DownloadWhereUniqueInput[]
+    disconnect?: DownloadWhereUniqueInput | DownloadWhereUniqueInput[]
+    delete?: DownloadWhereUniqueInput | DownloadWhereUniqueInput[]
+    connect?: DownloadWhereUniqueInput | DownloadWhereUniqueInput[]
+    update?: DownloadUpdateWithWhereUniqueWithoutUserInput | DownloadUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: DownloadUpdateManyWithWhereWithoutUserInput | DownloadUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: DownloadScalarWhereInput | DownloadScalarWhereInput[]
+  }
+
   export type SignUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<SignCreateWithoutUserInput, SignUncheckedCreateWithoutUserInput> | SignCreateWithoutUserInput[] | SignUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SignCreateOrConnectWithoutUserInput | SignCreateOrConnectWithoutUserInput[]
@@ -18342,6 +20700,20 @@ export namespace Prisma {
     update?: SignUpdateWithWhereUniqueWithoutUserInput | SignUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: SignUpdateManyWithWhereWithoutUserInput | SignUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: SignScalarWhereInput | SignScalarWhereInput[]
+  }
+
+  export type GenerateRecordUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<GenerateRecordCreateWithoutUserInput, GenerateRecordUncheckedCreateWithoutUserInput> | GenerateRecordCreateWithoutUserInput[] | GenerateRecordUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GenerateRecordCreateOrConnectWithoutUserInput | GenerateRecordCreateOrConnectWithoutUserInput[]
+    upsert?: GenerateRecordUpsertWithWhereUniqueWithoutUserInput | GenerateRecordUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: GenerateRecordCreateManyUserInputEnvelope
+    set?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
+    disconnect?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
+    delete?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
+    connect?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
+    update?: GenerateRecordUpdateWithWhereUniqueWithoutUserInput | GenerateRecordUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: GenerateRecordUpdateManyWithWhereWithoutUserInput | GenerateRecordUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: GenerateRecordScalarWhereInput | GenerateRecordScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSignInput = {
@@ -18386,6 +20758,14 @@ export namespace Prisma {
     connectOrCreate?: AIGenerateContentCreateOrConnectWithoutAiGeneratorInput | AIGenerateContentCreateOrConnectWithoutAiGeneratorInput[]
     createMany?: AIGenerateContentCreateManyAiGeneratorInputEnvelope
     connect?: AIGenerateContentWhereUniqueInput | AIGenerateContentWhereUniqueInput[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type UserUpdateOneWithoutAiGeneratorNestedInput = {
@@ -18448,14 +20828,6 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type UserUpdateOneWithoutProfileNestedInput = {
     create?: XOR<UserCreateWithoutProfileInput, UserUncheckedCreateWithoutProfileInput>
     connectOrCreate?: UserCreateOrConnectWithoutProfileInput
@@ -18498,20 +20870,6 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutInviteeInput, UserUpdateWithoutInviteeInput>, UserUncheckedUpdateWithoutInviteeInput>
   }
 
-  export type WorksCreateNestedManyWithoutResumeInput = {
-    create?: XOR<WorksCreateWithoutResumeInput, WorksUncheckedCreateWithoutResumeInput> | WorksCreateWithoutResumeInput[] | WorksUncheckedCreateWithoutResumeInput[]
-    connectOrCreate?: WorksCreateOrConnectWithoutResumeInput | WorksCreateOrConnectWithoutResumeInput[]
-    createMany?: WorksCreateManyResumeInputEnvelope
-    connect?: WorksWhereUniqueInput | WorksWhereUniqueInput[]
-  }
-
-  export type ProjectsCreateNestedManyWithoutResumeInput = {
-    create?: XOR<ProjectsCreateWithoutResumeInput, ProjectsUncheckedCreateWithoutResumeInput> | ProjectsCreateWithoutResumeInput[] | ProjectsUncheckedCreateWithoutResumeInput[]
-    connectOrCreate?: ProjectsCreateOrConnectWithoutResumeInput | ProjectsCreateOrConnectWithoutResumeInput[]
-    createMany?: ProjectsCreateManyResumeInputEnvelope
-    connect?: ProjectsWhereUniqueInput | ProjectsWhereUniqueInput[]
-  }
-
   export type UserCreateNestedOneWithoutResumeInput = {
     create?: XOR<UserCreateWithoutResumeInput, UserUncheckedCreateWithoutResumeInput>
     connectOrCreate?: UserCreateOrConnectWithoutResumeInput
@@ -18524,46 +20882,18 @@ export namespace Prisma {
     connect?: TemplateWhereUniqueInput
   }
 
-  export type WorksUncheckedCreateNestedManyWithoutResumeInput = {
-    create?: XOR<WorksCreateWithoutResumeInput, WorksUncheckedCreateWithoutResumeInput> | WorksCreateWithoutResumeInput[] | WorksUncheckedCreateWithoutResumeInput[]
-    connectOrCreate?: WorksCreateOrConnectWithoutResumeInput | WorksCreateOrConnectWithoutResumeInput[]
-    createMany?: WorksCreateManyResumeInputEnvelope
-    connect?: WorksWhereUniqueInput | WorksWhereUniqueInput[]
+  export type GenerateRecordCreateNestedManyWithoutResumeInput = {
+    create?: XOR<GenerateRecordCreateWithoutResumeInput, GenerateRecordUncheckedCreateWithoutResumeInput> | GenerateRecordCreateWithoutResumeInput[] | GenerateRecordUncheckedCreateWithoutResumeInput[]
+    connectOrCreate?: GenerateRecordCreateOrConnectWithoutResumeInput | GenerateRecordCreateOrConnectWithoutResumeInput[]
+    createMany?: GenerateRecordCreateManyResumeInputEnvelope
+    connect?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
   }
 
-  export type ProjectsUncheckedCreateNestedManyWithoutResumeInput = {
-    create?: XOR<ProjectsCreateWithoutResumeInput, ProjectsUncheckedCreateWithoutResumeInput> | ProjectsCreateWithoutResumeInput[] | ProjectsUncheckedCreateWithoutResumeInput[]
-    connectOrCreate?: ProjectsCreateOrConnectWithoutResumeInput | ProjectsCreateOrConnectWithoutResumeInput[]
-    createMany?: ProjectsCreateManyResumeInputEnvelope
-    connect?: ProjectsWhereUniqueInput | ProjectsWhereUniqueInput[]
-  }
-
-  export type WorksUpdateManyWithoutResumeNestedInput = {
-    create?: XOR<WorksCreateWithoutResumeInput, WorksUncheckedCreateWithoutResumeInput> | WorksCreateWithoutResumeInput[] | WorksUncheckedCreateWithoutResumeInput[]
-    connectOrCreate?: WorksCreateOrConnectWithoutResumeInput | WorksCreateOrConnectWithoutResumeInput[]
-    upsert?: WorksUpsertWithWhereUniqueWithoutResumeInput | WorksUpsertWithWhereUniqueWithoutResumeInput[]
-    createMany?: WorksCreateManyResumeInputEnvelope
-    set?: WorksWhereUniqueInput | WorksWhereUniqueInput[]
-    disconnect?: WorksWhereUniqueInput | WorksWhereUniqueInput[]
-    delete?: WorksWhereUniqueInput | WorksWhereUniqueInput[]
-    connect?: WorksWhereUniqueInput | WorksWhereUniqueInput[]
-    update?: WorksUpdateWithWhereUniqueWithoutResumeInput | WorksUpdateWithWhereUniqueWithoutResumeInput[]
-    updateMany?: WorksUpdateManyWithWhereWithoutResumeInput | WorksUpdateManyWithWhereWithoutResumeInput[]
-    deleteMany?: WorksScalarWhereInput | WorksScalarWhereInput[]
-  }
-
-  export type ProjectsUpdateManyWithoutResumeNestedInput = {
-    create?: XOR<ProjectsCreateWithoutResumeInput, ProjectsUncheckedCreateWithoutResumeInput> | ProjectsCreateWithoutResumeInput[] | ProjectsUncheckedCreateWithoutResumeInput[]
-    connectOrCreate?: ProjectsCreateOrConnectWithoutResumeInput | ProjectsCreateOrConnectWithoutResumeInput[]
-    upsert?: ProjectsUpsertWithWhereUniqueWithoutResumeInput | ProjectsUpsertWithWhereUniqueWithoutResumeInput[]
-    createMany?: ProjectsCreateManyResumeInputEnvelope
-    set?: ProjectsWhereUniqueInput | ProjectsWhereUniqueInput[]
-    disconnect?: ProjectsWhereUniqueInput | ProjectsWhereUniqueInput[]
-    delete?: ProjectsWhereUniqueInput | ProjectsWhereUniqueInput[]
-    connect?: ProjectsWhereUniqueInput | ProjectsWhereUniqueInput[]
-    update?: ProjectsUpdateWithWhereUniqueWithoutResumeInput | ProjectsUpdateWithWhereUniqueWithoutResumeInput[]
-    updateMany?: ProjectsUpdateManyWithWhereWithoutResumeInput | ProjectsUpdateManyWithWhereWithoutResumeInput[]
-    deleteMany?: ProjectsScalarWhereInput | ProjectsScalarWhereInput[]
+  export type GenerateRecordUncheckedCreateNestedManyWithoutResumeInput = {
+    create?: XOR<GenerateRecordCreateWithoutResumeInput, GenerateRecordUncheckedCreateWithoutResumeInput> | GenerateRecordCreateWithoutResumeInput[] | GenerateRecordUncheckedCreateWithoutResumeInput[]
+    connectOrCreate?: GenerateRecordCreateOrConnectWithoutResumeInput | GenerateRecordCreateOrConnectWithoutResumeInput[]
+    createMany?: GenerateRecordCreateManyResumeInputEnvelope
+    connect?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
   }
 
   export type UserUpdateOneWithoutResumeNestedInput = {
@@ -18586,64 +20916,32 @@ export namespace Prisma {
     update?: XOR<XOR<TemplateUpdateToOneWithWhereWithoutResumeInput, TemplateUpdateWithoutResumeInput>, TemplateUncheckedUpdateWithoutResumeInput>
   }
 
-  export type WorksUncheckedUpdateManyWithoutResumeNestedInput = {
-    create?: XOR<WorksCreateWithoutResumeInput, WorksUncheckedCreateWithoutResumeInput> | WorksCreateWithoutResumeInput[] | WorksUncheckedCreateWithoutResumeInput[]
-    connectOrCreate?: WorksCreateOrConnectWithoutResumeInput | WorksCreateOrConnectWithoutResumeInput[]
-    upsert?: WorksUpsertWithWhereUniqueWithoutResumeInput | WorksUpsertWithWhereUniqueWithoutResumeInput[]
-    createMany?: WorksCreateManyResumeInputEnvelope
-    set?: WorksWhereUniqueInput | WorksWhereUniqueInput[]
-    disconnect?: WorksWhereUniqueInput | WorksWhereUniqueInput[]
-    delete?: WorksWhereUniqueInput | WorksWhereUniqueInput[]
-    connect?: WorksWhereUniqueInput | WorksWhereUniqueInput[]
-    update?: WorksUpdateWithWhereUniqueWithoutResumeInput | WorksUpdateWithWhereUniqueWithoutResumeInput[]
-    updateMany?: WorksUpdateManyWithWhereWithoutResumeInput | WorksUpdateManyWithWhereWithoutResumeInput[]
-    deleteMany?: WorksScalarWhereInput | WorksScalarWhereInput[]
+  export type GenerateRecordUpdateManyWithoutResumeNestedInput = {
+    create?: XOR<GenerateRecordCreateWithoutResumeInput, GenerateRecordUncheckedCreateWithoutResumeInput> | GenerateRecordCreateWithoutResumeInput[] | GenerateRecordUncheckedCreateWithoutResumeInput[]
+    connectOrCreate?: GenerateRecordCreateOrConnectWithoutResumeInput | GenerateRecordCreateOrConnectWithoutResumeInput[]
+    upsert?: GenerateRecordUpsertWithWhereUniqueWithoutResumeInput | GenerateRecordUpsertWithWhereUniqueWithoutResumeInput[]
+    createMany?: GenerateRecordCreateManyResumeInputEnvelope
+    set?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
+    disconnect?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
+    delete?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
+    connect?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
+    update?: GenerateRecordUpdateWithWhereUniqueWithoutResumeInput | GenerateRecordUpdateWithWhereUniqueWithoutResumeInput[]
+    updateMany?: GenerateRecordUpdateManyWithWhereWithoutResumeInput | GenerateRecordUpdateManyWithWhereWithoutResumeInput[]
+    deleteMany?: GenerateRecordScalarWhereInput | GenerateRecordScalarWhereInput[]
   }
 
-  export type ProjectsUncheckedUpdateManyWithoutResumeNestedInput = {
-    create?: XOR<ProjectsCreateWithoutResumeInput, ProjectsUncheckedCreateWithoutResumeInput> | ProjectsCreateWithoutResumeInput[] | ProjectsUncheckedCreateWithoutResumeInput[]
-    connectOrCreate?: ProjectsCreateOrConnectWithoutResumeInput | ProjectsCreateOrConnectWithoutResumeInput[]
-    upsert?: ProjectsUpsertWithWhereUniqueWithoutResumeInput | ProjectsUpsertWithWhereUniqueWithoutResumeInput[]
-    createMany?: ProjectsCreateManyResumeInputEnvelope
-    set?: ProjectsWhereUniqueInput | ProjectsWhereUniqueInput[]
-    disconnect?: ProjectsWhereUniqueInput | ProjectsWhereUniqueInput[]
-    delete?: ProjectsWhereUniqueInput | ProjectsWhereUniqueInput[]
-    connect?: ProjectsWhereUniqueInput | ProjectsWhereUniqueInput[]
-    update?: ProjectsUpdateWithWhereUniqueWithoutResumeInput | ProjectsUpdateWithWhereUniqueWithoutResumeInput[]
-    updateMany?: ProjectsUpdateManyWithWhereWithoutResumeInput | ProjectsUpdateManyWithWhereWithoutResumeInput[]
-    deleteMany?: ProjectsScalarWhereInput | ProjectsScalarWhereInput[]
-  }
-
-  export type ResumeCreateNestedOneWithoutWorksInput = {
-    create?: XOR<ResumeCreateWithoutWorksInput, ResumeUncheckedCreateWithoutWorksInput>
-    connectOrCreate?: ResumeCreateOrConnectWithoutWorksInput
-    connect?: ResumeWhereUniqueInput
-  }
-
-  export type ResumeUpdateOneWithoutWorksNestedInput = {
-    create?: XOR<ResumeCreateWithoutWorksInput, ResumeUncheckedCreateWithoutWorksInput>
-    connectOrCreate?: ResumeCreateOrConnectWithoutWorksInput
-    upsert?: ResumeUpsertWithoutWorksInput
-    disconnect?: ResumeWhereInput | boolean
-    delete?: ResumeWhereInput | boolean
-    connect?: ResumeWhereUniqueInput
-    update?: XOR<XOR<ResumeUpdateToOneWithWhereWithoutWorksInput, ResumeUpdateWithoutWorksInput>, ResumeUncheckedUpdateWithoutWorksInput>
-  }
-
-  export type ResumeCreateNestedOneWithoutProjectsInput = {
-    create?: XOR<ResumeCreateWithoutProjectsInput, ResumeUncheckedCreateWithoutProjectsInput>
-    connectOrCreate?: ResumeCreateOrConnectWithoutProjectsInput
-    connect?: ResumeWhereUniqueInput
-  }
-
-  export type ResumeUpdateOneWithoutProjectsNestedInput = {
-    create?: XOR<ResumeCreateWithoutProjectsInput, ResumeUncheckedCreateWithoutProjectsInput>
-    connectOrCreate?: ResumeCreateOrConnectWithoutProjectsInput
-    upsert?: ResumeUpsertWithoutProjectsInput
-    disconnect?: ResumeWhereInput | boolean
-    delete?: ResumeWhereInput | boolean
-    connect?: ResumeWhereUniqueInput
-    update?: XOR<XOR<ResumeUpdateToOneWithWhereWithoutProjectsInput, ResumeUpdateWithoutProjectsInput>, ResumeUncheckedUpdateWithoutProjectsInput>
+  export type GenerateRecordUncheckedUpdateManyWithoutResumeNestedInput = {
+    create?: XOR<GenerateRecordCreateWithoutResumeInput, GenerateRecordUncheckedCreateWithoutResumeInput> | GenerateRecordCreateWithoutResumeInput[] | GenerateRecordUncheckedCreateWithoutResumeInput[]
+    connectOrCreate?: GenerateRecordCreateOrConnectWithoutResumeInput | GenerateRecordCreateOrConnectWithoutResumeInput[]
+    upsert?: GenerateRecordUpsertWithWhereUniqueWithoutResumeInput | GenerateRecordUpsertWithWhereUniqueWithoutResumeInput[]
+    createMany?: GenerateRecordCreateManyResumeInputEnvelope
+    set?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
+    disconnect?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
+    delete?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
+    connect?: GenerateRecordWhereUniqueInput | GenerateRecordWhereUniqueInput[]
+    update?: GenerateRecordUpdateWithWhereUniqueWithoutResumeInput | GenerateRecordUpdateWithWhereUniqueWithoutResumeInput[]
+    updateMany?: GenerateRecordUpdateManyWithWhereWithoutResumeInput | GenerateRecordUpdateManyWithWhereWithoutResumeInput[]
+    deleteMany?: GenerateRecordScalarWhereInput | GenerateRecordScalarWhereInput[]
   }
 
   export type ResumeCreateNestedManyWithoutTemplateInput = {
@@ -18686,6 +20984,228 @@ export namespace Prisma {
     update?: ResumeUpdateWithWhereUniqueWithoutTemplateInput | ResumeUpdateWithWhereUniqueWithoutTemplateInput[]
     updateMany?: ResumeUpdateManyWithWhereWithoutTemplateInput | ResumeUpdateManyWithWhereWithoutTemplateInput[]
     deleteMany?: ResumeScalarWhereInput | ResumeScalarWhereInput[]
+  }
+
+  export type ResumeCreateNestedOneWithoutGenerateRecordInput = {
+    create?: XOR<ResumeCreateWithoutGenerateRecordInput, ResumeUncheckedCreateWithoutGenerateRecordInput>
+    connectOrCreate?: ResumeCreateOrConnectWithoutGenerateRecordInput
+    connect?: ResumeWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutGenerateRecordInput = {
+    create?: XOR<UserCreateWithoutGenerateRecordInput, UserUncheckedCreateWithoutGenerateRecordInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGenerateRecordInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type GenerateRecordDetailCreateNestedManyWithoutGenerateRecordInput = {
+    create?: XOR<GenerateRecordDetailCreateWithoutGenerateRecordInput, GenerateRecordDetailUncheckedCreateWithoutGenerateRecordInput> | GenerateRecordDetailCreateWithoutGenerateRecordInput[] | GenerateRecordDetailUncheckedCreateWithoutGenerateRecordInput[]
+    connectOrCreate?: GenerateRecordDetailCreateOrConnectWithoutGenerateRecordInput | GenerateRecordDetailCreateOrConnectWithoutGenerateRecordInput[]
+    createMany?: GenerateRecordDetailCreateManyGenerateRecordInputEnvelope
+    connect?: GenerateRecordDetailWhereUniqueInput | GenerateRecordDetailWhereUniqueInput[]
+  }
+
+  export type GenerateRecordDetailUncheckedCreateNestedManyWithoutGenerateRecordInput = {
+    create?: XOR<GenerateRecordDetailCreateWithoutGenerateRecordInput, GenerateRecordDetailUncheckedCreateWithoutGenerateRecordInput> | GenerateRecordDetailCreateWithoutGenerateRecordInput[] | GenerateRecordDetailUncheckedCreateWithoutGenerateRecordInput[]
+    connectOrCreate?: GenerateRecordDetailCreateOrConnectWithoutGenerateRecordInput | GenerateRecordDetailCreateOrConnectWithoutGenerateRecordInput[]
+    createMany?: GenerateRecordDetailCreateManyGenerateRecordInputEnvelope
+    connect?: GenerateRecordDetailWhereUniqueInput | GenerateRecordDetailWhereUniqueInput[]
+  }
+
+  export type ResumeUpdateOneWithoutGenerateRecordNestedInput = {
+    create?: XOR<ResumeCreateWithoutGenerateRecordInput, ResumeUncheckedCreateWithoutGenerateRecordInput>
+    connectOrCreate?: ResumeCreateOrConnectWithoutGenerateRecordInput
+    upsert?: ResumeUpsertWithoutGenerateRecordInput
+    disconnect?: ResumeWhereInput | boolean
+    delete?: ResumeWhereInput | boolean
+    connect?: ResumeWhereUniqueInput
+    update?: XOR<XOR<ResumeUpdateToOneWithWhereWithoutGenerateRecordInput, ResumeUpdateWithoutGenerateRecordInput>, ResumeUncheckedUpdateWithoutGenerateRecordInput>
+  }
+
+  export type UserUpdateOneWithoutGenerateRecordNestedInput = {
+    create?: XOR<UserCreateWithoutGenerateRecordInput, UserUncheckedCreateWithoutGenerateRecordInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGenerateRecordInput
+    upsert?: UserUpsertWithoutGenerateRecordInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutGenerateRecordInput, UserUpdateWithoutGenerateRecordInput>, UserUncheckedUpdateWithoutGenerateRecordInput>
+  }
+
+  export type GenerateRecordDetailUpdateManyWithoutGenerateRecordNestedInput = {
+    create?: XOR<GenerateRecordDetailCreateWithoutGenerateRecordInput, GenerateRecordDetailUncheckedCreateWithoutGenerateRecordInput> | GenerateRecordDetailCreateWithoutGenerateRecordInput[] | GenerateRecordDetailUncheckedCreateWithoutGenerateRecordInput[]
+    connectOrCreate?: GenerateRecordDetailCreateOrConnectWithoutGenerateRecordInput | GenerateRecordDetailCreateOrConnectWithoutGenerateRecordInput[]
+    upsert?: GenerateRecordDetailUpsertWithWhereUniqueWithoutGenerateRecordInput | GenerateRecordDetailUpsertWithWhereUniqueWithoutGenerateRecordInput[]
+    createMany?: GenerateRecordDetailCreateManyGenerateRecordInputEnvelope
+    set?: GenerateRecordDetailWhereUniqueInput | GenerateRecordDetailWhereUniqueInput[]
+    disconnect?: GenerateRecordDetailWhereUniqueInput | GenerateRecordDetailWhereUniqueInput[]
+    delete?: GenerateRecordDetailWhereUniqueInput | GenerateRecordDetailWhereUniqueInput[]
+    connect?: GenerateRecordDetailWhereUniqueInput | GenerateRecordDetailWhereUniqueInput[]
+    update?: GenerateRecordDetailUpdateWithWhereUniqueWithoutGenerateRecordInput | GenerateRecordDetailUpdateWithWhereUniqueWithoutGenerateRecordInput[]
+    updateMany?: GenerateRecordDetailUpdateManyWithWhereWithoutGenerateRecordInput | GenerateRecordDetailUpdateManyWithWhereWithoutGenerateRecordInput[]
+    deleteMany?: GenerateRecordDetailScalarWhereInput | GenerateRecordDetailScalarWhereInput[]
+  }
+
+  export type GenerateRecordDetailUncheckedUpdateManyWithoutGenerateRecordNestedInput = {
+    create?: XOR<GenerateRecordDetailCreateWithoutGenerateRecordInput, GenerateRecordDetailUncheckedCreateWithoutGenerateRecordInput> | GenerateRecordDetailCreateWithoutGenerateRecordInput[] | GenerateRecordDetailUncheckedCreateWithoutGenerateRecordInput[]
+    connectOrCreate?: GenerateRecordDetailCreateOrConnectWithoutGenerateRecordInput | GenerateRecordDetailCreateOrConnectWithoutGenerateRecordInput[]
+    upsert?: GenerateRecordDetailUpsertWithWhereUniqueWithoutGenerateRecordInput | GenerateRecordDetailUpsertWithWhereUniqueWithoutGenerateRecordInput[]
+    createMany?: GenerateRecordDetailCreateManyGenerateRecordInputEnvelope
+    set?: GenerateRecordDetailWhereUniqueInput | GenerateRecordDetailWhereUniqueInput[]
+    disconnect?: GenerateRecordDetailWhereUniqueInput | GenerateRecordDetailWhereUniqueInput[]
+    delete?: GenerateRecordDetailWhereUniqueInput | GenerateRecordDetailWhereUniqueInput[]
+    connect?: GenerateRecordDetailWhereUniqueInput | GenerateRecordDetailWhereUniqueInput[]
+    update?: GenerateRecordDetailUpdateWithWhereUniqueWithoutGenerateRecordInput | GenerateRecordDetailUpdateWithWhereUniqueWithoutGenerateRecordInput[]
+    updateMany?: GenerateRecordDetailUpdateManyWithWhereWithoutGenerateRecordInput | GenerateRecordDetailUpdateManyWithWhereWithoutGenerateRecordInput[]
+    deleteMany?: GenerateRecordDetailScalarWhereInput | GenerateRecordDetailScalarWhereInput[]
+  }
+
+  export type GenerateRecordCreateNestedOneWithoutGenerateRecordDetailInput = {
+    create?: XOR<GenerateRecordCreateWithoutGenerateRecordDetailInput, GenerateRecordUncheckedCreateWithoutGenerateRecordDetailInput>
+    connectOrCreate?: GenerateRecordCreateOrConnectWithoutGenerateRecordDetailInput
+    connect?: GenerateRecordWhereUniqueInput
+  }
+
+  export type DownloadRecordCreateNestedManyWithoutGenerateRecordDetailInput = {
+    create?: XOR<DownloadRecordCreateWithoutGenerateRecordDetailInput, DownloadRecordUncheckedCreateWithoutGenerateRecordDetailInput> | DownloadRecordCreateWithoutGenerateRecordDetailInput[] | DownloadRecordUncheckedCreateWithoutGenerateRecordDetailInput[]
+    connectOrCreate?: DownloadRecordCreateOrConnectWithoutGenerateRecordDetailInput | DownloadRecordCreateOrConnectWithoutGenerateRecordDetailInput[]
+    createMany?: DownloadRecordCreateManyGenerateRecordDetailInputEnvelope
+    connect?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+  }
+
+  export type DownloadRecordUncheckedCreateNestedManyWithoutGenerateRecordDetailInput = {
+    create?: XOR<DownloadRecordCreateWithoutGenerateRecordDetailInput, DownloadRecordUncheckedCreateWithoutGenerateRecordDetailInput> | DownloadRecordCreateWithoutGenerateRecordDetailInput[] | DownloadRecordUncheckedCreateWithoutGenerateRecordDetailInput[]
+    connectOrCreate?: DownloadRecordCreateOrConnectWithoutGenerateRecordDetailInput | DownloadRecordCreateOrConnectWithoutGenerateRecordDetailInput[]
+    createMany?: DownloadRecordCreateManyGenerateRecordDetailInputEnvelope
+    connect?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+  }
+
+  export type GenerateRecordUpdateOneWithoutGenerateRecordDetailNestedInput = {
+    create?: XOR<GenerateRecordCreateWithoutGenerateRecordDetailInput, GenerateRecordUncheckedCreateWithoutGenerateRecordDetailInput>
+    connectOrCreate?: GenerateRecordCreateOrConnectWithoutGenerateRecordDetailInput
+    upsert?: GenerateRecordUpsertWithoutGenerateRecordDetailInput
+    disconnect?: GenerateRecordWhereInput | boolean
+    delete?: GenerateRecordWhereInput | boolean
+    connect?: GenerateRecordWhereUniqueInput
+    update?: XOR<XOR<GenerateRecordUpdateToOneWithWhereWithoutGenerateRecordDetailInput, GenerateRecordUpdateWithoutGenerateRecordDetailInput>, GenerateRecordUncheckedUpdateWithoutGenerateRecordDetailInput>
+  }
+
+  export type DownloadRecordUpdateManyWithoutGenerateRecordDetailNestedInput = {
+    create?: XOR<DownloadRecordCreateWithoutGenerateRecordDetailInput, DownloadRecordUncheckedCreateWithoutGenerateRecordDetailInput> | DownloadRecordCreateWithoutGenerateRecordDetailInput[] | DownloadRecordUncheckedCreateWithoutGenerateRecordDetailInput[]
+    connectOrCreate?: DownloadRecordCreateOrConnectWithoutGenerateRecordDetailInput | DownloadRecordCreateOrConnectWithoutGenerateRecordDetailInput[]
+    upsert?: DownloadRecordUpsertWithWhereUniqueWithoutGenerateRecordDetailInput | DownloadRecordUpsertWithWhereUniqueWithoutGenerateRecordDetailInput[]
+    createMany?: DownloadRecordCreateManyGenerateRecordDetailInputEnvelope
+    set?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+    disconnect?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+    delete?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+    connect?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+    update?: DownloadRecordUpdateWithWhereUniqueWithoutGenerateRecordDetailInput | DownloadRecordUpdateWithWhereUniqueWithoutGenerateRecordDetailInput[]
+    updateMany?: DownloadRecordUpdateManyWithWhereWithoutGenerateRecordDetailInput | DownloadRecordUpdateManyWithWhereWithoutGenerateRecordDetailInput[]
+    deleteMany?: DownloadRecordScalarWhereInput | DownloadRecordScalarWhereInput[]
+  }
+
+  export type DownloadRecordUncheckedUpdateManyWithoutGenerateRecordDetailNestedInput = {
+    create?: XOR<DownloadRecordCreateWithoutGenerateRecordDetailInput, DownloadRecordUncheckedCreateWithoutGenerateRecordDetailInput> | DownloadRecordCreateWithoutGenerateRecordDetailInput[] | DownloadRecordUncheckedCreateWithoutGenerateRecordDetailInput[]
+    connectOrCreate?: DownloadRecordCreateOrConnectWithoutGenerateRecordDetailInput | DownloadRecordCreateOrConnectWithoutGenerateRecordDetailInput[]
+    upsert?: DownloadRecordUpsertWithWhereUniqueWithoutGenerateRecordDetailInput | DownloadRecordUpsertWithWhereUniqueWithoutGenerateRecordDetailInput[]
+    createMany?: DownloadRecordCreateManyGenerateRecordDetailInputEnvelope
+    set?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+    disconnect?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+    delete?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+    connect?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+    update?: DownloadRecordUpdateWithWhereUniqueWithoutGenerateRecordDetailInput | DownloadRecordUpdateWithWhereUniqueWithoutGenerateRecordDetailInput[]
+    updateMany?: DownloadRecordUpdateManyWithWhereWithoutGenerateRecordDetailInput | DownloadRecordUpdateManyWithWhereWithoutGenerateRecordDetailInput[]
+    deleteMany?: DownloadRecordScalarWhereInput | DownloadRecordScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutDownloadInput = {
+    create?: XOR<UserCreateWithoutDownloadInput, UserUncheckedCreateWithoutDownloadInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDownloadInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type DownloadRecordCreateNestedManyWithoutDownloadInput = {
+    create?: XOR<DownloadRecordCreateWithoutDownloadInput, DownloadRecordUncheckedCreateWithoutDownloadInput> | DownloadRecordCreateWithoutDownloadInput[] | DownloadRecordUncheckedCreateWithoutDownloadInput[]
+    connectOrCreate?: DownloadRecordCreateOrConnectWithoutDownloadInput | DownloadRecordCreateOrConnectWithoutDownloadInput[]
+    createMany?: DownloadRecordCreateManyDownloadInputEnvelope
+    connect?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+  }
+
+  export type DownloadRecordUncheckedCreateNestedManyWithoutDownloadInput = {
+    create?: XOR<DownloadRecordCreateWithoutDownloadInput, DownloadRecordUncheckedCreateWithoutDownloadInput> | DownloadRecordCreateWithoutDownloadInput[] | DownloadRecordUncheckedCreateWithoutDownloadInput[]
+    connectOrCreate?: DownloadRecordCreateOrConnectWithoutDownloadInput | DownloadRecordCreateOrConnectWithoutDownloadInput[]
+    createMany?: DownloadRecordCreateManyDownloadInputEnvelope
+    connect?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneWithoutDownloadNestedInput = {
+    create?: XOR<UserCreateWithoutDownloadInput, UserUncheckedCreateWithoutDownloadInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDownloadInput
+    upsert?: UserUpsertWithoutDownloadInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDownloadInput, UserUpdateWithoutDownloadInput>, UserUncheckedUpdateWithoutDownloadInput>
+  }
+
+  export type DownloadRecordUpdateManyWithoutDownloadNestedInput = {
+    create?: XOR<DownloadRecordCreateWithoutDownloadInput, DownloadRecordUncheckedCreateWithoutDownloadInput> | DownloadRecordCreateWithoutDownloadInput[] | DownloadRecordUncheckedCreateWithoutDownloadInput[]
+    connectOrCreate?: DownloadRecordCreateOrConnectWithoutDownloadInput | DownloadRecordCreateOrConnectWithoutDownloadInput[]
+    upsert?: DownloadRecordUpsertWithWhereUniqueWithoutDownloadInput | DownloadRecordUpsertWithWhereUniqueWithoutDownloadInput[]
+    createMany?: DownloadRecordCreateManyDownloadInputEnvelope
+    set?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+    disconnect?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+    delete?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+    connect?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+    update?: DownloadRecordUpdateWithWhereUniqueWithoutDownloadInput | DownloadRecordUpdateWithWhereUniqueWithoutDownloadInput[]
+    updateMany?: DownloadRecordUpdateManyWithWhereWithoutDownloadInput | DownloadRecordUpdateManyWithWhereWithoutDownloadInput[]
+    deleteMany?: DownloadRecordScalarWhereInput | DownloadRecordScalarWhereInput[]
+  }
+
+  export type DownloadRecordUncheckedUpdateManyWithoutDownloadNestedInput = {
+    create?: XOR<DownloadRecordCreateWithoutDownloadInput, DownloadRecordUncheckedCreateWithoutDownloadInput> | DownloadRecordCreateWithoutDownloadInput[] | DownloadRecordUncheckedCreateWithoutDownloadInput[]
+    connectOrCreate?: DownloadRecordCreateOrConnectWithoutDownloadInput | DownloadRecordCreateOrConnectWithoutDownloadInput[]
+    upsert?: DownloadRecordUpsertWithWhereUniqueWithoutDownloadInput | DownloadRecordUpsertWithWhereUniqueWithoutDownloadInput[]
+    createMany?: DownloadRecordCreateManyDownloadInputEnvelope
+    set?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+    disconnect?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+    delete?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+    connect?: DownloadRecordWhereUniqueInput | DownloadRecordWhereUniqueInput[]
+    update?: DownloadRecordUpdateWithWhereUniqueWithoutDownloadInput | DownloadRecordUpdateWithWhereUniqueWithoutDownloadInput[]
+    updateMany?: DownloadRecordUpdateManyWithWhereWithoutDownloadInput | DownloadRecordUpdateManyWithWhereWithoutDownloadInput[]
+    deleteMany?: DownloadRecordScalarWhereInput | DownloadRecordScalarWhereInput[]
+  }
+
+  export type DownloadCreateNestedOneWithoutDownloadRecordInput = {
+    create?: XOR<DownloadCreateWithoutDownloadRecordInput, DownloadUncheckedCreateWithoutDownloadRecordInput>
+    connectOrCreate?: DownloadCreateOrConnectWithoutDownloadRecordInput
+    connect?: DownloadWhereUniqueInput
+  }
+
+  export type GenerateRecordDetailCreateNestedOneWithoutDownloadRecordInput = {
+    create?: XOR<GenerateRecordDetailCreateWithoutDownloadRecordInput, GenerateRecordDetailUncheckedCreateWithoutDownloadRecordInput>
+    connectOrCreate?: GenerateRecordDetailCreateOrConnectWithoutDownloadRecordInput
+    connect?: GenerateRecordDetailWhereUniqueInput
+  }
+
+  export type DownloadUpdateOneWithoutDownloadRecordNestedInput = {
+    create?: XOR<DownloadCreateWithoutDownloadRecordInput, DownloadUncheckedCreateWithoutDownloadRecordInput>
+    connectOrCreate?: DownloadCreateOrConnectWithoutDownloadRecordInput
+    upsert?: DownloadUpsertWithoutDownloadRecordInput
+    disconnect?: DownloadWhereInput | boolean
+    delete?: DownloadWhereInput | boolean
+    connect?: DownloadWhereUniqueInput
+    update?: XOR<XOR<DownloadUpdateToOneWithWhereWithoutDownloadRecordInput, DownloadUpdateWithoutDownloadRecordInput>, DownloadUncheckedUpdateWithoutDownloadRecordInput>
+  }
+
+  export type GenerateRecordDetailUpdateOneWithoutDownloadRecordNestedInput = {
+    create?: XOR<GenerateRecordDetailCreateWithoutDownloadRecordInput, GenerateRecordDetailUncheckedCreateWithoutDownloadRecordInput>
+    connectOrCreate?: GenerateRecordDetailCreateOrConnectWithoutDownloadRecordInput
+    upsert?: GenerateRecordDetailUpsertWithoutDownloadRecordInput
+    disconnect?: GenerateRecordDetailWhereInput | boolean
+    delete?: GenerateRecordDetailWhereInput | boolean
+    connect?: GenerateRecordDetailWhereUniqueInput
+    update?: XOR<XOR<GenerateRecordDetailUpdateToOneWithWhereWithoutDownloadRecordInput, GenerateRecordDetailUpdateWithoutDownloadRecordInput>, GenerateRecordDetailUncheckedUpdateWithoutDownloadRecordInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -18884,11 +21404,15 @@ export namespace Prisma {
     avatar?: string | null
     status?: string | null
     industry?: string | null
+    advantage?: string | null
+    advantageHtml?: string | null
+    works?: string | null
+    projects?: string | null
+    other?: string | null
     createdTime?: Date | string
     updatedTime?: Date | string
-    works?: WorksCreateNestedManyWithoutResumeInput
-    projects?: ProjectsCreateNestedManyWithoutResumeInput
     template?: TemplateCreateNestedOneWithoutResumeInput
+    generateRecord?: GenerateRecordCreateNestedManyWithoutResumeInput
   }
 
   export type ResumeUncheckedCreateWithoutUserInput = {
@@ -18903,11 +21427,15 @@ export namespace Prisma {
     avatar?: string | null
     status?: string | null
     industry?: string | null
+    advantage?: string | null
+    advantageHtml?: string | null
+    works?: string | null
+    projects?: string | null
+    other?: string | null
     templateId?: string | null
     createdTime?: Date | string
     updatedTime?: Date | string
-    works?: WorksUncheckedCreateNestedManyWithoutResumeInput
-    projects?: ProjectsUncheckedCreateNestedManyWithoutResumeInput
+    generateRecord?: GenerateRecordUncheckedCreateNestedManyWithoutResumeInput
   }
 
   export type ResumeCreateOrConnectWithoutUserInput = {
@@ -18970,9 +21498,8 @@ export namespace Prisma {
 
   export type AIGeneratorCreateWithoutUserInput = {
     id?: string
-    desc: string
-    date: number
-    times: number
+    date?: number | null
+    times?: number | null
     createdTime?: Date | string
     updatedTime?: Date | string
     aiGenerateContent?: AIGenerateContentCreateNestedManyWithoutAiGeneratorInput
@@ -18980,9 +21507,8 @@ export namespace Prisma {
 
   export type AIGeneratorUncheckedCreateWithoutUserInput = {
     id?: string
-    desc: string
-    date: number
-    times: number
+    date?: number | null
+    times?: number | null
     createdTime?: Date | string
     updatedTime?: Date | string
     aiGenerateContent?: AIGenerateContentUncheckedCreateNestedManyWithoutAiGeneratorInput
@@ -18995,6 +21521,34 @@ export namespace Prisma {
 
   export type AIGeneratorCreateManyUserInputEnvelope = {
     data: AIGeneratorCreateManyUserInput | AIGeneratorCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DownloadCreateWithoutUserInput = {
+    id?: string
+    date?: number | null
+    times?: number | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    downloadRecord?: DownloadRecordCreateNestedManyWithoutDownloadInput
+  }
+
+  export type DownloadUncheckedCreateWithoutUserInput = {
+    id?: string
+    date?: number | null
+    times?: number | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    downloadRecord?: DownloadRecordUncheckedCreateNestedManyWithoutDownloadInput
+  }
+
+  export type DownloadCreateOrConnectWithoutUserInput = {
+    where: DownloadWhereUniqueInput
+    create: XOR<DownloadCreateWithoutUserInput, DownloadUncheckedCreateWithoutUserInput>
+  }
+
+  export type DownloadCreateManyUserInputEnvelope = {
+    data: DownloadCreateManyUserInput | DownloadCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -19019,6 +21573,36 @@ export namespace Prisma {
 
   export type SignCreateManyUserInputEnvelope = {
     data: SignCreateManyUserInput | SignCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type GenerateRecordCreateWithoutUserInput = {
+    id?: string
+    date?: number | null
+    times?: number | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    resume?: ResumeCreateNestedOneWithoutGenerateRecordInput
+    generateRecordDetail?: GenerateRecordDetailCreateNestedManyWithoutGenerateRecordInput
+  }
+
+  export type GenerateRecordUncheckedCreateWithoutUserInput = {
+    id?: string
+    date?: number | null
+    times?: number | null
+    resumeId?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    generateRecordDetail?: GenerateRecordDetailUncheckedCreateNestedManyWithoutGenerateRecordInput
+  }
+
+  export type GenerateRecordCreateOrConnectWithoutUserInput = {
+    where: GenerateRecordWhereUniqueInput
+    create: XOR<GenerateRecordCreateWithoutUserInput, GenerateRecordUncheckedCreateWithoutUserInput>
+  }
+
+  export type GenerateRecordCreateManyUserInputEnvelope = {
+    data: GenerateRecordCreateManyUserInput | GenerateRecordCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -19080,6 +21664,11 @@ export namespace Prisma {
     avatar?: StringNullableFilter<"Resume"> | string | null
     status?: StringNullableFilter<"Resume"> | string | null
     industry?: StringNullableFilter<"Resume"> | string | null
+    advantage?: StringNullableFilter<"Resume"> | string | null
+    advantageHtml?: StringNullableFilter<"Resume"> | string | null
+    works?: StringNullableFilter<"Resume"> | string | null
+    projects?: StringNullableFilter<"Resume"> | string | null
+    other?: StringNullableFilter<"Resume"> | string | null
     userId?: StringNullableFilter<"Resume"> | string | null
     templateId?: StringNullableFilter<"Resume"> | string | null
     createdTime?: DateTimeFilter<"Resume"> | Date | string
@@ -19150,12 +21739,39 @@ export namespace Prisma {
     OR?: AIGeneratorScalarWhereInput[]
     NOT?: AIGeneratorScalarWhereInput | AIGeneratorScalarWhereInput[]
     id?: StringFilter<"AIGenerator"> | string
-    desc?: StringFilter<"AIGenerator"> | string
-    date?: IntFilter<"AIGenerator"> | number
-    times?: IntFilter<"AIGenerator"> | number
+    date?: IntNullableFilter<"AIGenerator"> | number | null
+    times?: IntNullableFilter<"AIGenerator"> | number | null
     userId?: StringFilter<"AIGenerator"> | string
     createdTime?: DateTimeFilter<"AIGenerator"> | Date | string
     updatedTime?: DateTimeFilter<"AIGenerator"> | Date | string
+  }
+
+  export type DownloadUpsertWithWhereUniqueWithoutUserInput = {
+    where: DownloadWhereUniqueInput
+    update: XOR<DownloadUpdateWithoutUserInput, DownloadUncheckedUpdateWithoutUserInput>
+    create: XOR<DownloadCreateWithoutUserInput, DownloadUncheckedCreateWithoutUserInput>
+  }
+
+  export type DownloadUpdateWithWhereUniqueWithoutUserInput = {
+    where: DownloadWhereUniqueInput
+    data: XOR<DownloadUpdateWithoutUserInput, DownloadUncheckedUpdateWithoutUserInput>
+  }
+
+  export type DownloadUpdateManyWithWhereWithoutUserInput = {
+    where: DownloadScalarWhereInput
+    data: XOR<DownloadUpdateManyMutationInput, DownloadUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type DownloadScalarWhereInput = {
+    AND?: DownloadScalarWhereInput | DownloadScalarWhereInput[]
+    OR?: DownloadScalarWhereInput[]
+    NOT?: DownloadScalarWhereInput | DownloadScalarWhereInput[]
+    id?: StringFilter<"Download"> | string
+    date?: IntNullableFilter<"Download"> | number | null
+    times?: IntNullableFilter<"Download"> | number | null
+    userId?: StringFilter<"Download"> | string
+    createdTime?: DateTimeFilter<"Download"> | Date | string
+    updatedTime?: DateTimeFilter<"Download"> | Date | string
   }
 
   export type SignUpsertWithWhereUniqueWithoutUserInput = {
@@ -19185,6 +21801,35 @@ export namespace Prisma {
     updatedTime?: DateTimeFilter<"Sign"> | Date | string
   }
 
+  export type GenerateRecordUpsertWithWhereUniqueWithoutUserInput = {
+    where: GenerateRecordWhereUniqueInput
+    update: XOR<GenerateRecordUpdateWithoutUserInput, GenerateRecordUncheckedUpdateWithoutUserInput>
+    create: XOR<GenerateRecordCreateWithoutUserInput, GenerateRecordUncheckedCreateWithoutUserInput>
+  }
+
+  export type GenerateRecordUpdateWithWhereUniqueWithoutUserInput = {
+    where: GenerateRecordWhereUniqueInput
+    data: XOR<GenerateRecordUpdateWithoutUserInput, GenerateRecordUncheckedUpdateWithoutUserInput>
+  }
+
+  export type GenerateRecordUpdateManyWithWhereWithoutUserInput = {
+    where: GenerateRecordScalarWhereInput
+    data: XOR<GenerateRecordUpdateManyMutationInput, GenerateRecordUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type GenerateRecordScalarWhereInput = {
+    AND?: GenerateRecordScalarWhereInput | GenerateRecordScalarWhereInput[]
+    OR?: GenerateRecordScalarWhereInput[]
+    NOT?: GenerateRecordScalarWhereInput | GenerateRecordScalarWhereInput[]
+    id?: StringFilter<"GenerateRecord"> | string
+    date?: IntNullableFilter<"GenerateRecord"> | number | null
+    times?: IntNullableFilter<"GenerateRecord"> | number | null
+    resumeId?: StringNullableFilter<"GenerateRecord"> | string | null
+    userId?: StringNullableFilter<"GenerateRecord"> | string | null
+    createdTime?: DateTimeFilter<"GenerateRecord"> | Date | string
+    updatedTime?: DateTimeFilter<"GenerateRecord"> | Date | string
+  }
+
   export type UserCreateWithoutSignInput = {
     id?: string
     username: string
@@ -19199,6 +21844,8 @@ export namespace Prisma {
     inviter?: InviteCreateNestedManyWithoutInviterInput
     invitee?: InviteCreateNestedManyWithoutInviteeInput
     aiGenerator?: AIGeneratorCreateNestedManyWithoutUserInput
+    download?: DownloadCreateNestedManyWithoutUserInput
+    generateRecord?: GenerateRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSignInput = {
@@ -19215,6 +21862,8 @@ export namespace Prisma {
     inviter?: InviteUncheckedCreateNestedManyWithoutInviterInput
     invitee?: InviteUncheckedCreateNestedManyWithoutInviteeInput
     aiGenerator?: AIGeneratorUncheckedCreateNestedManyWithoutUserInput
+    download?: DownloadUncheckedCreateNestedManyWithoutUserInput
+    generateRecord?: GenerateRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSignInput = {
@@ -19247,6 +21896,8 @@ export namespace Prisma {
     inviter?: InviteUpdateManyWithoutInviterNestedInput
     invitee?: InviteUpdateManyWithoutInviteeNestedInput
     aiGenerator?: AIGeneratorUpdateManyWithoutUserNestedInput
+    download?: DownloadUpdateManyWithoutUserNestedInput
+    generateRecord?: GenerateRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSignInput = {
@@ -19263,6 +21914,8 @@ export namespace Prisma {
     inviter?: InviteUncheckedUpdateManyWithoutInviterNestedInput
     invitee?: InviteUncheckedUpdateManyWithoutInviteeNestedInput
     aiGenerator?: AIGeneratorUncheckedUpdateManyWithoutUserNestedInput
+    download?: DownloadUncheckedUpdateManyWithoutUserNestedInput
+    generateRecord?: GenerateRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutAiGeneratorInput = {
@@ -19278,7 +21931,9 @@ export namespace Prisma {
     resume?: ResumeCreateNestedManyWithoutUserInput
     inviter?: InviteCreateNestedManyWithoutInviterInput
     invitee?: InviteCreateNestedManyWithoutInviteeInput
+    download?: DownloadCreateNestedManyWithoutUserInput
     sign?: SignCreateNestedManyWithoutUserInput
+    generateRecord?: GenerateRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAiGeneratorInput = {
@@ -19294,7 +21949,9 @@ export namespace Prisma {
     resume?: ResumeUncheckedCreateNestedManyWithoutUserInput
     inviter?: InviteUncheckedCreateNestedManyWithoutInviterInput
     invitee?: InviteUncheckedCreateNestedManyWithoutInviteeInput
+    download?: DownloadUncheckedCreateNestedManyWithoutUserInput
     sign?: SignUncheckedCreateNestedManyWithoutUserInput
+    generateRecord?: GenerateRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAiGeneratorInput = {
@@ -19304,6 +21961,7 @@ export namespace Prisma {
 
   export type AIGenerateContentCreateWithoutAiGeneratorInput = {
     id?: string
+    desc: string
     gid: string
     model: string
     promptTokens: number
@@ -19316,6 +21974,7 @@ export namespace Prisma {
 
   export type AIGenerateContentUncheckedCreateWithoutAiGeneratorInput = {
     id?: string
+    desc: string
     gid: string
     model: string
     promptTokens: number
@@ -19360,7 +22019,9 @@ export namespace Prisma {
     resume?: ResumeUpdateManyWithoutUserNestedInput
     inviter?: InviteUpdateManyWithoutInviterNestedInput
     invitee?: InviteUpdateManyWithoutInviteeNestedInput
+    download?: DownloadUpdateManyWithoutUserNestedInput
     sign?: SignUpdateManyWithoutUserNestedInput
+    generateRecord?: GenerateRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAiGeneratorInput = {
@@ -19376,7 +22037,9 @@ export namespace Prisma {
     resume?: ResumeUncheckedUpdateManyWithoutUserNestedInput
     inviter?: InviteUncheckedUpdateManyWithoutInviterNestedInput
     invitee?: InviteUncheckedUpdateManyWithoutInviteeNestedInput
+    download?: DownloadUncheckedUpdateManyWithoutUserNestedInput
     sign?: SignUncheckedUpdateManyWithoutUserNestedInput
+    generateRecord?: GenerateRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AIGenerateContentUpsertWithWhereUniqueWithoutAiGeneratorInput = {
@@ -19400,6 +22063,7 @@ export namespace Prisma {
     OR?: AIGenerateContentScalarWhereInput[]
     NOT?: AIGenerateContentScalarWhereInput | AIGenerateContentScalarWhereInput[]
     id?: StringFilter<"AIGenerateContent"> | string
+    desc?: StringFilter<"AIGenerateContent"> | string
     gid?: StringFilter<"AIGenerateContent"> | string
     model?: StringFilter<"AIGenerateContent"> | string
     promptTokens?: IntFilter<"AIGenerateContent"> | number
@@ -19413,9 +22077,8 @@ export namespace Prisma {
 
   export type AIGeneratorCreateWithoutAiGenerateContentInput = {
     id?: string
-    desc: string
-    date: number
-    times: number
+    date?: number | null
+    times?: number | null
     createdTime?: Date | string
     updatedTime?: Date | string
     user?: UserCreateNestedOneWithoutAiGeneratorInput
@@ -19423,9 +22086,8 @@ export namespace Prisma {
 
   export type AIGeneratorUncheckedCreateWithoutAiGenerateContentInput = {
     id?: string
-    desc: string
-    date: number
-    times: number
+    date?: number | null
+    times?: number | null
     userId: string
     createdTime?: Date | string
     updatedTime?: Date | string
@@ -19449,9 +22111,8 @@ export namespace Prisma {
 
   export type AIGeneratorUpdateWithoutAiGenerateContentInput = {
     id?: StringFieldUpdateOperationsInput | string
-    desc?: StringFieldUpdateOperationsInput | string
-    date?: IntFieldUpdateOperationsInput | number
-    times?: IntFieldUpdateOperationsInput | number
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutAiGeneratorNestedInput
@@ -19459,9 +22120,8 @@ export namespace Prisma {
 
   export type AIGeneratorUncheckedUpdateWithoutAiGenerateContentInput = {
     id?: StringFieldUpdateOperationsInput | string
-    desc?: StringFieldUpdateOperationsInput | string
-    date?: IntFieldUpdateOperationsInput | number
-    times?: IntFieldUpdateOperationsInput | number
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
     userId?: StringFieldUpdateOperationsInput | string
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19480,7 +22140,9 @@ export namespace Prisma {
     inviter?: InviteCreateNestedManyWithoutInviterInput
     invitee?: InviteCreateNestedManyWithoutInviteeInput
     aiGenerator?: AIGeneratorCreateNestedManyWithoutUserInput
+    download?: DownloadCreateNestedManyWithoutUserInput
     sign?: SignCreateNestedManyWithoutUserInput
+    generateRecord?: GenerateRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProfileInput = {
@@ -19496,7 +22158,9 @@ export namespace Prisma {
     inviter?: InviteUncheckedCreateNestedManyWithoutInviterInput
     invitee?: InviteUncheckedCreateNestedManyWithoutInviteeInput
     aiGenerator?: AIGeneratorUncheckedCreateNestedManyWithoutUserInput
+    download?: DownloadUncheckedCreateNestedManyWithoutUserInput
     sign?: SignUncheckedCreateNestedManyWithoutUserInput
+    generateRecord?: GenerateRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProfileInput = {
@@ -19528,7 +22192,9 @@ export namespace Prisma {
     inviter?: InviteUpdateManyWithoutInviterNestedInput
     invitee?: InviteUpdateManyWithoutInviteeNestedInput
     aiGenerator?: AIGeneratorUpdateManyWithoutUserNestedInput
+    download?: DownloadUpdateManyWithoutUserNestedInput
     sign?: SignUpdateManyWithoutUserNestedInput
+    generateRecord?: GenerateRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProfileInput = {
@@ -19544,7 +22210,9 @@ export namespace Prisma {
     inviter?: InviteUncheckedUpdateManyWithoutInviterNestedInput
     invitee?: InviteUncheckedUpdateManyWithoutInviteeNestedInput
     aiGenerator?: AIGeneratorUncheckedUpdateManyWithoutUserNestedInput
+    download?: DownloadUncheckedUpdateManyWithoutUserNestedInput
     sign?: SignUncheckedUpdateManyWithoutUserNestedInput
+    generateRecord?: GenerateRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutInviterInput = {
@@ -19560,7 +22228,9 @@ export namespace Prisma {
     resume?: ResumeCreateNestedManyWithoutUserInput
     invitee?: InviteCreateNestedManyWithoutInviteeInput
     aiGenerator?: AIGeneratorCreateNestedManyWithoutUserInput
+    download?: DownloadCreateNestedManyWithoutUserInput
     sign?: SignCreateNestedManyWithoutUserInput
+    generateRecord?: GenerateRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutInviterInput = {
@@ -19576,7 +22246,9 @@ export namespace Prisma {
     resume?: ResumeUncheckedCreateNestedManyWithoutUserInput
     invitee?: InviteUncheckedCreateNestedManyWithoutInviteeInput
     aiGenerator?: AIGeneratorUncheckedCreateNestedManyWithoutUserInput
+    download?: DownloadUncheckedCreateNestedManyWithoutUserInput
     sign?: SignUncheckedCreateNestedManyWithoutUserInput
+    generateRecord?: GenerateRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutInviterInput = {
@@ -19597,7 +22269,9 @@ export namespace Prisma {
     resume?: ResumeCreateNestedManyWithoutUserInput
     inviter?: InviteCreateNestedManyWithoutInviterInput
     aiGenerator?: AIGeneratorCreateNestedManyWithoutUserInput
+    download?: DownloadCreateNestedManyWithoutUserInput
     sign?: SignCreateNestedManyWithoutUserInput
+    generateRecord?: GenerateRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutInviteeInput = {
@@ -19613,7 +22287,9 @@ export namespace Prisma {
     resume?: ResumeUncheckedCreateNestedManyWithoutUserInput
     inviter?: InviteUncheckedCreateNestedManyWithoutInviterInput
     aiGenerator?: AIGeneratorUncheckedCreateNestedManyWithoutUserInput
+    download?: DownloadUncheckedCreateNestedManyWithoutUserInput
     sign?: SignUncheckedCreateNestedManyWithoutUserInput
+    generateRecord?: GenerateRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutInviteeInput = {
@@ -19645,7 +22321,9 @@ export namespace Prisma {
     resume?: ResumeUpdateManyWithoutUserNestedInput
     invitee?: InviteUpdateManyWithoutInviteeNestedInput
     aiGenerator?: AIGeneratorUpdateManyWithoutUserNestedInput
+    download?: DownloadUpdateManyWithoutUserNestedInput
     sign?: SignUpdateManyWithoutUserNestedInput
+    generateRecord?: GenerateRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutInviterInput = {
@@ -19661,7 +22339,9 @@ export namespace Prisma {
     resume?: ResumeUncheckedUpdateManyWithoutUserNestedInput
     invitee?: InviteUncheckedUpdateManyWithoutInviteeNestedInput
     aiGenerator?: AIGeneratorUncheckedUpdateManyWithoutUserNestedInput
+    download?: DownloadUncheckedUpdateManyWithoutUserNestedInput
     sign?: SignUncheckedUpdateManyWithoutUserNestedInput
+    generateRecord?: GenerateRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUpsertWithoutInviteeInput = {
@@ -19688,7 +22368,9 @@ export namespace Prisma {
     resume?: ResumeUpdateManyWithoutUserNestedInput
     inviter?: InviteUpdateManyWithoutInviterNestedInput
     aiGenerator?: AIGeneratorUpdateManyWithoutUserNestedInput
+    download?: DownloadUpdateManyWithoutUserNestedInput
     sign?: SignUpdateManyWithoutUserNestedInput
+    generateRecord?: GenerateRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutInviteeInput = {
@@ -19704,55 +22386,9 @@ export namespace Prisma {
     resume?: ResumeUncheckedUpdateManyWithoutUserNestedInput
     inviter?: InviteUncheckedUpdateManyWithoutInviterNestedInput
     aiGenerator?: AIGeneratorUncheckedUpdateManyWithoutUserNestedInput
+    download?: DownloadUncheckedUpdateManyWithoutUserNestedInput
     sign?: SignUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type WorksCreateWithoutResumeInput = {
-    id?: string
-    content: string
-    createdTime?: Date | string
-    updatedTime?: Date | string
-  }
-
-  export type WorksUncheckedCreateWithoutResumeInput = {
-    id?: string
-    content: string
-    createdTime?: Date | string
-    updatedTime?: Date | string
-  }
-
-  export type WorksCreateOrConnectWithoutResumeInput = {
-    where: WorksWhereUniqueInput
-    create: XOR<WorksCreateWithoutResumeInput, WorksUncheckedCreateWithoutResumeInput>
-  }
-
-  export type WorksCreateManyResumeInputEnvelope = {
-    data: WorksCreateManyResumeInput | WorksCreateManyResumeInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ProjectsCreateWithoutResumeInput = {
-    id?: string
-    content: string
-    createdTime?: Date | string
-    updatedTime?: Date | string
-  }
-
-  export type ProjectsUncheckedCreateWithoutResumeInput = {
-    id?: string
-    content: string
-    createdTime?: Date | string
-    updatedTime?: Date | string
-  }
-
-  export type ProjectsCreateOrConnectWithoutResumeInput = {
-    where: ProjectsWhereUniqueInput
-    create: XOR<ProjectsCreateWithoutResumeInput, ProjectsUncheckedCreateWithoutResumeInput>
-  }
-
-  export type ProjectsCreateManyResumeInputEnvelope = {
-    data: ProjectsCreateManyResumeInput | ProjectsCreateManyResumeInput[]
-    skipDuplicates?: boolean
+    generateRecord?: GenerateRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutResumeInput = {
@@ -19768,7 +22404,9 @@ export namespace Prisma {
     inviter?: InviteCreateNestedManyWithoutInviterInput
     invitee?: InviteCreateNestedManyWithoutInviteeInput
     aiGenerator?: AIGeneratorCreateNestedManyWithoutUserInput
+    download?: DownloadCreateNestedManyWithoutUserInput
     sign?: SignCreateNestedManyWithoutUserInput
+    generateRecord?: GenerateRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutResumeInput = {
@@ -19784,7 +22422,9 @@ export namespace Prisma {
     inviter?: InviteUncheckedCreateNestedManyWithoutInviterInput
     invitee?: InviteUncheckedCreateNestedManyWithoutInviteeInput
     aiGenerator?: AIGeneratorUncheckedCreateNestedManyWithoutUserInput
+    download?: DownloadUncheckedCreateNestedManyWithoutUserInput
     sign?: SignUncheckedCreateNestedManyWithoutUserInput
+    generateRecord?: GenerateRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutResumeInput = {
@@ -19797,6 +22437,8 @@ export namespace Prisma {
     title?: string
     path?: string
     type?: string | null
+    usedTimes?: number | null
+    coverUrl?: string | null
     createdTime?: Date | string
     updatedTime?: Date | string
   }
@@ -19806,6 +22448,8 @@ export namespace Prisma {
     title?: string
     path?: string
     type?: string | null
+    usedTimes?: number | null
+    coverUrl?: string | null
     createdTime?: Date | string
     updatedTime?: Date | string
   }
@@ -19815,58 +22459,34 @@ export namespace Prisma {
     create: XOR<TemplateCreateWithoutResumeInput, TemplateUncheckedCreateWithoutResumeInput>
   }
 
-  export type WorksUpsertWithWhereUniqueWithoutResumeInput = {
-    where: WorksWhereUniqueInput
-    update: XOR<WorksUpdateWithoutResumeInput, WorksUncheckedUpdateWithoutResumeInput>
-    create: XOR<WorksCreateWithoutResumeInput, WorksUncheckedCreateWithoutResumeInput>
+  export type GenerateRecordCreateWithoutResumeInput = {
+    id?: string
+    date?: number | null
+    times?: number | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    user?: UserCreateNestedOneWithoutGenerateRecordInput
+    generateRecordDetail?: GenerateRecordDetailCreateNestedManyWithoutGenerateRecordInput
   }
 
-  export type WorksUpdateWithWhereUniqueWithoutResumeInput = {
-    where: WorksWhereUniqueInput
-    data: XOR<WorksUpdateWithoutResumeInput, WorksUncheckedUpdateWithoutResumeInput>
+  export type GenerateRecordUncheckedCreateWithoutResumeInput = {
+    id?: string
+    date?: number | null
+    times?: number | null
+    userId?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    generateRecordDetail?: GenerateRecordDetailUncheckedCreateNestedManyWithoutGenerateRecordInput
   }
 
-  export type WorksUpdateManyWithWhereWithoutResumeInput = {
-    where: WorksScalarWhereInput
-    data: XOR<WorksUpdateManyMutationInput, WorksUncheckedUpdateManyWithoutResumeInput>
+  export type GenerateRecordCreateOrConnectWithoutResumeInput = {
+    where: GenerateRecordWhereUniqueInput
+    create: XOR<GenerateRecordCreateWithoutResumeInput, GenerateRecordUncheckedCreateWithoutResumeInput>
   }
 
-  export type WorksScalarWhereInput = {
-    AND?: WorksScalarWhereInput | WorksScalarWhereInput[]
-    OR?: WorksScalarWhereInput[]
-    NOT?: WorksScalarWhereInput | WorksScalarWhereInput[]
-    id?: StringFilter<"Works"> | string
-    content?: StringFilter<"Works"> | string
-    resumeId?: StringFilter<"Works"> | string
-    createdTime?: DateTimeFilter<"Works"> | Date | string
-    updatedTime?: DateTimeFilter<"Works"> | Date | string
-  }
-
-  export type ProjectsUpsertWithWhereUniqueWithoutResumeInput = {
-    where: ProjectsWhereUniqueInput
-    update: XOR<ProjectsUpdateWithoutResumeInput, ProjectsUncheckedUpdateWithoutResumeInput>
-    create: XOR<ProjectsCreateWithoutResumeInput, ProjectsUncheckedCreateWithoutResumeInput>
-  }
-
-  export type ProjectsUpdateWithWhereUniqueWithoutResumeInput = {
-    where: ProjectsWhereUniqueInput
-    data: XOR<ProjectsUpdateWithoutResumeInput, ProjectsUncheckedUpdateWithoutResumeInput>
-  }
-
-  export type ProjectsUpdateManyWithWhereWithoutResumeInput = {
-    where: ProjectsScalarWhereInput
-    data: XOR<ProjectsUpdateManyMutationInput, ProjectsUncheckedUpdateManyWithoutResumeInput>
-  }
-
-  export type ProjectsScalarWhereInput = {
-    AND?: ProjectsScalarWhereInput | ProjectsScalarWhereInput[]
-    OR?: ProjectsScalarWhereInput[]
-    NOT?: ProjectsScalarWhereInput | ProjectsScalarWhereInput[]
-    id?: StringFilter<"Projects"> | string
-    content?: StringFilter<"Projects"> | string
-    resumeId?: StringFilter<"Projects"> | string
-    createdTime?: DateTimeFilter<"Projects"> | Date | string
-    updatedTime?: DateTimeFilter<"Projects"> | Date | string
+  export type GenerateRecordCreateManyResumeInputEnvelope = {
+    data: GenerateRecordCreateManyResumeInput | GenerateRecordCreateManyResumeInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserUpsertWithoutResumeInput = {
@@ -19893,7 +22513,9 @@ export namespace Prisma {
     inviter?: InviteUpdateManyWithoutInviterNestedInput
     invitee?: InviteUpdateManyWithoutInviteeNestedInput
     aiGenerator?: AIGeneratorUpdateManyWithoutUserNestedInput
+    download?: DownloadUpdateManyWithoutUserNestedInput
     sign?: SignUpdateManyWithoutUserNestedInput
+    generateRecord?: GenerateRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutResumeInput = {
@@ -19909,7 +22531,9 @@ export namespace Prisma {
     inviter?: InviteUncheckedUpdateManyWithoutInviterNestedInput
     invitee?: InviteUncheckedUpdateManyWithoutInviteeNestedInput
     aiGenerator?: AIGeneratorUncheckedUpdateManyWithoutUserNestedInput
+    download?: DownloadUncheckedUpdateManyWithoutUserNestedInput
     sign?: SignUncheckedUpdateManyWithoutUserNestedInput
+    generateRecord?: GenerateRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TemplateUpsertWithoutResumeInput = {
@@ -19928,6 +22552,8 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    usedTimes?: NullableIntFieldUpdateOperationsInput | number | null
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19937,192 +22563,26 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     path?: StringFieldUpdateOperationsInput | string
     type?: NullableStringFieldUpdateOperationsInput | string | null
+    usedTimes?: NullableIntFieldUpdateOperationsInput | number | null
+    coverUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ResumeCreateWithoutWorksInput = {
-    id?: string
-    title: string
-    realname?: string | null
-    age?: number | null
-    education?: string | null
-    address?: string | null
-    mobile?: string | null
-    email?: string | null
-    avatar?: string | null
-    status?: string | null
-    industry?: string | null
-    createdTime?: Date | string
-    updatedTime?: Date | string
-    projects?: ProjectsCreateNestedManyWithoutResumeInput
-    user?: UserCreateNestedOneWithoutResumeInput
-    template?: TemplateCreateNestedOneWithoutResumeInput
+  export type GenerateRecordUpsertWithWhereUniqueWithoutResumeInput = {
+    where: GenerateRecordWhereUniqueInput
+    update: XOR<GenerateRecordUpdateWithoutResumeInput, GenerateRecordUncheckedUpdateWithoutResumeInput>
+    create: XOR<GenerateRecordCreateWithoutResumeInput, GenerateRecordUncheckedCreateWithoutResumeInput>
   }
 
-  export type ResumeUncheckedCreateWithoutWorksInput = {
-    id?: string
-    title: string
-    realname?: string | null
-    age?: number | null
-    education?: string | null
-    address?: string | null
-    mobile?: string | null
-    email?: string | null
-    avatar?: string | null
-    status?: string | null
-    industry?: string | null
-    userId?: string | null
-    templateId?: string | null
-    createdTime?: Date | string
-    updatedTime?: Date | string
-    projects?: ProjectsUncheckedCreateNestedManyWithoutResumeInput
+  export type GenerateRecordUpdateWithWhereUniqueWithoutResumeInput = {
+    where: GenerateRecordWhereUniqueInput
+    data: XOR<GenerateRecordUpdateWithoutResumeInput, GenerateRecordUncheckedUpdateWithoutResumeInput>
   }
 
-  export type ResumeCreateOrConnectWithoutWorksInput = {
-    where: ResumeWhereUniqueInput
-    create: XOR<ResumeCreateWithoutWorksInput, ResumeUncheckedCreateWithoutWorksInput>
-  }
-
-  export type ResumeUpsertWithoutWorksInput = {
-    update: XOR<ResumeUpdateWithoutWorksInput, ResumeUncheckedUpdateWithoutWorksInput>
-    create: XOR<ResumeCreateWithoutWorksInput, ResumeUncheckedCreateWithoutWorksInput>
-    where?: ResumeWhereInput
-  }
-
-  export type ResumeUpdateToOneWithWhereWithoutWorksInput = {
-    where?: ResumeWhereInput
-    data: XOR<ResumeUpdateWithoutWorksInput, ResumeUncheckedUpdateWithoutWorksInput>
-  }
-
-  export type ResumeUpdateWithoutWorksInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    realname?: NullableStringFieldUpdateOperationsInput | string | null
-    age?: NullableIntFieldUpdateOperationsInput | number | null
-    education?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    mobile?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    industry?: NullableStringFieldUpdateOperationsInput | string | null
-    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    projects?: ProjectsUpdateManyWithoutResumeNestedInput
-    user?: UserUpdateOneWithoutResumeNestedInput
-    template?: TemplateUpdateOneWithoutResumeNestedInput
-  }
-
-  export type ResumeUncheckedUpdateWithoutWorksInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    realname?: NullableStringFieldUpdateOperationsInput | string | null
-    age?: NullableIntFieldUpdateOperationsInput | number | null
-    education?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    mobile?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    industry?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
-    templateId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    projects?: ProjectsUncheckedUpdateManyWithoutResumeNestedInput
-  }
-
-  export type ResumeCreateWithoutProjectsInput = {
-    id?: string
-    title: string
-    realname?: string | null
-    age?: number | null
-    education?: string | null
-    address?: string | null
-    mobile?: string | null
-    email?: string | null
-    avatar?: string | null
-    status?: string | null
-    industry?: string | null
-    createdTime?: Date | string
-    updatedTime?: Date | string
-    works?: WorksCreateNestedManyWithoutResumeInput
-    user?: UserCreateNestedOneWithoutResumeInput
-    template?: TemplateCreateNestedOneWithoutResumeInput
-  }
-
-  export type ResumeUncheckedCreateWithoutProjectsInput = {
-    id?: string
-    title: string
-    realname?: string | null
-    age?: number | null
-    education?: string | null
-    address?: string | null
-    mobile?: string | null
-    email?: string | null
-    avatar?: string | null
-    status?: string | null
-    industry?: string | null
-    userId?: string | null
-    templateId?: string | null
-    createdTime?: Date | string
-    updatedTime?: Date | string
-    works?: WorksUncheckedCreateNestedManyWithoutResumeInput
-  }
-
-  export type ResumeCreateOrConnectWithoutProjectsInput = {
-    where: ResumeWhereUniqueInput
-    create: XOR<ResumeCreateWithoutProjectsInput, ResumeUncheckedCreateWithoutProjectsInput>
-  }
-
-  export type ResumeUpsertWithoutProjectsInput = {
-    update: XOR<ResumeUpdateWithoutProjectsInput, ResumeUncheckedUpdateWithoutProjectsInput>
-    create: XOR<ResumeCreateWithoutProjectsInput, ResumeUncheckedCreateWithoutProjectsInput>
-    where?: ResumeWhereInput
-  }
-
-  export type ResumeUpdateToOneWithWhereWithoutProjectsInput = {
-    where?: ResumeWhereInput
-    data: XOR<ResumeUpdateWithoutProjectsInput, ResumeUncheckedUpdateWithoutProjectsInput>
-  }
-
-  export type ResumeUpdateWithoutProjectsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    realname?: NullableStringFieldUpdateOperationsInput | string | null
-    age?: NullableIntFieldUpdateOperationsInput | number | null
-    education?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    mobile?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    industry?: NullableStringFieldUpdateOperationsInput | string | null
-    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    works?: WorksUpdateManyWithoutResumeNestedInput
-    user?: UserUpdateOneWithoutResumeNestedInput
-    template?: TemplateUpdateOneWithoutResumeNestedInput
-  }
-
-  export type ResumeUncheckedUpdateWithoutProjectsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    realname?: NullableStringFieldUpdateOperationsInput | string | null
-    age?: NullableIntFieldUpdateOperationsInput | number | null
-    education?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    mobile?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    industry?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
-    templateId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    works?: WorksUncheckedUpdateManyWithoutResumeNestedInput
+  export type GenerateRecordUpdateManyWithWhereWithoutResumeInput = {
+    where: GenerateRecordScalarWhereInput
+    data: XOR<GenerateRecordUpdateManyMutationInput, GenerateRecordUncheckedUpdateManyWithoutResumeInput>
   }
 
   export type ResumeCreateWithoutTemplateInput = {
@@ -20137,11 +22597,15 @@ export namespace Prisma {
     avatar?: string | null
     status?: string | null
     industry?: string | null
+    advantage?: string | null
+    advantageHtml?: string | null
+    works?: string | null
+    projects?: string | null
+    other?: string | null
     createdTime?: Date | string
     updatedTime?: Date | string
-    works?: WorksCreateNestedManyWithoutResumeInput
-    projects?: ProjectsCreateNestedManyWithoutResumeInput
     user?: UserCreateNestedOneWithoutResumeInput
+    generateRecord?: GenerateRecordCreateNestedManyWithoutResumeInput
   }
 
   export type ResumeUncheckedCreateWithoutTemplateInput = {
@@ -20156,11 +22620,15 @@ export namespace Prisma {
     avatar?: string | null
     status?: string | null
     industry?: string | null
+    advantage?: string | null
+    advantageHtml?: string | null
+    works?: string | null
+    projects?: string | null
+    other?: string | null
     userId?: string | null
     createdTime?: Date | string
     updatedTime?: Date | string
-    works?: WorksUncheckedCreateNestedManyWithoutResumeInput
-    projects?: ProjectsUncheckedCreateNestedManyWithoutResumeInput
+    generateRecord?: GenerateRecordUncheckedCreateNestedManyWithoutResumeInput
   }
 
   export type ResumeCreateOrConnectWithoutTemplateInput = {
@@ -20189,6 +22657,614 @@ export namespace Prisma {
     data: XOR<ResumeUpdateManyMutationInput, ResumeUncheckedUpdateManyWithoutTemplateInput>
   }
 
+  export type ResumeCreateWithoutGenerateRecordInput = {
+    id?: string
+    title: string
+    realname?: string | null
+    age?: number | null
+    education?: string | null
+    address?: string | null
+    mobile?: string | null
+    email?: string | null
+    avatar?: string | null
+    status?: string | null
+    industry?: string | null
+    advantage?: string | null
+    advantageHtml?: string | null
+    works?: string | null
+    projects?: string | null
+    other?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    user?: UserCreateNestedOneWithoutResumeInput
+    template?: TemplateCreateNestedOneWithoutResumeInput
+  }
+
+  export type ResumeUncheckedCreateWithoutGenerateRecordInput = {
+    id?: string
+    title: string
+    realname?: string | null
+    age?: number | null
+    education?: string | null
+    address?: string | null
+    mobile?: string | null
+    email?: string | null
+    avatar?: string | null
+    status?: string | null
+    industry?: string | null
+    advantage?: string | null
+    advantageHtml?: string | null
+    works?: string | null
+    projects?: string | null
+    other?: string | null
+    userId?: string | null
+    templateId?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+  }
+
+  export type ResumeCreateOrConnectWithoutGenerateRecordInput = {
+    where: ResumeWhereUniqueInput
+    create: XOR<ResumeCreateWithoutGenerateRecordInput, ResumeUncheckedCreateWithoutGenerateRecordInput>
+  }
+
+  export type UserCreateWithoutGenerateRecordInput = {
+    id?: string
+    username: string
+    password: string
+    email?: string | null
+    mobile?: string | null
+    status?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    profile?: ProfileCreateNestedOneWithoutUserInput
+    resume?: ResumeCreateNestedManyWithoutUserInput
+    inviter?: InviteCreateNestedManyWithoutInviterInput
+    invitee?: InviteCreateNestedManyWithoutInviteeInput
+    aiGenerator?: AIGeneratorCreateNestedManyWithoutUserInput
+    download?: DownloadCreateNestedManyWithoutUserInput
+    sign?: SignCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutGenerateRecordInput = {
+    id?: string
+    username: string
+    password: string
+    email?: string | null
+    mobile?: string | null
+    status?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
+    resume?: ResumeUncheckedCreateNestedManyWithoutUserInput
+    inviter?: InviteUncheckedCreateNestedManyWithoutInviterInput
+    invitee?: InviteUncheckedCreateNestedManyWithoutInviteeInput
+    aiGenerator?: AIGeneratorUncheckedCreateNestedManyWithoutUserInput
+    download?: DownloadUncheckedCreateNestedManyWithoutUserInput
+    sign?: SignUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutGenerateRecordInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutGenerateRecordInput, UserUncheckedCreateWithoutGenerateRecordInput>
+  }
+
+  export type GenerateRecordDetailCreateWithoutGenerateRecordInput = {
+    id?: string
+    title: string
+    url: string
+    status: string
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    downloadRecord?: DownloadRecordCreateNestedManyWithoutGenerateRecordDetailInput
+  }
+
+  export type GenerateRecordDetailUncheckedCreateWithoutGenerateRecordInput = {
+    id?: string
+    title: string
+    url: string
+    status: string
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    downloadRecord?: DownloadRecordUncheckedCreateNestedManyWithoutGenerateRecordDetailInput
+  }
+
+  export type GenerateRecordDetailCreateOrConnectWithoutGenerateRecordInput = {
+    where: GenerateRecordDetailWhereUniqueInput
+    create: XOR<GenerateRecordDetailCreateWithoutGenerateRecordInput, GenerateRecordDetailUncheckedCreateWithoutGenerateRecordInput>
+  }
+
+  export type GenerateRecordDetailCreateManyGenerateRecordInputEnvelope = {
+    data: GenerateRecordDetailCreateManyGenerateRecordInput | GenerateRecordDetailCreateManyGenerateRecordInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ResumeUpsertWithoutGenerateRecordInput = {
+    update: XOR<ResumeUpdateWithoutGenerateRecordInput, ResumeUncheckedUpdateWithoutGenerateRecordInput>
+    create: XOR<ResumeCreateWithoutGenerateRecordInput, ResumeUncheckedCreateWithoutGenerateRecordInput>
+    where?: ResumeWhereInput
+  }
+
+  export type ResumeUpdateToOneWithWhereWithoutGenerateRecordInput = {
+    where?: ResumeWhereInput
+    data: XOR<ResumeUpdateWithoutGenerateRecordInput, ResumeUncheckedUpdateWithoutGenerateRecordInput>
+  }
+
+  export type ResumeUpdateWithoutGenerateRecordInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    realname?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableIntFieldUpdateOperationsInput | number | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    advantage?: NullableStringFieldUpdateOperationsInput | string | null
+    advantageHtml?: NullableStringFieldUpdateOperationsInput | string | null
+    works?: NullableStringFieldUpdateOperationsInput | string | null
+    projects?: NullableStringFieldUpdateOperationsInput | string | null
+    other?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutResumeNestedInput
+    template?: TemplateUpdateOneWithoutResumeNestedInput
+  }
+
+  export type ResumeUncheckedUpdateWithoutGenerateRecordInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    realname?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableIntFieldUpdateOperationsInput | number | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    industry?: NullableStringFieldUpdateOperationsInput | string | null
+    advantage?: NullableStringFieldUpdateOperationsInput | string | null
+    advantageHtml?: NullableStringFieldUpdateOperationsInput | string | null
+    works?: NullableStringFieldUpdateOperationsInput | string | null
+    projects?: NullableStringFieldUpdateOperationsInput | string | null
+    other?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    templateId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpsertWithoutGenerateRecordInput = {
+    update: XOR<UserUpdateWithoutGenerateRecordInput, UserUncheckedUpdateWithoutGenerateRecordInput>
+    create: XOR<UserCreateWithoutGenerateRecordInput, UserUncheckedCreateWithoutGenerateRecordInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutGenerateRecordInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutGenerateRecordInput, UserUncheckedUpdateWithoutGenerateRecordInput>
+  }
+
+  export type UserUpdateWithoutGenerateRecordInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    profile?: ProfileUpdateOneWithoutUserNestedInput
+    resume?: ResumeUpdateManyWithoutUserNestedInput
+    inviter?: InviteUpdateManyWithoutInviterNestedInput
+    invitee?: InviteUpdateManyWithoutInviteeNestedInput
+    aiGenerator?: AIGeneratorUpdateManyWithoutUserNestedInput
+    download?: DownloadUpdateManyWithoutUserNestedInput
+    sign?: SignUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutGenerateRecordInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
+    resume?: ResumeUncheckedUpdateManyWithoutUserNestedInput
+    inviter?: InviteUncheckedUpdateManyWithoutInviterNestedInput
+    invitee?: InviteUncheckedUpdateManyWithoutInviteeNestedInput
+    aiGenerator?: AIGeneratorUncheckedUpdateManyWithoutUserNestedInput
+    download?: DownloadUncheckedUpdateManyWithoutUserNestedInput
+    sign?: SignUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type GenerateRecordDetailUpsertWithWhereUniqueWithoutGenerateRecordInput = {
+    where: GenerateRecordDetailWhereUniqueInput
+    update: XOR<GenerateRecordDetailUpdateWithoutGenerateRecordInput, GenerateRecordDetailUncheckedUpdateWithoutGenerateRecordInput>
+    create: XOR<GenerateRecordDetailCreateWithoutGenerateRecordInput, GenerateRecordDetailUncheckedCreateWithoutGenerateRecordInput>
+  }
+
+  export type GenerateRecordDetailUpdateWithWhereUniqueWithoutGenerateRecordInput = {
+    where: GenerateRecordDetailWhereUniqueInput
+    data: XOR<GenerateRecordDetailUpdateWithoutGenerateRecordInput, GenerateRecordDetailUncheckedUpdateWithoutGenerateRecordInput>
+  }
+
+  export type GenerateRecordDetailUpdateManyWithWhereWithoutGenerateRecordInput = {
+    where: GenerateRecordDetailScalarWhereInput
+    data: XOR<GenerateRecordDetailUpdateManyMutationInput, GenerateRecordDetailUncheckedUpdateManyWithoutGenerateRecordInput>
+  }
+
+  export type GenerateRecordDetailScalarWhereInput = {
+    AND?: GenerateRecordDetailScalarWhereInput | GenerateRecordDetailScalarWhereInput[]
+    OR?: GenerateRecordDetailScalarWhereInput[]
+    NOT?: GenerateRecordDetailScalarWhereInput | GenerateRecordDetailScalarWhereInput[]
+    id?: StringFilter<"GenerateRecordDetail"> | string
+    title?: StringFilter<"GenerateRecordDetail"> | string
+    url?: StringFilter<"GenerateRecordDetail"> | string
+    status?: StringFilter<"GenerateRecordDetail"> | string
+    generateRecordId?: StringNullableFilter<"GenerateRecordDetail"> | string | null
+    createdTime?: DateTimeFilter<"GenerateRecordDetail"> | Date | string
+    updatedTime?: DateTimeFilter<"GenerateRecordDetail"> | Date | string
+  }
+
+  export type GenerateRecordCreateWithoutGenerateRecordDetailInput = {
+    id?: string
+    date?: number | null
+    times?: number | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    resume?: ResumeCreateNestedOneWithoutGenerateRecordInput
+    user?: UserCreateNestedOneWithoutGenerateRecordInput
+  }
+
+  export type GenerateRecordUncheckedCreateWithoutGenerateRecordDetailInput = {
+    id?: string
+    date?: number | null
+    times?: number | null
+    resumeId?: string | null
+    userId?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+  }
+
+  export type GenerateRecordCreateOrConnectWithoutGenerateRecordDetailInput = {
+    where: GenerateRecordWhereUniqueInput
+    create: XOR<GenerateRecordCreateWithoutGenerateRecordDetailInput, GenerateRecordUncheckedCreateWithoutGenerateRecordDetailInput>
+  }
+
+  export type DownloadRecordCreateWithoutGenerateRecordDetailInput = {
+    id?: string
+    title: string
+    url: string
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    download?: DownloadCreateNestedOneWithoutDownloadRecordInput
+  }
+
+  export type DownloadRecordUncheckedCreateWithoutGenerateRecordDetailInput = {
+    id?: string
+    title: string
+    url: string
+    downloadId?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+  }
+
+  export type DownloadRecordCreateOrConnectWithoutGenerateRecordDetailInput = {
+    where: DownloadRecordWhereUniqueInput
+    create: XOR<DownloadRecordCreateWithoutGenerateRecordDetailInput, DownloadRecordUncheckedCreateWithoutGenerateRecordDetailInput>
+  }
+
+  export type DownloadRecordCreateManyGenerateRecordDetailInputEnvelope = {
+    data: DownloadRecordCreateManyGenerateRecordDetailInput | DownloadRecordCreateManyGenerateRecordDetailInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type GenerateRecordUpsertWithoutGenerateRecordDetailInput = {
+    update: XOR<GenerateRecordUpdateWithoutGenerateRecordDetailInput, GenerateRecordUncheckedUpdateWithoutGenerateRecordDetailInput>
+    create: XOR<GenerateRecordCreateWithoutGenerateRecordDetailInput, GenerateRecordUncheckedCreateWithoutGenerateRecordDetailInput>
+    where?: GenerateRecordWhereInput
+  }
+
+  export type GenerateRecordUpdateToOneWithWhereWithoutGenerateRecordDetailInput = {
+    where?: GenerateRecordWhereInput
+    data: XOR<GenerateRecordUpdateWithoutGenerateRecordDetailInput, GenerateRecordUncheckedUpdateWithoutGenerateRecordDetailInput>
+  }
+
+  export type GenerateRecordUpdateWithoutGenerateRecordDetailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    resume?: ResumeUpdateOneWithoutGenerateRecordNestedInput
+    user?: UserUpdateOneWithoutGenerateRecordNestedInput
+  }
+
+  export type GenerateRecordUncheckedUpdateWithoutGenerateRecordDetailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    resumeId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DownloadRecordUpsertWithWhereUniqueWithoutGenerateRecordDetailInput = {
+    where: DownloadRecordWhereUniqueInput
+    update: XOR<DownloadRecordUpdateWithoutGenerateRecordDetailInput, DownloadRecordUncheckedUpdateWithoutGenerateRecordDetailInput>
+    create: XOR<DownloadRecordCreateWithoutGenerateRecordDetailInput, DownloadRecordUncheckedCreateWithoutGenerateRecordDetailInput>
+  }
+
+  export type DownloadRecordUpdateWithWhereUniqueWithoutGenerateRecordDetailInput = {
+    where: DownloadRecordWhereUniqueInput
+    data: XOR<DownloadRecordUpdateWithoutGenerateRecordDetailInput, DownloadRecordUncheckedUpdateWithoutGenerateRecordDetailInput>
+  }
+
+  export type DownloadRecordUpdateManyWithWhereWithoutGenerateRecordDetailInput = {
+    where: DownloadRecordScalarWhereInput
+    data: XOR<DownloadRecordUpdateManyMutationInput, DownloadRecordUncheckedUpdateManyWithoutGenerateRecordDetailInput>
+  }
+
+  export type DownloadRecordScalarWhereInput = {
+    AND?: DownloadRecordScalarWhereInput | DownloadRecordScalarWhereInput[]
+    OR?: DownloadRecordScalarWhereInput[]
+    NOT?: DownloadRecordScalarWhereInput | DownloadRecordScalarWhereInput[]
+    id?: StringFilter<"DownloadRecord"> | string
+    title?: StringFilter<"DownloadRecord"> | string
+    url?: StringFilter<"DownloadRecord"> | string
+    downloadId?: StringNullableFilter<"DownloadRecord"> | string | null
+    generateRecordDetailId?: StringNullableFilter<"DownloadRecord"> | string | null
+    createdTime?: DateTimeFilter<"DownloadRecord"> | Date | string
+    updatedTime?: DateTimeFilter<"DownloadRecord"> | Date | string
+  }
+
+  export type UserCreateWithoutDownloadInput = {
+    id?: string
+    username: string
+    password: string
+    email?: string | null
+    mobile?: string | null
+    status?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    profile?: ProfileCreateNestedOneWithoutUserInput
+    resume?: ResumeCreateNestedManyWithoutUserInput
+    inviter?: InviteCreateNestedManyWithoutInviterInput
+    invitee?: InviteCreateNestedManyWithoutInviteeInput
+    aiGenerator?: AIGeneratorCreateNestedManyWithoutUserInput
+    sign?: SignCreateNestedManyWithoutUserInput
+    generateRecord?: GenerateRecordCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutDownloadInput = {
+    id?: string
+    username: string
+    password: string
+    email?: string | null
+    mobile?: string | null
+    status?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
+    resume?: ResumeUncheckedCreateNestedManyWithoutUserInput
+    inviter?: InviteUncheckedCreateNestedManyWithoutInviterInput
+    invitee?: InviteUncheckedCreateNestedManyWithoutInviteeInput
+    aiGenerator?: AIGeneratorUncheckedCreateNestedManyWithoutUserInput
+    sign?: SignUncheckedCreateNestedManyWithoutUserInput
+    generateRecord?: GenerateRecordUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutDownloadInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutDownloadInput, UserUncheckedCreateWithoutDownloadInput>
+  }
+
+  export type DownloadRecordCreateWithoutDownloadInput = {
+    id?: string
+    title: string
+    url: string
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    generateRecordDetail?: GenerateRecordDetailCreateNestedOneWithoutDownloadRecordInput
+  }
+
+  export type DownloadRecordUncheckedCreateWithoutDownloadInput = {
+    id?: string
+    title: string
+    url: string
+    generateRecordDetailId?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+  }
+
+  export type DownloadRecordCreateOrConnectWithoutDownloadInput = {
+    where: DownloadRecordWhereUniqueInput
+    create: XOR<DownloadRecordCreateWithoutDownloadInput, DownloadRecordUncheckedCreateWithoutDownloadInput>
+  }
+
+  export type DownloadRecordCreateManyDownloadInputEnvelope = {
+    data: DownloadRecordCreateManyDownloadInput | DownloadRecordCreateManyDownloadInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutDownloadInput = {
+    update: XOR<UserUpdateWithoutDownloadInput, UserUncheckedUpdateWithoutDownloadInput>
+    create: XOR<UserCreateWithoutDownloadInput, UserUncheckedCreateWithoutDownloadInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutDownloadInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutDownloadInput, UserUncheckedUpdateWithoutDownloadInput>
+  }
+
+  export type UserUpdateWithoutDownloadInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    profile?: ProfileUpdateOneWithoutUserNestedInput
+    resume?: ResumeUpdateManyWithoutUserNestedInput
+    inviter?: InviteUpdateManyWithoutInviterNestedInput
+    invitee?: InviteUpdateManyWithoutInviteeNestedInput
+    aiGenerator?: AIGeneratorUpdateManyWithoutUserNestedInput
+    sign?: SignUpdateManyWithoutUserNestedInput
+    generateRecord?: GenerateRecordUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutDownloadInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
+    resume?: ResumeUncheckedUpdateManyWithoutUserNestedInput
+    inviter?: InviteUncheckedUpdateManyWithoutInviterNestedInput
+    invitee?: InviteUncheckedUpdateManyWithoutInviteeNestedInput
+    aiGenerator?: AIGeneratorUncheckedUpdateManyWithoutUserNestedInput
+    sign?: SignUncheckedUpdateManyWithoutUserNestedInput
+    generateRecord?: GenerateRecordUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type DownloadRecordUpsertWithWhereUniqueWithoutDownloadInput = {
+    where: DownloadRecordWhereUniqueInput
+    update: XOR<DownloadRecordUpdateWithoutDownloadInput, DownloadRecordUncheckedUpdateWithoutDownloadInput>
+    create: XOR<DownloadRecordCreateWithoutDownloadInput, DownloadRecordUncheckedCreateWithoutDownloadInput>
+  }
+
+  export type DownloadRecordUpdateWithWhereUniqueWithoutDownloadInput = {
+    where: DownloadRecordWhereUniqueInput
+    data: XOR<DownloadRecordUpdateWithoutDownloadInput, DownloadRecordUncheckedUpdateWithoutDownloadInput>
+  }
+
+  export type DownloadRecordUpdateManyWithWhereWithoutDownloadInput = {
+    where: DownloadRecordScalarWhereInput
+    data: XOR<DownloadRecordUpdateManyMutationInput, DownloadRecordUncheckedUpdateManyWithoutDownloadInput>
+  }
+
+  export type DownloadCreateWithoutDownloadRecordInput = {
+    id?: string
+    date?: number | null
+    times?: number | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    user?: UserCreateNestedOneWithoutDownloadInput
+  }
+
+  export type DownloadUncheckedCreateWithoutDownloadRecordInput = {
+    id?: string
+    date?: number | null
+    times?: number | null
+    userId: string
+    createdTime?: Date | string
+    updatedTime?: Date | string
+  }
+
+  export type DownloadCreateOrConnectWithoutDownloadRecordInput = {
+    where: DownloadWhereUniqueInput
+    create: XOR<DownloadCreateWithoutDownloadRecordInput, DownloadUncheckedCreateWithoutDownloadRecordInput>
+  }
+
+  export type GenerateRecordDetailCreateWithoutDownloadRecordInput = {
+    id?: string
+    title: string
+    url: string
+    status: string
+    createdTime?: Date | string
+    updatedTime?: Date | string
+    generateRecord?: GenerateRecordCreateNestedOneWithoutGenerateRecordDetailInput
+  }
+
+  export type GenerateRecordDetailUncheckedCreateWithoutDownloadRecordInput = {
+    id?: string
+    title: string
+    url: string
+    status: string
+    generateRecordId?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+  }
+
+  export type GenerateRecordDetailCreateOrConnectWithoutDownloadRecordInput = {
+    where: GenerateRecordDetailWhereUniqueInput
+    create: XOR<GenerateRecordDetailCreateWithoutDownloadRecordInput, GenerateRecordDetailUncheckedCreateWithoutDownloadRecordInput>
+  }
+
+  export type DownloadUpsertWithoutDownloadRecordInput = {
+    update: XOR<DownloadUpdateWithoutDownloadRecordInput, DownloadUncheckedUpdateWithoutDownloadRecordInput>
+    create: XOR<DownloadCreateWithoutDownloadRecordInput, DownloadUncheckedCreateWithoutDownloadRecordInput>
+    where?: DownloadWhereInput
+  }
+
+  export type DownloadUpdateToOneWithWhereWithoutDownloadRecordInput = {
+    where?: DownloadWhereInput
+    data: XOR<DownloadUpdateWithoutDownloadRecordInput, DownloadUncheckedUpdateWithoutDownloadRecordInput>
+  }
+
+  export type DownloadUpdateWithoutDownloadRecordInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutDownloadNestedInput
+  }
+
+  export type DownloadUncheckedUpdateWithoutDownloadRecordInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: StringFieldUpdateOperationsInput | string
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GenerateRecordDetailUpsertWithoutDownloadRecordInput = {
+    update: XOR<GenerateRecordDetailUpdateWithoutDownloadRecordInput, GenerateRecordDetailUncheckedUpdateWithoutDownloadRecordInput>
+    create: XOR<GenerateRecordDetailCreateWithoutDownloadRecordInput, GenerateRecordDetailUncheckedCreateWithoutDownloadRecordInput>
+    where?: GenerateRecordDetailWhereInput
+  }
+
+  export type GenerateRecordDetailUpdateToOneWithWhereWithoutDownloadRecordInput = {
+    where?: GenerateRecordDetailWhereInput
+    data: XOR<GenerateRecordDetailUpdateWithoutDownloadRecordInput, GenerateRecordDetailUncheckedUpdateWithoutDownloadRecordInput>
+  }
+
+  export type GenerateRecordDetailUpdateWithoutDownloadRecordInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    generateRecord?: GenerateRecordUpdateOneWithoutGenerateRecordDetailNestedInput
+  }
+
+  export type GenerateRecordDetailUncheckedUpdateWithoutDownloadRecordInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    generateRecordId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type ResumeCreateManyUserInput = {
     id?: string
     title: string
@@ -20201,6 +23277,11 @@ export namespace Prisma {
     avatar?: string | null
     status?: string | null
     industry?: string | null
+    advantage?: string | null
+    advantageHtml?: string | null
+    works?: string | null
+    projects?: string | null
+    other?: string | null
     templateId?: string | null
     createdTime?: Date | string
     updatedTime?: Date | string
@@ -20222,9 +23303,16 @@ export namespace Prisma {
 
   export type AIGeneratorCreateManyUserInput = {
     id?: string
-    desc: string
-    date: number
-    times: number
+    date?: number | null
+    times?: number | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+  }
+
+  export type DownloadCreateManyUserInput = {
+    id?: string
+    date?: number | null
+    times?: number | null
     createdTime?: Date | string
     updatedTime?: Date | string
   }
@@ -20232,6 +23320,15 @@ export namespace Prisma {
   export type SignCreateManyUserInput = {
     id?: string
     date: number
+    createdTime?: Date | string
+    updatedTime?: Date | string
+  }
+
+  export type GenerateRecordCreateManyUserInput = {
+    id?: string
+    date?: number | null
+    times?: number | null
+    resumeId?: string | null
     createdTime?: Date | string
     updatedTime?: Date | string
   }
@@ -20248,11 +23345,15 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     industry?: NullableStringFieldUpdateOperationsInput | string | null
+    advantage?: NullableStringFieldUpdateOperationsInput | string | null
+    advantageHtml?: NullableStringFieldUpdateOperationsInput | string | null
+    works?: NullableStringFieldUpdateOperationsInput | string | null
+    projects?: NullableStringFieldUpdateOperationsInput | string | null
+    other?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    works?: WorksUpdateManyWithoutResumeNestedInput
-    projects?: ProjectsUpdateManyWithoutResumeNestedInput
     template?: TemplateUpdateOneWithoutResumeNestedInput
+    generateRecord?: GenerateRecordUpdateManyWithoutResumeNestedInput
   }
 
   export type ResumeUncheckedUpdateWithoutUserInput = {
@@ -20267,11 +23368,15 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     industry?: NullableStringFieldUpdateOperationsInput | string | null
+    advantage?: NullableStringFieldUpdateOperationsInput | string | null
+    advantageHtml?: NullableStringFieldUpdateOperationsInput | string | null
+    works?: NullableStringFieldUpdateOperationsInput | string | null
+    projects?: NullableStringFieldUpdateOperationsInput | string | null
+    other?: NullableStringFieldUpdateOperationsInput | string | null
     templateId?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    works?: WorksUncheckedUpdateManyWithoutResumeNestedInput
-    projects?: ProjectsUncheckedUpdateManyWithoutResumeNestedInput
+    generateRecord?: GenerateRecordUncheckedUpdateManyWithoutResumeNestedInput
   }
 
   export type ResumeUncheckedUpdateManyWithoutUserInput = {
@@ -20286,6 +23391,11 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     industry?: NullableStringFieldUpdateOperationsInput | string | null
+    advantage?: NullableStringFieldUpdateOperationsInput | string | null
+    advantageHtml?: NullableStringFieldUpdateOperationsInput | string | null
+    works?: NullableStringFieldUpdateOperationsInput | string | null
+    projects?: NullableStringFieldUpdateOperationsInput | string | null
+    other?: NullableStringFieldUpdateOperationsInput | string | null
     templateId?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20335,9 +23445,8 @@ export namespace Prisma {
 
   export type AIGeneratorUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    desc?: StringFieldUpdateOperationsInput | string
-    date?: IntFieldUpdateOperationsInput | number
-    times?: IntFieldUpdateOperationsInput | number
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
     aiGenerateContent?: AIGenerateContentUpdateManyWithoutAiGeneratorNestedInput
@@ -20345,9 +23454,8 @@ export namespace Prisma {
 
   export type AIGeneratorUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    desc?: StringFieldUpdateOperationsInput | string
-    date?: IntFieldUpdateOperationsInput | number
-    times?: IntFieldUpdateOperationsInput | number
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
     aiGenerateContent?: AIGenerateContentUncheckedUpdateManyWithoutAiGeneratorNestedInput
@@ -20355,9 +23463,34 @@ export namespace Prisma {
 
   export type AIGeneratorUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    desc?: StringFieldUpdateOperationsInput | string
-    date?: IntFieldUpdateOperationsInput | number
-    times?: IntFieldUpdateOperationsInput | number
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DownloadUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    downloadRecord?: DownloadRecordUpdateManyWithoutDownloadNestedInput
+  }
+
+  export type DownloadUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    downloadRecord?: DownloadRecordUncheckedUpdateManyWithoutDownloadNestedInput
+  }
+
+  export type DownloadUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -20383,8 +23516,38 @@ export namespace Prisma {
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type GenerateRecordUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    resume?: ResumeUpdateOneWithoutGenerateRecordNestedInput
+    generateRecordDetail?: GenerateRecordDetailUpdateManyWithoutGenerateRecordNestedInput
+  }
+
+  export type GenerateRecordUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    resumeId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    generateRecordDetail?: GenerateRecordDetailUncheckedUpdateManyWithoutGenerateRecordNestedInput
+  }
+
+  export type GenerateRecordUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    resumeId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type AIGenerateContentCreateManyAiGeneratorInput = {
     id?: string
+    desc: string
     gid: string
     model: string
     promptTokens: number
@@ -20397,6 +23560,7 @@ export namespace Prisma {
 
   export type AIGenerateContentUpdateWithoutAiGeneratorInput = {
     id?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
     gid?: StringFieldUpdateOperationsInput | string
     model?: StringFieldUpdateOperationsInput | string
     promptTokens?: IntFieldUpdateOperationsInput | number
@@ -20409,6 +23573,7 @@ export namespace Prisma {
 
   export type AIGenerateContentUncheckedUpdateWithoutAiGeneratorInput = {
     id?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
     gid?: StringFieldUpdateOperationsInput | string
     model?: StringFieldUpdateOperationsInput | string
     promptTokens?: IntFieldUpdateOperationsInput | number
@@ -20421,6 +23586,7 @@ export namespace Prisma {
 
   export type AIGenerateContentUncheckedUpdateManyWithoutAiGeneratorInput = {
     id?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
     gid?: StringFieldUpdateOperationsInput | string
     model?: StringFieldUpdateOperationsInput | string
     promptTokens?: IntFieldUpdateOperationsInput | number
@@ -20431,58 +23597,40 @@ export namespace Prisma {
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type WorksCreateManyResumeInput = {
+  export type GenerateRecordCreateManyResumeInput = {
     id?: string
-    content: string
+    date?: number | null
+    times?: number | null
+    userId?: string | null
     createdTime?: Date | string
     updatedTime?: Date | string
   }
 
-  export type ProjectsCreateManyResumeInput = {
-    id?: string
-    content: string
-    createdTime?: Date | string
-    updatedTime?: Date | string
-  }
-
-  export type WorksUpdateWithoutResumeInput = {
+  export type GenerateRecordUpdateWithoutResumeInput = {
     id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutGenerateRecordNestedInput
+    generateRecordDetail?: GenerateRecordDetailUpdateManyWithoutGenerateRecordNestedInput
   }
 
-  export type WorksUncheckedUpdateWithoutResumeInput = {
+  export type GenerateRecordUncheckedUpdateWithoutResumeInput = {
     id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    generateRecordDetail?: GenerateRecordDetailUncheckedUpdateManyWithoutGenerateRecordNestedInput
   }
 
-  export type WorksUncheckedUpdateManyWithoutResumeInput = {
+  export type GenerateRecordUncheckedUpdateManyWithoutResumeInput = {
     id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ProjectsUpdateWithoutResumeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ProjectsUncheckedUpdateWithoutResumeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ProjectsUncheckedUpdateManyWithoutResumeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
+    date?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -20499,6 +23647,11 @@ export namespace Prisma {
     avatar?: string | null
     status?: string | null
     industry?: string | null
+    advantage?: string | null
+    advantageHtml?: string | null
+    works?: string | null
+    projects?: string | null
+    other?: string | null
     userId?: string | null
     createdTime?: Date | string
     updatedTime?: Date | string
@@ -20516,11 +23669,15 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     industry?: NullableStringFieldUpdateOperationsInput | string | null
+    advantage?: NullableStringFieldUpdateOperationsInput | string | null
+    advantageHtml?: NullableStringFieldUpdateOperationsInput | string | null
+    works?: NullableStringFieldUpdateOperationsInput | string | null
+    projects?: NullableStringFieldUpdateOperationsInput | string | null
+    other?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    works?: WorksUpdateManyWithoutResumeNestedInput
-    projects?: ProjectsUpdateManyWithoutResumeNestedInput
     user?: UserUpdateOneWithoutResumeNestedInput
+    generateRecord?: GenerateRecordUpdateManyWithoutResumeNestedInput
   }
 
   export type ResumeUncheckedUpdateWithoutTemplateInput = {
@@ -20535,11 +23692,15 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     industry?: NullableStringFieldUpdateOperationsInput | string | null
+    advantage?: NullableStringFieldUpdateOperationsInput | string | null
+    advantageHtml?: NullableStringFieldUpdateOperationsInput | string | null
+    works?: NullableStringFieldUpdateOperationsInput | string | null
+    projects?: NullableStringFieldUpdateOperationsInput | string | null
+    other?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    works?: WorksUncheckedUpdateManyWithoutResumeNestedInput
-    projects?: ProjectsUncheckedUpdateManyWithoutResumeNestedInput
+    generateRecord?: GenerateRecordUncheckedUpdateManyWithoutResumeNestedInput
   }
 
   export type ResumeUncheckedUpdateManyWithoutTemplateInput = {
@@ -20554,7 +23715,122 @@ export namespace Prisma {
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     industry?: NullableStringFieldUpdateOperationsInput | string | null
+    advantage?: NullableStringFieldUpdateOperationsInput | string | null
+    advantageHtml?: NullableStringFieldUpdateOperationsInput | string | null
+    works?: NullableStringFieldUpdateOperationsInput | string | null
+    projects?: NullableStringFieldUpdateOperationsInput | string | null
+    other?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GenerateRecordDetailCreateManyGenerateRecordInput = {
+    id?: string
+    title: string
+    url: string
+    status: string
+    createdTime?: Date | string
+    updatedTime?: Date | string
+  }
+
+  export type GenerateRecordDetailUpdateWithoutGenerateRecordInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    downloadRecord?: DownloadRecordUpdateManyWithoutGenerateRecordDetailNestedInput
+  }
+
+  export type GenerateRecordDetailUncheckedUpdateWithoutGenerateRecordInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    downloadRecord?: DownloadRecordUncheckedUpdateManyWithoutGenerateRecordDetailNestedInput
+  }
+
+  export type GenerateRecordDetailUncheckedUpdateManyWithoutGenerateRecordInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DownloadRecordCreateManyGenerateRecordDetailInput = {
+    id?: string
+    title: string
+    url: string
+    downloadId?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+  }
+
+  export type DownloadRecordUpdateWithoutGenerateRecordDetailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    download?: DownloadUpdateOneWithoutDownloadRecordNestedInput
+  }
+
+  export type DownloadRecordUncheckedUpdateWithoutGenerateRecordDetailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    downloadId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DownloadRecordUncheckedUpdateManyWithoutGenerateRecordDetailInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    downloadId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DownloadRecordCreateManyDownloadInput = {
+    id?: string
+    title: string
+    url: string
+    generateRecordDetailId?: string | null
+    createdTime?: Date | string
+    updatedTime?: Date | string
+  }
+
+  export type DownloadRecordUpdateWithoutDownloadInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    generateRecordDetail?: GenerateRecordDetailUpdateOneWithoutDownloadRecordNestedInput
+  }
+
+  export type DownloadRecordUncheckedUpdateWithoutDownloadInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    generateRecordDetailId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DownloadRecordUncheckedUpdateManyWithoutDownloadInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    generateRecordDetailId?: NullableStringFieldUpdateOperationsInput | string | null
     createdTime?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }

@@ -27,11 +27,13 @@ model User {
 
   profile Profile? @relation()
 
-  resume      Resume[]
-  inviter     Invite[]      @relation("Inviter")
-  invitee     Invite[]      @relation("Invitee")
-  aiGenerator AIGenerator[]
-  sign        Sign[]
+  resume         Resume[]
+  inviter        Invite[]         @relation("Inviter")
+  invitee        Invite[]         @relation("Invitee")
+  aiGenerator    AIGenerator[]
+  download       Download[]
+  sign           Sign[]
+  generateRecord GenerateRecord[]
 
   createdTime DateTime @default(now()) @map("created_time")
   updatedTime DateTime @updatedAt @map("updated_time")
@@ -69,12 +71,10 @@ model Sign {
 model AIGenerator {
   id String @unique @default(uuid())
 
-  // 描述词
-  desc  String @db.Text
   // 生成的日期（按日算）
-  date  Int
+  date  Int?
   // 生成了多少次
-  times Int
+  times Int?
 
   user   User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @map("user_id")
@@ -88,8 +88,9 @@ model AIGenerator {
 }
 
 model AIGenerateContent {
-  id String @unique @default(uuid())
-
+  id               String @unique @default(uuid())
+  // 描述词
+  desc             String @db.Text
   // 模型生成的id
   gid              String
   // 模型类型
@@ -147,21 +148,27 @@ model Invite {
 model Resume {
   id String @unique @default(uuid())
 
-  title String @unique
+  title String
 
-  realname  String?    @default("")
+  realname  String? @default("")
   age       Int?
-  education String?    @default("")
-  address   String?    @default("")
-  mobile    String?    @default("")
-  email     String?    @default("")
-  avatar    String?    @default("")
+  education String? @default("")
+  address   String? @default("")
+  mobile    String? @default("")
+  email     String? @default("")
+  avatar    String? @default("")
   // 状态：是否离职
-  status    String?    @default("")
+  status    String? @default("")
   // 行业：教师，医生，程序员？
-  industry  String?    @default("")
-  works     Works[]
-  projects  Projects[]
+  industry  String? @default("")
+
+  advantage     String? @db.Text
+  advantageHtml String? @db.Text
+
+  works    String? @db.Text
+  projects String? @db.Text
+
+  other String? @db.VarChar(1000)
 
   user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String? @map("user_id")
@@ -169,44 +176,22 @@ model Resume {
   template   Template? @relation(fields: [templateId], references: [id])
   templateId String?   @map("template_id")
 
+  generateRecord GenerateRecord[]
+
   createdTime DateTime @default(now()) @map("created_time")
   updatedTime DateTime @updatedAt @map("updated_time")
 
   @@map("resume")
 }
 
-model Works {
-  id String @unique @default(uuid())
-
-  content  String  @db.Text
-  resume   Resume? @relation(fields: [resumeId], references: [id], onDelete: Cascade)
-  resumeId String  @map("resume_id")
-
-  createdTime DateTime @default(now()) @map("created_time")
-  updatedTime DateTime @updatedAt @map("updated_time")
-
-  @@map("works")
-}
-
-model Projects {
-  id String @unique @default(uuid())
-
-  content  String  @db.Text
-  resume   Resume? @relation(fields: [resumeId], references: [id], onDelete: Cascade)
-  resumeId String  @map("resume_id")
-
-  createdTime DateTime @default(now()) @map("created_time")
-  updatedTime DateTime @updatedAt @map("updated_time")
-
-  @@map("projects")
-}
-
 model Template {
   id String @unique @default(uuid())
 
-  title String  @default("")
-  path  String  @default("")
-  type  String? @default("")
+  title     String  @default("")
+  path      String  @unique @default("")
+  type      String? @default("")
+  usedTimes Int?    @default(0) @map("used_times")
+  coverUrl  String? @default("") @map("cover_url")
 
   resume Resume[]
 
@@ -216,14 +201,79 @@ model Template {
   @@map("template")
 }
 
+model GenerateRecord {
+  id String @unique @default(uuid())
+
+  // 生成的日期（按日算）
+  date  Int?
+  // 生成了多少次
+  times Int?
+
+  resume   Resume? @relation(fields: [resumeId], references: [id])
+  resumeId String? @map("resume_id")
+
+  user   User?   @relation(fields: [userId], references: [id])
+  userId String? @map("user_id")
+
+  generateRecordDetail GenerateRecordDetail[]
+
+  createdTime DateTime @default(now()) @map("created_time")
+  updatedTime DateTime @updatedAt @map("updated_time")
+
+  @@map("generate_record")
+}
+
+model GenerateRecordDetail {
+  id String @unique @default(uuid())
+
+  title  String
+  url    String
+  status String
+
+  generateRecord   GenerateRecord? @relation(fields: [generateRecordId], references: [id])
+  generateRecordId String?         @map("generate_record_id")
+
+  downloadRecord DownloadRecord[]
+
+  createdTime DateTime @default(now()) @map("created_time")
+  updatedTime DateTime @updatedAt @map("updated_time")
+
+  @@map("generate_record_detail")
+}
+
 model Download {
   id String @unique @default(uuid())
 
-  title String
-  url   String
+  // 生成的日期（按日算）
+  date  Int?
+  // 生成了多少次
+  times Int?
+
+  user   User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @map("user_id")
+
+  downloadRecord DownloadRecord[]
 
   createdTime DateTime @default(now()) @map("created_time")
   updatedTime DateTime @updatedAt @map("updated_time")
 
   @@map("download")
+}
+
+model DownloadRecord {
+  id String @unique @default(uuid())
+
+  title String
+  url   String
+
+  download   Download? @relation(fields: [downloadId], references: [id])
+  downloadId String?   @map("download_id")
+
+  generateRecordDetail   GenerateRecordDetail? @relation(fields: [generateRecordDetailId], references: [id])
+  generateRecordDetailId String?               @map("generate_record_detail_id")
+
+  createdTime DateTime @default(now()) @map("created_time")
+  updatedTime DateTime @updatedAt @map("updated_time")
+
+  @@map("download_record")
 }

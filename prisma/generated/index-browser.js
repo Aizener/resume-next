@@ -146,7 +146,6 @@ exports.Prisma.SignScalarFieldEnum = {
 
 exports.Prisma.AIGeneratorScalarFieldEnum = {
   id: 'id',
-  desc: 'desc',
   date: 'date',
   times: 'times',
   userId: 'userId',
@@ -156,6 +155,7 @@ exports.Prisma.AIGeneratorScalarFieldEnum = {
 
 exports.Prisma.AIGenerateContentScalarFieldEnum = {
   id: 'id',
+  desc: 'desc',
   gid: 'gid',
   model: 'model',
   promptTokens: 'promptTokens',
@@ -196,24 +196,13 @@ exports.Prisma.ResumeScalarFieldEnum = {
   avatar: 'avatar',
   status: 'status',
   industry: 'industry',
+  advantage: 'advantage',
+  advantageHtml: 'advantageHtml',
+  works: 'works',
+  projects: 'projects',
+  other: 'other',
   userId: 'userId',
   templateId: 'templateId',
-  createdTime: 'createdTime',
-  updatedTime: 'updatedTime'
-};
-
-exports.Prisma.WorksScalarFieldEnum = {
-  id: 'id',
-  content: 'content',
-  resumeId: 'resumeId',
-  createdTime: 'createdTime',
-  updatedTime: 'updatedTime'
-};
-
-exports.Prisma.ProjectsScalarFieldEnum = {
-  id: 'id',
-  content: 'content',
-  resumeId: 'resumeId',
   createdTime: 'createdTime',
   updatedTime: 'updatedTime'
 };
@@ -223,14 +212,47 @@ exports.Prisma.TemplateScalarFieldEnum = {
   title: 'title',
   path: 'path',
   type: 'type',
+  usedTimes: 'usedTimes',
+  coverUrl: 'coverUrl',
+  createdTime: 'createdTime',
+  updatedTime: 'updatedTime'
+};
+
+exports.Prisma.GenerateRecordScalarFieldEnum = {
+  id: 'id',
+  date: 'date',
+  times: 'times',
+  resumeId: 'resumeId',
+  userId: 'userId',
+  createdTime: 'createdTime',
+  updatedTime: 'updatedTime'
+};
+
+exports.Prisma.GenerateRecordDetailScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  url: 'url',
+  status: 'status',
+  generateRecordId: 'generateRecordId',
   createdTime: 'createdTime',
   updatedTime: 'updatedTime'
 };
 
 exports.Prisma.DownloadScalarFieldEnum = {
   id: 'id',
+  date: 'date',
+  times: 'times',
+  userId: 'userId',
+  createdTime: 'createdTime',
+  updatedTime: 'updatedTime'
+};
+
+exports.Prisma.DownloadRecordScalarFieldEnum = {
+  id: 'id',
   title: 'title',
   url: 'url',
+  downloadId: 'downloadId',
+  generateRecordDetailId: 'generateRecordDetailId',
   createdTime: 'createdTime',
   updatedTime: 'updatedTime'
 };
@@ -260,10 +282,11 @@ exports.Prisma.ModelName = {
   Profile: 'Profile',
   Invite: 'Invite',
   Resume: 'Resume',
-  Works: 'Works',
-  Projects: 'Projects',
   Template: 'Template',
-  Download: 'Download'
+  GenerateRecord: 'GenerateRecord',
+  GenerateRecordDetail: 'GenerateRecordDetail',
+  Download: 'Download',
+  DownloadRecord: 'DownloadRecord'
 };
 
 /**

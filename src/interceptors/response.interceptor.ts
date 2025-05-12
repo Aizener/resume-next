@@ -5,7 +5,7 @@ import {
   Injectable,
   NestInterceptor,
 } from '@nestjs/common';
-import { map, Observable } from 'rxjs';
+import { map, Observable, timeout } from 'rxjs';
 
 @Injectable()
 export class ResponseInterceptor implements NestInterceptor {
@@ -14,10 +14,14 @@ export class ResponseInterceptor implements NestInterceptor {
     next: CallHandler<any>,
   ): Observable<any> | Promise<Observable<any>> {
     return next.handle().pipe(
-      map((data: unknown) => ({
-        statusCode: HttpStatus.OK,
-        data,
-      })),
+      timeout(20000),
+      // delay(1000),
+      map((data: unknown) => {
+        return {
+          statusCode: HttpStatus.OK,
+          data,
+        };
+      }),
     );
   }
 }

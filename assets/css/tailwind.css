@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@utility flex-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+@utility flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-same {
+  @apply w-full fixed left-0 top-0 z-30 bg-white flex justify-between items-center border-b border-neutral-200 shadow-md shadow-neutral-100;
+}
